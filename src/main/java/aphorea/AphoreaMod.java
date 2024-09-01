@@ -102,7 +102,7 @@ public class AphoreaMod {
 
         // Items
 
-        Object[][] itemsNuevos = new Object[][] {
+        Object[][] newItems = new Object[][] {
                 {"gelball", GelBall.class, 1, true},
 
                 {"gelballgroup", GelBallGroup.class, 1, true},
@@ -175,7 +175,7 @@ public class AphoreaMod {
 
         };
 
-        for (Object[] itemNuevo : itemsNuevos) {
+        for (Object[] itemNuevo : newItems) {
             try {
                 String stringID = (String) itemNuevo[0];
                 Class<?> itemClass = (Class<?>) itemNuevo[1];

@@ -34,19 +34,19 @@ public class AphoreaEnchantments {
     }
 
     public static void registerCore() {
-        godly = registerEnchantment(healingEquipmentEnchantments, "godly", new EquipmentItemEnchant(-20, new ModifierValue<>(AphoreaModifiers.MAGIC_HEALING, 0.05F)));
-        absent = registerEnchantment(healingEquipmentEnchantments, "absent", new EquipmentItemEnchant(-40, new ModifierValue<>(AphoreaModifiers.MAGIC_HEALING, -0.05F)));
+        godly = registerEnchantment(healingEquipmentEnchantments, "godly", new EquipmentItemEnchant(20, new ModifierValue<>(AphoreaModifiers.MAGIC_HEALING, 0.05F)));
+        absent = registerEnchantment(healingEquipmentEnchantments, "absent", new EquipmentItemEnchant(20, new ModifierValue<>(AphoreaModifiers.MAGIC_HEALING, -0.05F)));
         auxiliary = registerEnchantment(healingEquipmentEnchantments, "auxiliary", new EquipmentItemEnchant(-20, new ModifierValue<>(AphoreaModifiers.MAGIC_HEALING_RECEIVED, 0.1F)));
-        vain = registerEnchantment(healingEquipmentEnchantments, "vain", new EquipmentItemEnchant(-40, new ModifierValue<>(AphoreaModifiers.MAGIC_HEALING_RECEIVED, -0.1F)));
-        gentle = registerEnchantment(healingEquipmentEnchantments, "gentle", new EquipmentItemEnchant(0, new ModifierValue<>(AphoreaModifiers.MAGIC_HEALING, 0.05F), new ModifierValue<>(AphoreaModifiers.MAGIC_HEALING_RECEIVED, -0.1F)));
-        selfish = registerEnchantment(healingEquipmentEnchantments, "selfish", new EquipmentItemEnchant(0, new ModifierValue<>(AphoreaModifiers.MAGIC_HEALING, -0.05F), new ModifierValue<>(AphoreaModifiers.MAGIC_HEALING_RECEIVED, 0.15F)));
+        vain = registerEnchantment(healingEquipmentEnchantments, "vain", new EquipmentItemEnchant(-20, new ModifierValue<>(AphoreaModifiers.MAGIC_HEALING_RECEIVED, -0.1F)));
+        gentle = registerEnchantment(healingEquipmentEnchantments, "gentle", new EquipmentItemEnchant(0, new ModifierValue<>(AphoreaModifiers.MAGIC_HEALING, 0.1F), new ModifierValue<>(AphoreaModifiers.MAGIC_HEALING_RECEIVED, -0.2F)));
+        selfish = registerEnchantment(healingEquipmentEnchantments, "selfish", new EquipmentItemEnchant(0, new ModifierValue<>(AphoreaModifiers.MAGIC_HEALING, -0.1F), new ModifierValue<>(AphoreaModifiers.MAGIC_HEALING_RECEIVED, 0.3F)));
 
         friendly = registerEnchantment(healingItemEnchantments, "friendly", new ToolItemEnchantment(20, new ModifierValue<>(AphoreaModifiers.TOOL_MAGIC_HEALING, 0.2F)));
-        graceful = registerEnchantment(healingItemEnchantments, "graceful", new ToolItemEnchantment(20, new ModifierValue<>(AphoreaModifiers.TOOL_MAGIC_HEALING_GRACE, 0.2F)));
+        graceful = registerEnchantment(healingItemEnchantments, "graceful", new ToolItemEnchantment(20, new ModifierValue<>(AphoreaModifiers.TOOL_MAGIC_HEALING_GRACE, 0.1F)));
         wonderful = registerEnchantment(healingItemEnchantments, "wonderful", new ToolItemEnchantment(10, new ModifierValue<>(AphoreaModifiers.TOOL_MAGIC_HEALING, 0.1F), new ModifierValue<>(ToolItemModifiers.MANA_USAGE, -0.1F)));
         ecologic = registerEnchantment(healingItemEnchantments, "ecologic", new ToolItemEnchantment(10, new ModifierValue<>(ToolItemModifiers.MANA_USAGE, -0.3F)));
         exalted = registerEnchantment(healingItemEnchantments, "exalted", new ToolItemEnchantment(-20, new ModifierValue<>(ToolItemModifiers.MANA_USAGE, 0.2F)));
-        cursed = registerEnchantment(healingItemEnchantments, "cursed", new ToolItemEnchantment(-80, new ModifierValue<>(AphoreaModifiers.TOOL_MAGIC_HEALING_RECEIVED, -0.8F), new ModifierValue<>(AphoreaModifiers.TOOL_MAGIC_HEALING, 0.2F), new ModifierValue<>(AphoreaModifiers.TOOL_MAGIC_HEALING_GRACE, 0.2F)));
+        cursed = registerEnchantment(healingItemEnchantments, "cursed", new ToolItemEnchantment(-60, new ModifierValue<>(AphoreaModifiers.TOOL_MAGIC_HEALING_RECEIVED, -0.8F), new ModifierValue<>(AphoreaModifiers.TOOL_MAGIC_HEALING, 0.2F), new ModifierValue<>(AphoreaModifiers.TOOL_MAGIC_HEALING_GRACE, 0.2F)));
 
         booming = registerEnchantment(areaItemEnchantments, "booming", new ToolItemEnchantment(20, new ModifierValue<>(AphoreaModifiers.TOOL_AREA_RANGE, 0.3F)));
         dimmed = registerEnchantment(areaItemEnchantments, "dimmed", new ToolItemEnchantment(-20, new ModifierValue<>(AphoreaModifiers.TOOL_AREA_RANGE, -0.2F)));
