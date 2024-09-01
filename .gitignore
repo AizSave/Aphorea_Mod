@@ -1,0 +1,16 @@
+# IntelliJ project files
+.idea
+.vscode
+*.iml
+out
+gen
+
+# Build files
+build
+gradle
+.gradle
+
+# Project specific
+steam_appid.txt
+latest-crash.log
+*.log

@@ -1,0 +1,213 @@
+[global]
+aphorea=§!Aphorea Mod
+
+[tile]
+geltile=Solo de Gel
+
+[object]
+witchstatue=Estátua da Bruxa
+
+[buffmodifiers]
+magichealing=<mod>% cura mágica
+magichealingflat=<mod> cura mágica
+magichealingreceived=<mod>% cura mágica recebida
+magichealingreceivedflat=<mod> cura mágica recebida
+magichealinggrace=<mod>% graça de cura mágica
+
+[itemtype]
+battleaxe=Machado de Batalha
+saber=Sabre
+sling=Estilingue
+blowgun=Zarabatana
+
+[item]
+gelball=Bola de Gel
+rockygel=Gel Rochoso
+gelballgroup=Grupo de Bolas de Gel
+gelsword=Espada de Gel
+unstablecore=Núcleo Instável
+unstablegel=Gel Instável
+unstablegelsword=Espada de Gel Instável
+unstablegelgreatsword=Espadona de Gel Instável
+unstablegelstaff=Cajado de Gel Instável
+
+sling=Estilingue
+firesling=Estilingue de Fogo
+frozensling=Estilingue Congelante
+
+blowgun=Zarabatana
+
+rockyperiapt=Talismã Rochoso
+unstableperiapt=Talismã Instável
+bloodyperiapt=Talismã Sangrento
+demonicperiapt=Talismã Demoníaco
+frozenperiapt=Talismã Congelado
+necromancyperiapt=Talismã de Necromancia
+
+rockyboots=Botas Rochosas
+rockychestplate=Peitoral Rochoso
+rockyhelmet=Capacete Rochoso
+
+goldhat=Chapéu de Ouro
+
+unstablegelbattleaxe=Machado de Batalha de Gel Instável
+demonicbattleaxe=Machado de Batalha Demoníaco
+
+coppersaber=Sabre de Cobre
+ironsaber=Sabre de Ferro
+goldsaber=Sabre de Ouro
+unstablegelsaber=Sabre de Gel Instável
+demonicsaber=Sabre Demoníaco
+
+basicbackpack=Mochila Básica
+sapphirebackpack=Mochila de Safira
+amethystbackpack=Mochila de Ametista
+rubybackpack=Mochila de Rubi
+emeraldbackpack=Mochila de Esmeralda
+diamondbackpack=Mochila de Diamante
+
+gelslimenullifier=Anulador de Slimes de Gel
+
+broom=Vassoura
+magicalbroom=Vassoura Mágica
+witchhat=Chapéu de Bruxa
+magicalsuit=Traje Mágico
+magicalboots=Botas Mágicas
+
+stardust=Pó Estelar
+magicalvial=Frasco Mágico
+healingstaff=Cajado de Cura
+
+floralring=Anel Floral
+gelring=Anel de Gel
+heartring=Anel do Lar
+ringofhealth=Anel da Saúde
+
+swampboots=Botas do Pântano
+swampchestplate=Peitoral do Pântano
+swampmask=Máscara do Pântano
+swamphood=Capuz do Pântano
+swampshield=Escudo do Pântano
+
+[itemtooltip]
+line=--------------------
+
+magichealingtip=Cura mágica: <health>
+rangetip=Alcance: <range>
+areatip=§aÁrea <number>
+
+magichealinggrace=§aGraça de Cura Mágica:§0 Cura-se com uma % da cura mágica destinada aos aliados
+
+saber=Carga rápida causando x2 de dano após 0.5 segundos, depois descarrega em outros 0.5 segundos
+saber2=Um ataque perfeito lançará um corte aéreo que causa dano base. Um bom também lançará um fraco
+saber3=Segure [input=mouse2] para carregar um dash para cortar inimigos causando dano base
+
+battleaxe=Requer muito tempo de carga
+battleaxe2=Pressione [input=mouse2] para ativar a Fúria do Berserker. Você não pode receber dano ou se mover enquanto ativa a habilidade
+
+sling=Joga pedras com força
+sling2=50% de chance de atordoar o inimigo por 0.5 segundos
+
+blowgun=Dispara 3 sementes uma por uma
+blowgun2=[input=mouse2] para disparar as sementes ao mesmo tempo
+
+unstablegelsword=[input=mouse2] para fazer o próximo ataque ser carregado. Liberará um corte aéreo e se estiver completamente carregado causará o dobro de dano
+
+fisicareasecondaryattack=[input=mouse2] para que o próximo ataque seja em área
+magicareasecondaryattack=[input=mouse2] para realizar um ataque em área gastando <mana> de Mana
+
+stikybuff1=Deixa o inimigo §9Pegajoso§0 por 1 segundo
+stikybuff2=Deixa o inimigo §9Pegajoso§0 por 2 segundos
+stikybuff3=Deixa o inimigo §9Pegajoso§0 por 3 segundos
+
+gelball=Arremessa uma bola de gel
+unstablecore=§bLibera uma aura instável...§0 Só pode ser usado durante o dia
+
+rockyperiapt=+5 de Armadura, mas -5% de Velocidade de Movimento
+rockyperiapt2=Pressione [input=trinketability] para ganhar 10 de Armadura por 10 segundos\nVocê não pode receber dano ou se mover enquanto ativa a habilidade
+
+unstableperiapt=Chama dois §bSlimes Bebês de Gel Instável§0 que te protegerão. Esses slimes §9causam 8 de Dano de Invocador§0
+unstableperiapt2=Te deixa imune ao debuff §9Pegajoso§0
+
+bloodyperiapt=As armas §6Disparo de Sangue§0 e §6Rajada de Sangue§0 te curarão 10% do dano que você causar com elas
+bloodyperiapt2=Pressione [input=trinketability] para ganhar +50% de Velocidade, +30% de Velocidade de Ataque e\nfaça isso funcionar com todas as armas mágicas por 10 segundos.\nVocê não pode receber dano ou se mover enquanto ativa a habilidade
+
+necromancyperiapt=Cada vez que você ou um dos seus invocados mata um mob hostil, você invoca um §bEsqueleto Morto-Vivo§0\n que §9causa 20 de Dano de Invocador§0 por§9 10 segundos§0 com um máximo de§9 3 de cada vez§0
+
+demonicperiapt=Armas mágicas te curarão 10% do dano que você causar com elas
+demonicperiapt2=Pressione [input=trinketability] para ganhar +50% de Velocidade, +30% de Velocidade de Ataque e\nfaça isso funcionar com todo o dano por 10 segundos.\nVocê não pode receber dano ou se mover enquanto ativa a habilidade
+
+frozenperiapt=Armas corpo a corpo e de longo alcance §9Congelarão§0 por 3 segundos. Se o alvo já estiver congelado, aumenta em §9+20%§0 o Dano base do ataque
+frozenperiapt2=Pressione [input=trinketability] para ganhar +50% de Velocidade, +30% de Velocidade de Ataque e\nfaça isso funcionar com todo o dano por 10 segundos.\nVocê não pode receber dano ou se mover enquanto ativa a habilidade
+frozenperiapt3=Te deixa imune aos debuffs §9Congelar§0 e §9Congelamento Lento§0
+
+goldhatsetbonusbuff=+60% de Velocidade de Ataque à Distância enquanto você não se mover
+
+firesling=Queima os inimigos
+frozensling=Congela os inimigos
+
+backpack=É um novo inventário que armazena todos os itens que você coleta
+backpack2=§6Não tenha mochilas com itens no inventário quando for criar uma mochila melhor
+backpackslots=Capacidade de <slots> itens
+stored=Itens armazenados: <items>
+
+gelslimenullifier=Eles vão parar de te incomodar com um simples clique!
+
+geltile=Solo pegajoso que desacelera muito tudo o que está em cima
+
+witchsetbonusbuff=Aumenta a Velocidade de Dano Mágico, Regeneração de Mana e Armadura conforme você tem menos vida, com um máximo de 50% / 6 de Armadura
+
+floralring=Receba §7<healing>§0 de Cura Mágica a cada 3 segundos
+gelring=+30% de cura mágica recebida
+heartring=+20 de vida máxima
+
+magicalvial=Cura Mágica de §7<healing>§0. Aponte para um humano ferido para curá-lo, não aponte para ninguém para se curar. Tempo de recarga de 20 segundos
+
+swampshield=Só protege contra ataques na direção que são recebidos\nSua própria Cura Mágica
+
+witchstatue=Colocar esta estátua na superfície de um pântano eliminará a aparição de bruxas em toda a ilha
+
+deleteditem=Este item foi removido, use este item para recuperar os materiais antes que seja removido permanentemente
+
+[mob]
+gelslime=Slime de Gel
+rockygelslime=Slime de Gel Rochoso
+unstablegelslime=Slime de Gel Instável
+unstablegelslime_mini=Mini Slime de Gel Instável
+
+witch=Feiticeira
+
+babyunstablegelslime=Slime Bebê de Gel Instável
+undeadskeleton=Esqueleto Morto-Vivo
+
+[buff]
+stunbuff=Atordoado
+stickybuff=Pegajoso
+
+berserkerrushbuff=Fúria do Berserker
+berserkerrushcooldownbuff=Fúria do Berserker em Recarga
+
+swordchargeattackcooldown=Ataque de Espada Carregado em Recarga
+
+periaptcooldownbuff=Habilidade de Talismã em Recarga
+
+periaptactivebuff=Habilidade de Talismã Ativa
+
+saberdashcooldown=Recarga do Dash
+
+[message]
+unstablegelslime_enfadando=§6Slime de Gel Instável está ficando irritado... <anger>/10
+unstablegelslime_enfadado=§6Slime de Gel Instável ficou irritado! <anger>/10
+unstablegelslime_night=§6Slime de Gel Instável§0 desapareceu ao cair da noite!
+
+gelslimesnulled=Slimes de Gel anulados neste mundo. Eles não aparecerão mais
+gelslimesunnulled=Slimes de Gel admitidos neste mundo. Eles voltaram!
+
+witchesnulled=Bruxas anuladas em (<x>, <y>)
+witchesunnulled=Bruxas admitidas em (<x>, <y>)
+
+needfreeslots=Você precisa de <slots> slots livres no inventário para usar isso
+
+healthalreadyfull=A saúde já está cheia
+
+cantuseatnight=Você não pode usar isso à noite
