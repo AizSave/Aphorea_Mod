@@ -1,6 +1,6 @@
 package aphorea.other.itemtype.weapons.AphoreaChargeAttackToolItem;
 
-import aphorea.other.olditemtype.weapons.AphoreaSwordToolItem;
+import aphorea.other.vanillaitemtypes.weapons.AphoreaSwordToolItem;
 import necesse.engine.localization.message.GameMessage;
 import necesse.engine.localization.message.LocalMessage;
 import necesse.engine.network.PacketReader;

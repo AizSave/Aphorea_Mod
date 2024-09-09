@@ -1,7 +1,7 @@
 package aphorea.other.magichealing;
 
 import aphorea.other.AphoreaEnchantments;
-import aphorea.other.olditemtype.AphoreaToolItem;
+import aphorea.other.vanillaitemtypes.AphoreaToolItem;
 import necesse.engine.localization.Localization;
 import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.Mob;

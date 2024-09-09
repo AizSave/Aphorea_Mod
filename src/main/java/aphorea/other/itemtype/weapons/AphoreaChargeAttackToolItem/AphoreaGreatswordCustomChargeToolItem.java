@@ -1,6 +1,6 @@
 package aphorea.other.itemtype.weapons.AphoreaChargeAttackToolItem;
 
-import aphorea.other.olditemtype.weapons.AphoreaGreatswordToolItem;
+import aphorea.other.vanillaitemtypes.weapons.AphoreaGreatswordToolItem;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.attackHandler.GreatswordChargeLevel;
 

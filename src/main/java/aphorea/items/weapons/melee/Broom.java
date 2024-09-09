@@ -1,6 +1,6 @@
 package aphorea.items.weapons.melee;
 
-import aphorea.other.olditemtype.weapons.AphoreaSwordToolItem;
+import aphorea.other.vanillaitemtypes.weapons.AphoreaSwordToolItem;
 
 public class Broom extends AphoreaSwordToolItem {
 

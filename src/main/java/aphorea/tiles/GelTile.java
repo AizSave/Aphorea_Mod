@@ -3,7 +3,7 @@ package aphorea.tiles;
 import java.awt.Color;
 import java.util.List;
 
-import aphorea.other.olditemtype.AphoreaTileItem;
+import aphorea.other.vanillaitemtypes.AphoreaTileItem;
 import necesse.engine.gameLoop.tickManager.TickManager;
 import necesse.engine.localization.Localization;
 import necesse.engine.modifiers.ModifierValue;

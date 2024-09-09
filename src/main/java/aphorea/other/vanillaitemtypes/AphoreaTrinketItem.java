@@ -1,4 +1,4 @@
-package aphorea.other.olditemtype;
+package aphorea.other.vanillaitemtypes;
 
 import aphorea.other.AphoreaEnchantments;
 import necesse.engine.localization.Localization;

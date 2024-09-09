@@ -16,6 +16,29 @@ magichealingreceived=<mod>% cura mágica recebida
 magichealingreceivedflat=<mod> cura mágica recebida
 magichealinggrace=<mod>% graça de cura mágica
 
+arearange=<mod>% faixa de área
+
+[enchantment]
+godly=Divino
+absent=Ausente
+auxiliary=Auxiliar
+vain=Vaidoso
+gentle=Gentil
+selfish=Egoísta
+
+friendly=Amigável
+graceful=Gracioso
+wonderful=Maravilhoso
+ecologic=Ecológico
+exalted=Exaltado
+cursed=Amaldiçoado
+
+booming=Estrondoso
+dimmed=Esvaziado
+
+[itemcategory]
+healing=Cura
+
 [itemtype]
 battleaxe=Machado de Batalha
 saber=Sabre

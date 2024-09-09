@@ -1,7 +1,7 @@
 package aphorea.items;
 
 import aphorea.other.data.AphoreaWorldData;
-import aphorea.other.olditemtype.AphoreaConsumableItem;
+import aphorea.other.vanillaitemtypes.AphoreaConsumableItem;
 import necesse.engine.localization.Localization;
 import necesse.engine.network.PacketReader;
 import necesse.engine.network.packet.PacketChatMessage;

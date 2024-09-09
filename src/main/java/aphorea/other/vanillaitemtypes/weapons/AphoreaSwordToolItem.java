@@ -1,14 +1,14 @@
-package aphorea.other.olditemtype.weapons;
+package aphorea.other.vanillaitemtypes.weapons;
 
 import necesse.engine.localization.Localization;
 import necesse.engine.util.GameBlackboard;
 import necesse.entity.mobs.PlayerMob;
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.InventoryItem;
-import necesse.inventory.item.toolItem.projectileToolItem.magicProjectileToolItem.MagicProjectileToolItem;
+import necesse.inventory.item.toolItem.swordToolItem.SwordToolItem;
 
-abstract public class AphoreaMagicProjectileToolItem extends MagicProjectileToolItem {
-    public AphoreaMagicProjectileToolItem(int enchantCost) {
+abstract public class AphoreaSwordToolItem extends SwordToolItem {
+    public AphoreaSwordToolItem(int enchantCost) {
         super(enchantCost);
     }
 

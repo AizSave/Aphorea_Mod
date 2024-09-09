@@ -1,6 +1,6 @@
 package aphorea.items.trinkets.ability_no;
 
-import aphorea.other.olditemtype.AphoreaTrinketItem;
+import aphorea.other.vanillaitemtypes.AphoreaTrinketItem;
 
 import necesse.engine.localization.Localization;
 import necesse.engine.registries.BuffRegistry;

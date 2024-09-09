@@ -39,7 +39,7 @@ abstract public class AphoreaBackpack extends PouchItem {
 
     public boolean isValidRequestType(Item item) {
         if(item == null) return false;
-        return !item.getStringID().contains("backpack");
+        return !item.getStringID().contains("backpack") && !item.getStringID().equals("coin");
     }
 
     public boolean isValidRequestType(Item.Type type) {

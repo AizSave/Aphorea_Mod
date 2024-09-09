@@ -1,4 +1,4 @@
-package aphorea.other.olditemtype.weapons;
+package aphorea.other.vanillaitemtypes.weapons;
 
 import necesse.engine.localization.Localization;
 import necesse.engine.util.GameBlackboard;

@@ -52,7 +52,7 @@ public class AphoreaAreaList {
                                 attackDamage.setBaseValue(area.getBaseDamage()).setUpgradedValue(1.0F, area.getTier1Damage());
                                 toolItem.hitMob(player.attackingItem, event, player.getLevel(), target, player);
                             }
-                            if (area.areaTypes.contains(AphoreaAreaType.HEALING) && ((target.isSameTeam(player) && target.isPlayer) || target.isHuman)) {
+                            if (area.areaTypes.contains(AphoreaAreaType.HEALING) && ((target.isSameTeam(player) && target.isPlayer) || target.isHuman) && !target.isHostile) {
                                 if (magicHealingToolItem == null) {
                                     AphoreaMagicHealing.healMob(player, target, area.getHealing(item));
                                 } else {

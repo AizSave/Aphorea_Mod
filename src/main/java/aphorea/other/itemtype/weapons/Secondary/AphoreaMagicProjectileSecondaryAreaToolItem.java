@@ -3,7 +3,7 @@ package aphorea.other.itemtype.weapons.Secondary;
 import aphorea.other.AphoreaAreaList;
 import aphorea.other.AphoreaEnchantments;
 import aphorea.other.AphoreaModifiers;
-import aphorea.other.olditemtype.weapons.AphoreaMagicProjectileToolItem;
+import aphorea.other.vanillaitemtypes.weapons.AphoreaMagicProjectileToolItem;
 import necesse.engine.localization.Localization;
 import necesse.engine.network.PacketReader;
 import necesse.engine.util.GameBlackboard;

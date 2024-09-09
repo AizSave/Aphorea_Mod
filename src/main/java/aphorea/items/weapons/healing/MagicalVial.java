@@ -3,6 +3,8 @@ package aphorea.items.weapons.healing;
 import aphorea.other.magichealing.AphoreaMagicHealing;
 import aphorea.other.magichealing.AphoreaMagicHealingToolItem;
 import necesse.engine.localization.Localization;
+import necesse.engine.modifiers.Modifier;
+import necesse.engine.modifiers.ModifierContainer;
 import necesse.engine.network.PacketReader;
 import necesse.engine.sound.SoundEffect;
 import necesse.engine.sound.SoundManager;
@@ -11,6 +13,7 @@ import necesse.entity.ParticleTypeSwitcher;
 import necesse.entity.mobs.AttackAnimMob;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.PlayerMob;
+import necesse.entity.mobs.buffs.BuffModifiers;
 import necesse.entity.particle.Particle;
 import necesse.entity.pickup.PickupEntity;
 import necesse.gfx.GameResources;
@@ -55,11 +58,15 @@ public class MagicalVial extends AphoreaMagicHealingToolItem {
 
     @Override
     public boolean onMouseHoverMob(InventoryItem item, GameCamera camera, PlayerMob perspective, Mob mob, boolean isDebug) {
-        if((mob.isPlayer || mob.isHuman) && actualMob == null && perspective.getPositionPoint().distance(mob.x, mob.y) <= 400 && mob.getHealthPercent() != 1) {
+        if(((mob.isSameTeam(perspective) && mob.isPlayer) || mob.isHuman) && !mob.isHostile && (actualMob == null || actualMob == mob) && perspective.getPositionPoint().distance(mob.x, mob.y) <= 400 && mob.getHealthPercent() != 1) {
             actualMob = mob;
             count = 0;
         } else if(actualMob != null) {
-            count++;
+            if(count > 20) {
+                actualMob = null;
+            } else {
+                count++;
+            }
         }
         return false;
     }
@@ -67,7 +74,7 @@ public class MagicalVial extends AphoreaMagicHealingToolItem {
     @Override
     public void onMouseHoverTile(InventoryItem item, GameCamera camera, PlayerMob perspective, int mouseX, int mouseY, TilePosition pos, boolean isDebug) {
         if(actualMob != null) {
-            if(count > 10) {
+            if(count > 20) {
                 actualMob = null;
             } else {
                 count++;
@@ -79,7 +86,7 @@ public class MagicalVial extends AphoreaMagicHealingToolItem {
     @Override
     public boolean onMouseHoverPickup(InventoryItem item, GameCamera camera, PlayerMob perspective, PickupEntity pickupEntity, boolean isDebug) {
         if(actualMob != null) {
-            if(count > 10) {
+            if(count > 20) {
                 actualMob = null;
             } else {
                 count++;

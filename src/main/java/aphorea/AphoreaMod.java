@@ -44,6 +44,7 @@ import necesse.entity.mobs.buffs.staticBuffs.ShownCooldownBuff;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.inventory.item.Item;
 import necesse.inventory.item.ItemCategory;
+import necesse.inventory.item.matItem.MatItem;
 import necesse.inventory.lootTable.LootTablePresets;
 import necesse.inventory.lootTable.lootItem.ChanceLootItem;
 import necesse.inventory.lootTable.lootItem.LootItem;
@@ -52,6 +53,7 @@ import necesse.inventory.recipe.Ingredient;
 import necesse.inventory.recipe.Recipe;
 import necesse.inventory.recipe.Recipes;
 import necesse.inventory.recipe.Tech;
+import necesse.level.gameObject.TreeObject;
 import necesse.level.maps.Level;
 import necesse.level.maps.biomes.Biome;
 import necesse.level.maps.biomes.MobChance;
@@ -70,7 +72,7 @@ public class AphoreaMod {
     static AphoreaModifiers aphoreaModifiers = new AphoreaModifiers();
     static AphoreaEnchantments aphoreaEnchantments = new AphoreaEnchantments();
 
-    public void init() {
+    public void init() throws Exception {
         ItemCategory.createCategory("A-A-E", "equipment", "tools", "healing");
         ItemCategory.equipmentManager.createCategory("C-A-A", "tools");
         ItemCategory.equipmentManager.createCategory("C-B-A", "tools", "healingtools");
@@ -172,7 +174,6 @@ public class AphoreaMod {
                 {"swampmask", SwampMask.class, 1, true},
                 {"swamphood", SwampHood.class, 1, true},
                 {"swampshield", SwampShield.class, 1, true},
-
         };
 
         for (Object[] itemNuevo : newItems) {
@@ -279,6 +280,7 @@ public class AphoreaMod {
 
         // Enchantments
         AphoreaEnchantments.registerCore();
+
     }
 
     public void initResources() {
@@ -561,7 +563,7 @@ public class AphoreaMod {
         Biome.defaultSurfaceMobs
                 .add(addLessChanceDayMob(40, "gelslime", 0.8F, 32 * 32, 2));
 
-        Biome.defaultCaveMobs = Biome.defaultCaveMobs
+        Biome.forestCaveMobs
                 .add(30, "rockygelslime");
 
         SwampBiome.surfaceMobs
@@ -613,7 +615,6 @@ public class AphoreaMod {
                         ChanceLootItem.between(0.05f, "heartring", 1, 1)
                 )
         );
-
     }
 
     public static MobChance addLessChanceMob(int tickets, String mobStringID, float chance, int searchRange, long maxMobs) {

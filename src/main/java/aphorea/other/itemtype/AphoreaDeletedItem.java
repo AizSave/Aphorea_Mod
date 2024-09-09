@@ -1,6 +1,6 @@
 package aphorea.other.itemtype;
 
-import aphorea.other.olditemtype.AphoreaConsumableItem;
+import aphorea.other.vanillaitemtypes.AphoreaConsumableItem;
 import necesse.engine.localization.Localization;
 import necesse.engine.localization.message.LocalMessage;
 import necesse.engine.network.PacketReader;

@@ -3,7 +3,7 @@ package aphorea.items;
 import java.awt.Point;
 import java.util.ArrayList;
 
-import aphorea.other.olditemtype.AphoreaConsumableItem;
+import aphorea.other.vanillaitemtypes.AphoreaConsumableItem;
 import necesse.engine.localization.Localization;
 import necesse.engine.localization.message.GameMessage;
 import necesse.engine.localization.message.LocalMessage;

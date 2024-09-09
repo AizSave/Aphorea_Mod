@@ -36,11 +36,9 @@ public class WitchSetBonusBuff extends SetBonusBuff {
         super.clientTick(buff);
         Mob owner = buff.owner;
 
-        PlayerMob player = (PlayerMob) owner;
-
-        buff.setModifier(BuffModifiers.MAGIC_ATTACK_SPEED, 0.5F * (1 - player.getHealthPercent()));
-        buff.setModifier(BuffModifiers.COMBAT_MANA_REGEN, 0.5F * (1 - player.getHealthPercent()));
-        buff.setModifier(BuffModifiers.ARMOR_FLAT, (int) (6 * (1 - player.getHealthPercent())));
+        buff.setModifier(BuffModifiers.MAGIC_ATTACK_SPEED, 0.5F * (1 - owner.getHealthPercent()));
+        buff.setModifier(BuffModifiers.COMBAT_MANA_REGEN, 0.5F * (1 - owner.getHealthPercent()));
+        buff.setModifier(BuffModifiers.ARMOR_FLAT, (int) (6 * (1 - owner.getHealthPercent())));
 
     }
 }

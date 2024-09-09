@@ -1,6 +1,6 @@
 package aphorea.items;
 
-import aphorea.other.olditemtype.AphoreaMatItem;
+import aphorea.other.vanillaitemtypes.AphoreaMatItem;
 
 public class RockyGel extends AphoreaMatItem {
     public RockyGel() {

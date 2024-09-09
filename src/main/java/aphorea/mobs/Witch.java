@@ -26,8 +26,10 @@ import java.util.List;
 
 public class Witch extends FlyingHostileMob {
 
-    public static GameDamage attack = new GameDamage(10);
+    public static GameDamage attack = new GameDamage(10, 10000);
     public static int attack_knockback = 50;
+
+    public static MaxHealthGetter MAX_HEALTH = new MaxHealthGetter(400, 500, 600, 700, 800);
 
     public int threeAttack = 5;
 
@@ -54,7 +56,8 @@ public class Witch extends FlyingHostileMob {
     }
 
     public Witch() {
-        super(500);
+        super(600);
+        this.difficultyChanges.setMaxHealth(MAX_HEALTH);
         setSpeed(60);
         setFriction(1);
 

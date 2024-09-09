@@ -17,9 +17,8 @@ public class GrassLoot {
 
     @Advice.OnMethodExit
     static void onExit(@Advice.This SurfaceGrassObject grassObject, @Advice.Argument(0) Level level, @Advice.Return(readOnly = false) LootTable lootTable) {
-        if(Math.random() < 0.0005F) {
+        if(Math.random() < 0.0005F + (level.getWorldEntity().getDay() == 0 ? 0.0005F : 0)) {
             lootTable = new LootTable(new LootItem("floralring"));
         }
     }
-
 }

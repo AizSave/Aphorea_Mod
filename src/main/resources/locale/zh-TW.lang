@@ -16,6 +16,29 @@ magichealingreceived=<mod>% 获得魔法治疗
 magichealingreceivedflat=<mod> 获得魔法治疗
 magichealinggrace=<mod>% 魔法治疗之赐
 
+arearange=<mod>% 远程范围
+
+[enchantment]
+godly=神圣的
+absent=缺陷的
+auxiliary=辅助的
+vain=自负的
+gentle=绅士的
+selfish=自私的
+
+friendly=友好的
+graceful=优雅的
+wonderful=无缺的
+ecologic=生态的
+exalted=崇高的
+cursed=被诅咒的
+
+booming=激进的
+dimmed=黯淡的
+
+[itemcategory]
+healing=牧师
+
 [itemtype]
 battleaxe=战斧
 saber=武士刀

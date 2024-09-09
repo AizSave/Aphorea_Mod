@@ -16,6 +16,29 @@ magichealingreceived=<mod>% получено магического исцеле
 magichealingreceivedflat=<mod> получено магического исцеления
 magichealinggrace=<mod>% магическая благодать исцеления
 
+arearange=<mod>% диапазон области
+
+[enchantment]
+godly=Божественный
+absent=Отсутствующий
+auxiliary=Вспомогательный
+vain=Тщеславный
+gentle=Мягкий
+selfish=Эгоистичный
+
+friendly=Дружелюбный
+graceful=Грациозный
+wonderful=Замечательный
+ecologic=Экологичный
+exalted=Возвышенный
+cursed=Проклятый
+
+booming=Громоподобный
+dimmed=Затухающий
+
+[itemcategory]
+healing=Исцеление
+
 [itemtype]
 battleaxe=Секира
 saber=Сабля

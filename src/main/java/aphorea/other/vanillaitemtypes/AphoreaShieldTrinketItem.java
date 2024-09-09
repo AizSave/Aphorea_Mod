@@ -1,15 +1,15 @@
-package aphorea.other.olditemtype.weapons;
+package aphorea.other.vanillaitemtypes;
 
 import necesse.engine.localization.Localization;
 import necesse.engine.util.GameBlackboard;
 import necesse.entity.mobs.PlayerMob;
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.InventoryItem;
-import necesse.inventory.item.toolItem.swordToolItem.SwordToolItem;
+import necesse.inventory.item.trinketItem.ShieldTrinketItem;
 
-abstract public class AphoreaSwordToolItem extends SwordToolItem {
-    public AphoreaSwordToolItem(int enchantCost) {
-        super(enchantCost);
+abstract public class AphoreaShieldTrinketItem extends ShieldTrinketItem {
+    public AphoreaShieldTrinketItem(Rarity rarity, int armorValue, float minSlowModifier, int msToDepleteStamina, float staminaUsageOnBlock, int damageTakenPercent, float angleCoverage, int enchantCost) {
+        super(rarity, armorValue, minSlowModifier, msToDepleteStamina, staminaUsageOnBlock, damageTakenPercent, angleCoverage, enchantCost);
     }
 
     @Override

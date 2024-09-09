@@ -77,7 +77,7 @@ public class UnstableGelSlime extends FlyingBossMob {
 
 
     public UnstableGelSlime() {
-        super(1200);
+        super(1500);
         this.difficultyChanges.setMaxHealth(MAX_HEALTH);
 
         this.setArmor(10);

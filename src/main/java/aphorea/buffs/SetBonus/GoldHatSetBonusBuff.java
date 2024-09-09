@@ -36,9 +36,7 @@ public class GoldHatSetBonusBuff extends SetBonusBuff {
         super.clientTick(buff);
         Mob owner = buff.owner;
 
-        PlayerMob player = (PlayerMob) owner;
-
-        if(player.getCurrentSpeed() == 0) {
+        if(owner.getCurrentSpeed() == 0) {
             if(buff.getModifier(BuffModifiers.RANGED_ATTACK_SPEED) != 0.6F) buff.setModifier(BuffModifiers.RANGED_ATTACK_SPEED, 0.6F);
         } else {
             if(buff.getModifier(BuffModifiers.RANGED_ATTACK_SPEED) != 0F) buff.setModifier(BuffModifiers.RANGED_ATTACK_SPEED, 0F);
