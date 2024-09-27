@@ -1,6 +1,6 @@
 package aphorea.buffs.Trinkets.Periapts;
 
-import aphorea.other.buffclass.PeriaptActivableBuff;
+import aphorea.other.buffs.trinkets.AphoreaPeriaptActivableBuff;
 import necesse.engine.registries.BuffRegistry;
 import necesse.engine.registries.DamageTypeRegistry;
 import necesse.engine.util.GameRandom;
@@ -11,7 +11,7 @@ import necesse.entity.particle.Particle;
 
 import java.awt.*;
 
-public class FrozenPeriaptBuff extends PeriaptActivableBuff {
+public class FrozenPeriaptBuff extends AphoreaPeriaptActivableBuff {
 
     public FrozenPeriaptBuff() {
         super("frozenperiaptactivebuff");

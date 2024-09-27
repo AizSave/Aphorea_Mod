@@ -14,6 +14,6 @@ public class SwampBoots extends AphoreaBootsArmorItem {
     }
 
     public ArmorModifiers getArmorModifiers(InventoryItem item, Mob mob) {
-        return new ArmorModifiers(new ModifierValue<>(AphoreaModifiers.MAGIC_HEALING, 0.05F), new ModifierValue<>(BuffModifiers.SPEED_FLAT, 2.0F));
+        return new ArmorModifiers(new ModifierValue<>(AphoreaModifiers.MAGIC_HEALING, 0.05F), new ModifierValue<>(BuffModifiers.SPEED, 0.1F));
     }
 }

@@ -330,7 +330,7 @@ public class UnstableGelSlime extends FlyingBossMob {
 
                         for (int i = 0; i < n; i++) {
                             UnstableGelSlime_Mini summoned = (UnstableGelSlime_Mini) MobRegistry.getMob("unstablegelslime_mini", mob.getLevel());
-                            summoned.setTP(true);
+                            summoned.setInitialTP(true);
                             mob.getLevel().entityManager.addMob(summoned, mob.randomPositionClose(mob.x), mob.randomPositionClose(mob.y));
                         }
 

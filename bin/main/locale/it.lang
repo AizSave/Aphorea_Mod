@@ -1,0 +1,238 @@
+# Translation made by Chris (https://steamcommunity.com/id/ChrisGug/)
+
+[global]
+aphorea=§!Aphorea Mod
+
+[tile]
+geltile=Pavimento in Gel
+
+[object]
+witchstatue=Statua della Strega
+
+[buffmodifiers]
+magichealing=<mod>% guarigione magica
+magichealingflat=<mod> guarigione magica
+magichealingreceived=<mod>% guarigione magica ricevuta
+magichealingreceivedflat=<mod> guarigione magica ricevuta
+magichealinggrace=<mod>% grazia magica curativa
+
+arearange=<mod>% raggio d'azione
+
+[itemcategory]
+healing=Curativo
+
+[enchantment]
+godly=Divino
+absent=Assente
+auxiliary=Ausiliario
+vain=Vano
+gentle=Gentile
+selfish=Egoista
+
+friendly=Amichevole
+graceful=Aggraziato
+wonderful=Meraviglioso
+ecologic=Ecologico
+exalted=Esaltato
+cursed=Maledetto
+
+booming=Rimbombante
+dimmed=Offuscato
+
+[itemtype]
+battleaxe=Ascia da Battaglia
+saber=Sciabola
+sling=Fionda
+blowgun=Cerbottana
+
+[item]
+gelball=Palla di Gel
+rockygel=Gel Roccioso
+gelballgroup=Palle di Gel Raggruppate
+gelsword=Spada di Gel
+unstablecore=Nucleo Instabile
+unstablegel=Gel Instabile
+unstablegelsword=Spada di Gel Instabile
+unstablegelgreatsword=Spadone di Gel Instabile
+unstablegelstaff=Staffa di Gel Instabile
+
+sling=Fionda
+firesling=Fionda Infuocata
+frozensling=Fionda Congelata
+
+blowgun=Cerbottana
+
+rockyperiapt=Amuleto Roccioso
+unstableperiapt=Amuleto Instabile
+bloodyperiapt=Amuleto Sanguinario
+demonicperiapt=Amuleto Demoniaco
+frozenperiapt=Amuleto Congelato
+necromancyperiapt=Amuleto della Necromanzia
+
+rockyboots=Stivali Rocciosi
+rockychestplate=Corazza Rocciosa
+rockyhelmet=Elmo Roccioso
+
+goldhat=Cappello d'Oro
+
+unstablegelbattleaxe=Ascia da Battaglia di Gel Instabile
+demonicbattleaxe=Ascia da Battaglia Demoniaca
+
+coppersaber=Sciabola di Rame
+ironsaber=Sciabola di Ferro
+goldsaber=Sciabola d'Oro
+unstablegelsaber=Sciabola di Gel Instabile
+demonicsaber=Sciabola Demoniaca
+
+basicbackpack=Zaino di Base
+sapphirebackpack=Zaino di Zaffiro
+amethystbackpack=Zaino d'Ametista
+rubybackpack=Zaino di Rubino
+emeraldbackpack=Zaino di Smeraldo
+diamondbackpack=Zaino di Diamante
+
+gelslimenullifier=Nullificatore di Slime di Gel
+
+broom=Scopa
+magicalbroom=Scopa Magica
+witchhat=Cappello da Strega
+magicalsuit=Abito Magico
+magicalboots=Stivali Magici
+
+stardust=Polvere di Stelle
+magicalvial=Fiala Magica
+healingstaff=Staffa Curatrice
+
+floralring=Anello Floreale
+gelring=Anello di Gel
+heartring=Anello del Cuore
+ringofhealth=Anello della Salute
+
+swampboots=Stivali Paludosi
+swampchestplate=Corazza Paludosa
+swampmask=Maschera Paludosa
+swamphood=Cappuccio Paludoso
+swampshield=Scudo Paludoso
+
+[itemtooltip]
+line=--------------------
+
+magichealingtip=Guarigione Magica: <health>
+rangetip=Raggio: <range>
+areatip=§aArea <number>
+
+magichealinggrace=§aGrazia Magica Curativa:§0 Cura te stesso con una percentuale della guarigione magica destinata agli alleati
+
+saber=Carica rapida infligge danni x2 dopo 0.5 secondi, poi si scarica dopo altri 0.5 secondi
+saber2=Un attacco perfetto lancerà un taglio d'aria che infligge danni base. Uno buono ne lancerà anche uno debole
+saber3=Tieni premuto [input=mouse2] per caricare uno scatto e tagliare i nemici infliggendo danni base
+
+battleaxe=Richiede molto tempo di ricarica
+battleaxe2=Premi [input=mouse2] per attiva la Furia del Berserker. Non puoi subire danni o muoverti mentre attivi l'abilità
+
+sling=Lancia pietre con forza
+sling2=Probabilità del 50% di stordire un nemico per 0.5 secondi
+
+blowgun=Spara 3 semi uno per uno
+blowgun2=[input=mouse2] per sparare i semi allo stesso tempo
+
+unstablegelsword=[input=mouse2] per caricare il prossimo attacco. Rilascerà un taglio d'aria e se completamente carico farà il doppio del danno
+
+fisicareasecondaryattack=[input=mouse2] per rendere il prossimo attaccao un attacco ad area
+magicareasecondaryattack=[input=mouse2] per eseguire un attacco ad area consumando <mana> Mana
+
+stikybuff1=Rende il nemico §9Appiccicoso§0 per 1 secondo
+stikybuff2=Rende il nemico §9Appiccicoso§0 per 2 secondi
+stikybuff3=Rende il nemico §9Appiccicoso§0 per 3 secondi
+
+gelball=Lancia una palla di gel
+unstablecore=§bRilascia un aura instabile...§0 Può essere utilizzato solo durante il giorno
+
+rockyperiapt=+5 Armatura, ma -5% Velocità di Movimento
+rockyperiapt2=Premi [input=trinketability] per ottenere 10 Armatura per 10 secondi\nNon puoi subire danni o muoverti mentre attivi l'abilità
+
+unstableperiapt=Evoca due §bPiccoli Slime di Gel Instabile§0 che ti proteggeranno. Questi slime §9infliggono 8 Danni d'Evocazione§0
+unstableperiapt2=Ti rende immune al debuff §9Appiccicoso§0
+
+bloodyperiapt=Le armi §6Dardo di Sangue§0 e §6Sangue Volante§0 ti cureranno del 10% del danno che infliggi con loro
+bloodyperiapt2=Premi [input=trinketability] per ottene +50% Velocità, +30% Velocità d'Attacco e\ne farlo funzionare con tutte le armi magiche per 10 secondi.\nNon puoi subire danni o muoverti mentre attivi l'abilità
+
+necromancyperiapt=Ogni volte che tu o una delle tue evocazioni uccidete un mob ostile, evochi uno §bScheletro Non Morto§0\n che §9infligge 20 Danni d'Evocazione§0 per§9 10 secondi§0 con un massimo di§9 3 alla volta§0
+
+demonicperiapt=Le armi magiche ti cureranno del 10% del danno che infliggi con loro
+demonicperiapt2=Premi [input=trinketability] per ottenere +50% Velocità, +30% Velocità d'Attacco e\nfarlo funzionare con tutti i danno per 10 secondi.\nNon puoi subire danni o muoverti mentre attivi l'abilità
+
+frozenperiapt=Le armi da mischia e a distanza applicheranno l'effetto §6Congelare§0 per 3 secondi. Se il bersaglio è già congelato, aumenta il Danno base dell'attacco del §9+20%§0
+frozenperiapt2=Premi [input=trinketability] per ottenere +50% Velocità, +30% Velocità d'Attacco e\nfarlo funzionare con tutti i danni per 10 secondi.\nNon puoi subire danni o muoverti mentre attivi l'abilità
+frozenperiapt3=Ti rende immune ai debuff §9Congelare§0 e §9Lentezza da freddo§0
+
+goldhatsetbonusbuff=+60% Velocità d'Attacco a Distanza mentre non ti muovi
+
+firesling=Brucia i nemici
+frozensling=Congela i nemici
+
+backpack=È un nuovo inventario che immagazzinerà tutti gli oggetti che raccogli
+backpack2=§6Non avere zaini con oggetti nell'inventario quando creerai uno zaino migliore
+backpackslots=Capacità di <slots> oggetti
+stored=Oggetti immagazzinati: <items>
+
+gelslimenullifier=Smetteranno di disturbarti con un semplice click!
+
+geltile=Pavimento appiccicoso che rallenta notevolmente tutto ciò che sta sopra
+
+witchsetbonusbuff=Aumenta la Velocità d'Attacco Magico, Rigenerazione del Mana, e Armatura quanta meno vita hai, con un massimo di 50% / 6 Armatura
+
+floralring=Ricevi §7<healing>§0 Guarigione Magica ogni 3 secondi
+gelring=+30% guarigione magica ricevuta
+heartring=+20 vita massima
+
+magicalvial=Guarigione Magica di §7<healing>§0. Indica un essere umano ferito per curarlo, non indicare nessuno per curare te stesso. Tempo di recupero di 20-secondi
+
+swampshield=Protegge solo gli attacchi nella direzione in cui vengono ricevuti\nLa tua Guarigione Magica di §7<healing>§0 del danno che previeni
+
+witchstatue=Posizionando questa statua sulla superifcie di una palude eliminerai la generazione delle streghe in tutta l'isola
+
+deleteditem=Questo oggetto è stato rimosso, usalo per recuperare i materiali prima che venga rimosso definitivamente
+
+[mob]
+gelslime=Slime di Gel
+rockygelslime=Slime di Gel Roccioso
+unstablegelslime=Slime di Gel Instabile
+unstablegelslime_mini=Mini Slime di Gel Instabile
+
+witch=Strega
+
+babyunstablegelslime=Piccolo Slime di Gel Instabile
+undeadskeleton=Scheletro Non Morto
+
+[buff]
+stunbuff=Stordino
+stickybuff=Appiccicoso
+
+berserkerrushbuff=Furia del Berserker
+berserkerrushcooldownbuff=Furia del Berserker in Ricarica
+
+swordchargeattackcooldown=Attacco Caricato con la Spada in Ricarica
+
+periaptcooldownbuff=Abilità dell'Amuleto in Ricarica
+
+periaptactivebuff=Abilità dell'Amuleto Attiva
+
+saberdashcooldown=Ricarica dello Scatto
+
+[message]
+unstablegelslime_enfadando=§6Slime di Gel Instabile si sta arrabbiando... <anger>/10
+unstablegelslime_enfadado=§6Slime di Gel Instabile si è arrabbiato! <anger>/10
+unstablegelslime_night=§6Slime di Gel Instabile§0 è svanito al calare della notte!
+
+gelslimesnulled=Slime di Gel rimossi in questo mondo. Non appariranno più
+gelslimesunnulled=Slime di Gel riammessi in questo mondo. Ora riappariranno
+
+witchesnulled=Streghe rimosse in (<x>, <y>)
+witchesunnulled=Streghe riammesse in (<x>, <y>)
+
+needfreeslots=Hai bisogno di <slots> slot liberi nell'inventario per utilizzarlo
+
+healthalreadyfull=La salute è già piena
+
+cantuseatnight=Non può essere utilizzato di notte

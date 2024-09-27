@@ -32,6 +32,5 @@ public class AphoreaModifiers {
     }
 
     public AphoreaModifiers() {
-
     }
 }

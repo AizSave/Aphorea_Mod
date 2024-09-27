@@ -1,7 +1,7 @@
 package aphorea.items.weapons.magic;
 
-import aphorea.other.AphoreaArea;
-import aphorea.other.AphoreaAreaList;
+import aphorea.other.area.AphoreaArea;
+import aphorea.other.area.AphoreaAreaList;
 import aphorea.other.itemtype.weapons.Secondary.AphoreaMagicProjectileSecondaryAreaToolItem;
 import aphorea.projectiles.UnstableGelProjectile;
 import necesse.engine.localization.Localization;
@@ -32,7 +32,7 @@ import java.awt.*;
 public class UnstableGelStaff extends AphoreaMagicProjectileSecondaryAreaToolItem implements ItemInteractAction {
 
     public UnstableGelStaff() {
-        super(500, new AphoreaAreaList(new AphoreaArea(200, new Color(191, 102, 255)).setDamageArea(new FloatUpgradeValue(0.0F, 0.2F).setBaseValue(20).setUpgradedValue(1, 90))), 800, 6.0F);
+        super(500, new AphoreaAreaList(new AphoreaArea(200, new Color(191, 102, 255)).setDamageArea(20, 90)), 800, 6.0F);
         rarity = Rarity.UNCOMMON;
         attackAnimTime.setBaseValue(800);
         attackDamage.setBaseValue(20)

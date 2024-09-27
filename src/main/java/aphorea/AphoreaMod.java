@@ -2,37 +2,50 @@ package aphorea;
 
 import aphorea.buffs.*;
 import aphorea.buffs.SetBonus.*;
-import aphorea.buffs.Trinkets.FloralRingBuff;
-import aphorea.buffs.Trinkets.GelRingBuff;
-import aphorea.buffs.Trinkets.HeartRingBuff;
+import aphorea.buffs.Trinkets.Healing.*;
 import aphorea.buffs.Trinkets.Periapts.*;
-import aphorea.buffs.Trinkets.RingOfHealthBuff;
 import aphorea.buffs.TrinketsActive.*;
-import aphorea.items.*;
-import aphorea.items.armor.Gold.*;
-import aphorea.items.armor.Rocky.*;
-import aphorea.items.armor.Swamp.*;
-import aphorea.items.armor.Witch.*;
+import aphorea.items.GelSlimeNullifier;
+import aphorea.items.UnstableCore;
+import aphorea.items.armor.Gold.GoldHat;
+import aphorea.items.armor.Rocky.RockyBoots;
+import aphorea.items.armor.Rocky.RockyChestplate;
+import aphorea.items.armor.Rocky.RockyHelmet;
+import aphorea.items.armor.Swamp.SwampBoots;
+import aphorea.items.armor.Swamp.SwampChestplate;
+import aphorea.items.armor.Swamp.SwampHood;
+import aphorea.items.armor.Swamp.SwampMask;
+import aphorea.items.armor.Witch.MagicalBoots;
+import aphorea.items.armor.Witch.MagicalSuit;
+import aphorea.items.armor.Witch.WitchHat;
 import aphorea.items.backpacks.*;
+import aphorea.items.trinkets.ability_no.*;
+import aphorea.items.trinkets.ability_yes.*;
+import aphorea.items.weapons.healing.HealingStaff;
+import aphorea.items.weapons.healing.MagicalVial;
+import aphorea.items.weapons.magic.MagicalBroom;
+import aphorea.items.weapons.magic.UnstableGelStaff;
+import aphorea.items.weapons.melee.*;
+import aphorea.items.weapons.range.Blowgun;
+import aphorea.items.weapons.range.FireSling;
+import aphorea.items.weapons.range.FrozenSling;
+import aphorea.items.weapons.range.Sling;
+import aphorea.items.weapons.throwable.GelBall;
+import aphorea.items.weapons.throwable.GelBallGroup;
+import aphorea.mobs.GelSlime;
+import aphorea.mobs.RockyGelSlime;
+import aphorea.mobs.Witch;
+import aphorea.mobs.bosses.UnstableGelSlime;
+import aphorea.mobs.bosses.UnstableGelSlime_Mini;
+import aphorea.mobs.summon.BabyUnstableGelSlime;
+import aphorea.mobs.summon.UndeadSkeleton;
 import aphorea.objects.WitchStatue;
 import aphorea.other.AphoreaEnchantments;
 import aphorea.other.AphoreaModifiers;
 import aphorea.other.data.AphoreaSwampLevelData;
 import aphorea.other.data.AphoreaWorldData;
-import aphorea.items.trinkets.ability_no.*;
-import aphorea.items.trinkets.ability_yes.*;
-import aphorea.items.weapons.healing.HealingStaff;
-import aphorea.items.weapons.healing.MagicalVial;
-import aphorea.items.weapons.magic.*;
-import aphorea.items.weapons.melee.*;
-import aphorea.items.weapons.range.*;
-import aphorea.items.weapons.throwable.*;
-import aphorea.mobs.*;
-import aphorea.mobs.bosses.*;
-import aphorea.mobs.summon.*;
 import aphorea.other.itemtype.weapons.AphoreaSaberToolItem;
 import aphorea.projectiles.*;
-
 import aphorea.tiles.GelTile;
 import necesse.engine.modLoader.annotations.ModEntry;
 import necesse.engine.network.server.ServerClient;
@@ -53,7 +66,6 @@ import necesse.inventory.recipe.Ingredient;
 import necesse.inventory.recipe.Recipe;
 import necesse.inventory.recipe.Recipes;
 import necesse.inventory.recipe.Tech;
-import necesse.level.gameObject.TreeObject;
 import necesse.level.maps.Level;
 import necesse.level.maps.biomes.Biome;
 import necesse.level.maps.biomes.MobChance;
@@ -61,7 +73,6 @@ import necesse.level.maps.biomes.MobSpawnTable;
 import necesse.level.maps.biomes.swamp.SwampBiome;
 
 import java.awt.*;
-import java.lang.reflect.Constructor;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
@@ -69,122 +80,110 @@ import java.util.concurrent.atomic.AtomicReference;
 @ModEntry
 public class AphoreaMod {
 
+    // Load modifiers and enchantments
     static AphoreaModifiers aphoreaModifiers = new AphoreaModifiers();
     static AphoreaEnchantments aphoreaEnchantments = new AphoreaEnchantments();
 
     public void init() throws Exception {
+        System.out.println("AphoreaMod starting...");
+
         ItemCategory.createCategory("A-A-E", "equipment", "tools", "healing");
         ItemCategory.equipmentManager.createCategory("C-A-A", "tools");
         ItemCategory.equipmentManager.createCategory("C-B-A", "tools", "healingtools");
-
-        VersionMigration.oldItemStringIDs = GameUtils.concat(VersionMigration.oldItemStringIDs, new String[][] {
-                { "unstablecore", "unestablecore" },
-                { "unstablegel", "unestablegel" },
-                { "unstablegelsword", "unestablegelsword" },
-                { "unstablegelstaff", "unestablegelstaff" },
-                { "unstablegelgreatsword", "unestablegelgreatsword" },
-                { "unstablegelbattleaxe", "unestablegelbattleaxe" },
-
-                { "rockyboots", "stoneboots" },
-                { "rockychestplate", "stonechestplate" },
-                { "rockyhelmet", "stonehelmet" }
-        });
-
-        System.out.println("Aphorea started");
 
         // Data
         WorldDataRegistry.registerWorldData("aphoreaworlddata", AphoreaWorldData.class);
         LevelDataRegistry.registerLevelData("aphoreaswampleveldata", AphoreaSwampLevelData.class);
 
         // Tiles
-        TileRegistry.registerTile("geltile", new GelTile("geltile", new Color(20, 80, 255)), 1, true);
+        TileRegistry.registerTile("geltile", new GelTile("geltile", new Color(20, 80, 255)), -1.0F, true);
 
         // Objects
-        ObjectRegistry.registerObject("witchstatue", new WitchStatue(), 1, true);
+        ObjectRegistry.registerObject("witchstatue", new WitchStatue(), -1.0F, true);
+
+        // Tech
+        RecipeTechRegistry.registerTech("nebula", "nebulaworkstation");
 
         // Items
 
-        Object[][] newItems = new Object[][] {
-                {"gelball", GelBall.class, 1, true},
+        Object[][] newItems = new Object[][]{
+                {"gelball", new GelBall(), 2.0F},
 
-                {"gelballgroup", GelBallGroup.class, 1, true},
-                {"gelsword", GelSword.class, 1, true},
-                {"unstablecore", UnstableCore.class, 1, true},
-                {"unstablegel", UnstableGel.class, 1, true},
-                {"unstablegelsword", UnstableGelSword.class, 1, true},
-                {"unstablegelstaff", UnstableGelStaff.class, 1, true},
-                {"unstablegelgreatsword", UnstableGelGreatsword.class, 1, true},
+                {"gelballgroup", new GelBallGroup()},
+                {"gelsword", new GelSword()},
+                {"unstablecore", new UnstableCore(), 20.0F},
+                {"unstablegel", (new MatItem(100, Item.Rarity.UNCOMMON)).setItemCategory("materials"), 10.0F},
+                {"unstablegelsword", new UnstableGelSword()},
+                {"unstablegelstaff", new UnstableGelStaff()},
+                {"unstablegelgreatsword", new UnstableGelGreatsword()},
 
-                {"blowgun", Blowgun.class, 1, true},
+                {"blowgun", new Blowgun()},
 
-                {"sling", Sling.class, 1, true},
-                {"firesling", FireSling.class, 1, true},
-                {"frozensling", FrozenSling.class, 1, true},
+                {"sling", new Sling()},
+                {"firesling", new FireSling()},
+                {"frozensling", new FrozenSling()},
 
-                {"rockyperiapt", RockyPeriapt.class, 1, true},
-                {"unstableperiapt", UnstablePeriapt.class, 1, true},
-                {"bloodyperiapt", BloodyPeriapt.class, 1, true},
-                {"demonicperiapt", DemonicPeriapt.class, 1, true},
-                {"frozenperiapt", FrozenPeriapt.class, 1, true},
-                {"necromancyperiapt", NecromancyPeriapt.class, 1, true},
+                {"rockyperiapt", new RockyPeriapt()},
+                {"unstableperiapt", new UnstablePeriapt(), 100.0F},
+                {"bloodyperiapt", new BloodyPeriapt()},
+                {"demonicperiapt", new DemonicPeriapt()},
+                {"frozenperiapt", new FrozenPeriapt()},
+                {"necromancyperiapt", new NecromancyPeriapt()},
 
-                {"rockygel", RockyGel.class, 1, true},
-                {"rockyboots", RockyBoots.class, 1, true},
-                {"rockychestplate", RockyChestplate.class, 1, true},
-                {"rockyhelmet", RockyHelmet.class, 1, true},
+                {"rockygel", (new MatItem(100)).setItemCategory("materials"), 5.0F},
+                {"rockyboots", new RockyBoots()},
+                {"rockychestplate", new RockyChestplate()},
+                {"rockyhelmet", new RockyHelmet()},
 
-                {"goldhat", GoldHat.class, 1, true},
+                {"goldhat", new GoldHat()},
 
-                {"unstablegelbattleaxe", UnstableGelBattleaxe.class, 1, true},
-                {"demonicbattleaxe", DemonicBattleaxe.class, 1, true},
+                {"unstablegelbattleaxe", new UnstableGelBattleaxe()},
+                {"demonicbattleaxe", new DemonicBattleaxe()},
 
-                {"coppersaber", CopperSaber.class, 1, true},
-                {"ironsaber", IronSaber.class, 1, true},
-                {"goldsaber", GoldSaber.class, 1, true},
-                {"unstablegelsaber", UnstableGelSaber.class, 1, true},
-                {"demonicsaber", DemonicSaber.class, 1, true},
+                {"coppersaber", new CopperSaber()},
+                {"ironsaber", new IronSaber()},
+                {"goldsaber", new GoldSaber()},
+                {"unstablegelsaber", new UnstableGelSaber()},
+                {"demonicsaber", new DemonicSaber()},
 
-                {"basicbackpack", BasicBackpack.class, 1, true},
-                {"sapphirebackpack", SapphireBackpack.class, 1, true},
-                {"amethystbackpack", AmethystBackpack.class, 1, true},
-                {"rubybackpack", RubyBackpack.class, 1, true},
-                {"emeraldbackpack", EmeraldBackpack.class, 1, true},
-                {"diamondbackpack", DiamondBackpack.class, 1, true},
+                {"basicbackpack", new BasicBackpack()},
+                {"sapphirebackpack", new SapphireBackpack()},
+                {"amethystbackpack", new AmethystBackpack()},
+                {"rubybackpack", new RubyBackpack()},
+                {"emeraldbackpack", new EmeraldBackpack()},
+                {"diamondbackpack", new DiamondBackpack()},
 
-                {"gelslimenullifier", GelSlimeNullifier.class, 1, true},
+                {"gelslimenullifier", new GelSlimeNullifier()},
 
-                {"broom", Broom.class, 1, true},
-                {"magicalbroom", MagicalBroom.class, 1, true},
-                {"witchhat", WitchHat.class, 1, true},
+                {"broom", new Broom(), 50.0F},
+                {"magicalbroom", new MagicalBroom()},
+                {"witchhat", new WitchHat(), 200.0F},
 
-                {"stardust", Stardust.class, 1, true},
-                {"healingstaff", HealingStaff.class, 1, true},
+                {"stardust", (new MatItem(100, Item.Rarity.UNCOMMON)).setItemCategory("materials"), 30.0F},
+                {"healingstaff", new HealingStaff()},
 
-                {"magicalsuit", MagicalSuit.class, 1, true},
-                {"magicalboots", MagicalBoots.class, 1, true},
+                {"magicalsuit", new MagicalSuit()},
+                {"magicalboots", new MagicalBoots()},
 
-                {"floralring", FloralRing.class, 1, true},
-                {"gelring", GelRing.class, 1, true},
-                {"heartring", HeartRing.class, 1, true},
-                {"ringofhealth", RingOfHealth.class, 1, true},
-                {"magicalvial", MagicalVial.class, 1, true},
+                {"floralring", new FloralRing(), 50.0F},
+                {"gelring", new GelRing(), 50.0F},
+                {"heartring", new HeartRing()},
+                {"ringofhealth", new RingOfHealth()},
+                {"magicalvial", new MagicalVial()},
 
-                {"swampboots", SwampBoots.class, 1, true},
-                {"swampchestplate", SwampChestplate.class, 1, true},
-                {"swampmask", SwampMask.class, 1, true},
-                {"swamphood", SwampHood.class, 1, true},
-                {"swampshield", SwampShield.class, 1, true},
+                {"swampboots", new SwampBoots()},
+                {"swampchestplate", new SwampChestplate()},
+                {"swampmask", new SwampMask()},
+                {"swamphood", new SwampHood()},
+                {"swampshield", new SwampShield()},
         };
 
-        for (Object[] itemNuevo : newItems) {
+        for (Object[] newItem : newItems) {
             try {
-                String stringID = (String) itemNuevo[0];
-                Class<?> itemClass = (Class<?>) itemNuevo[1];
-                int brokerValue = (int) itemNuevo[2];
-                boolean isObtainable = (boolean) itemNuevo[3];
-
-                Constructor<?> constructor = itemClass.getConstructor();
-                Item item = (Item) constructor.newInstance();
+                String stringID = (String) newItem[0];
+                Item item = (Item) newItem[1];
+                float brokerValue = newItem.length < 3 ? -1.0F : (float) newItem[2];
+                boolean isObtainable = (boolean) (newItem.length < 4 ? true : newItem[3]);
 
                 ItemRegistry.registerItem(stringID, item, brokerValue, isObtainable);
             } catch (Exception e) {
@@ -224,6 +223,8 @@ public class AphoreaMod {
 
         // Buffs
         BuffRegistry.registerBuff("inmortalbuff", new InmortalBuff());
+        BuffRegistry.registerBuff("inmortalcooldown", new ShownCooldownBuff());
+
         BuffRegistry.registerBuff("cooldownbuff", new HiddenCooldownBuff());
         BuffRegistry.registerBuff("stopbuff", new StopBuff());
         BuffRegistry.registerBuff("stunbuff", new StunBuff());
@@ -281,6 +282,11 @@ public class AphoreaMod {
         // Enchantments
         AphoreaEnchantments.registerCore();
 
+        // Biomes & Levels
+
+        // Worlds
+
+        System.out.println("AphoreaMod started");
     }
 
     public void initResources() {
@@ -291,7 +297,7 @@ public class AphoreaMod {
         Witch.texture = GameTexture.fromFile("mobs/witch");
 
         UnstableGelSlime.texture = GameTexture.fromFile("mobs/unstablegelslime");
-        UnstableGelSlime.icon =  GameTexture.fromFile("mob_icons/unstablegelslime");
+        UnstableGelSlime.icon = GameTexture.fromFile("mobs/icons/unstablegelslime");
         UnstableGelSlime_Mini.texture = GameTexture.fromFile("mobs/unstablegelslime_mini");
 
         BabyUnstableGelSlime.texture = GameTexture.fromFile("mobs/babyunstablegelslime");
@@ -315,7 +321,6 @@ public class AphoreaMod {
                         new Ingredient("woodstaff", 1),
                         new Ingredient("stardust", 5)
                 ),
-
                 new AphoreaCraftingRecipe("gelsword", 1,
                         new Ingredient("gelball", 15)
                 ),
@@ -583,10 +588,10 @@ public class AphoreaMod {
         );
 
         LootTablePresets.startChest.items.addAll(
-            new LootItemList(
-                    new LootItem("sling", 1),
-                    new LootItem("basicbackpack", 1)
-            )
+                new LootItemList(
+                        new LootItem("sling", 1),
+                        new LootItem("basicbackpack", 1)
+                )
         );
 
         LootTablePresets.surfaceRuinsChest.items.addAll(
@@ -620,12 +625,12 @@ public class AphoreaMod {
     public static MobChance addLessChanceMob(int tickets, String mobStringID, float chance, int searchRange, long maxMobs) {
 
         MobSpawnTable.CanSpawnPredicate canSpawn = (level, client, spawnTile) -> {
-            if(Math.random() > chance) return false;
-            if(searchRange == 0 || maxMobs == 0) {
+            if (Math.random() > chance) return false;
+            if (searchRange == 0 || maxMobs == 0) {
                 return true;
             } else {
                 Point spawnPos = new Point(spawnTile.x * 32 + 16, spawnTile.y * 32 + 16);
-                long count = level.entityManager.mobs.streamInRegionsShape(GameUtils.rangeBounds(spawnPos.x, spawnPos.y, searchRange), 0).filter((m) -> m.getDistance((float)spawnPos.x, (float)spawnPos.y) <= (float)searchRange && Objects.equals(mobStringID, m.getStringID())).count();
+                long count = level.entityManager.mobs.streamInRegionsShape(GameUtils.rangeBounds(spawnPos.x, spawnPos.y, searchRange), 0).filter((m) -> m.getDistance((float) spawnPos.x, (float) spawnPos.y) <= (float) searchRange && Objects.equals(mobStringID, m.getStringID())).count();
                 return count < maxMobs;
             }
         };
@@ -646,13 +651,13 @@ public class AphoreaMod {
     public static MobChance addLessChanceDayMob(int tickets, String mobStringID, float chance, int searchRange, long maxMobs) {
 
         MobSpawnTable.CanSpawnPredicate canSpawn = (level, client, spawnTile) -> {
-            if(level.getWorldEntity().isNight()) return false;
-            if(Math.random() > chance) return false;
-            if(searchRange == 0 || maxMobs == 0) {
+            if (level.getWorldEntity().isNight()) return false;
+            if (Math.random() > chance) return false;
+            if (searchRange == 0 || maxMobs == 0) {
                 return true;
             } else {
                 Point spawnPos = new Point(spawnTile.x * 32 + 16, spawnTile.y * 32 + 16);
-                long count = level.entityManager.mobs.streamInRegionsShape(GameUtils.rangeBounds(spawnPos.x, spawnPos.y, searchRange), 0).filter((m) -> m.getDistance((float)spawnPos.x, (float)spawnPos.y) <= (float)searchRange && Objects.equals(mobStringID, m.getStringID())).count();
+                long count = level.entityManager.mobs.streamInRegionsShape(GameUtils.rangeBounds(spawnPos.x, spawnPos.y, searchRange), 0).filter((m) -> m.getDistance((float) spawnPos.x, (float) spawnPos.y) <= (float) searchRange && Objects.equals(mobStringID, m.getStringID())).count();
                 return count < maxMobs;
             }
 
@@ -682,7 +687,8 @@ public class AphoreaMod {
     public static class AphoreaCraftingRecipe {
         public String item;
         public int amount;
-        public Ingredient[] ingredients;
+        private final Ingredient[] ingredients;
+
         public AphoreaCraftingRecipe(String item, int amount, Ingredient... ingredients) {
             this.item = item;
             this.amount = amount;
@@ -691,7 +697,8 @@ public class AphoreaMod {
 
         public void registerRecipe(String previousItem, Tech tech) {
             Recipe recipe = new Recipe(item, amount, tech, ingredients);
-            if(previousItem != null) {
+
+            if (previousItem != null) {
                 recipe.showAfter(previousItem);
             }
             Recipes.registerModRecipe(recipe);

@@ -19,7 +19,6 @@ import necesse.inventory.PlayerInventorySlot;
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.Arrays;
-import java.util.Iterator;
 
 public class AphoreaCustomChargeAttackHandler<T extends AphoreaChargeAttackToolItem> extends MouseAngleAttackHandler {
     public T toolItem;
@@ -39,9 +38,7 @@ public class AphoreaCustomChargeAttackHandler<T extends AphoreaChargeAttackToolI
         this.seed = seed;
         this.chargeLevels = chargeLevels;
         this.currentChargeLevel = -1;
-        this.chargeTimeRemaining = Arrays.stream(chargeLevels).mapToInt((l) -> {
-            return l.timeToCharge;
-        }).sum();
+        this.chargeTimeRemaining = Arrays.stream(chargeLevels).mapToInt((l) -> l.timeToCharge).sum();
         this.timeSpentUpToCurrentChargeLevel = 0;
         if (chargeLevels.length == 0) {
             throw new IllegalArgumentException("Must have at least one charge level for greatswords");
@@ -60,7 +57,7 @@ public class AphoreaCustomChargeAttackHandler<T extends AphoreaChargeAttackToolI
                 long timeSinceStart = this.getTimeSinceStart();
                 long timeSpentOnCurrent = timeSinceStart - (long)this.timeSpentUpToCurrentChargeLevel;
                 AphoreaCustomChargeLevel<T> nextLevel = this.chargeLevels[this.currentChargeLevel + 1];
-                long timeToChargeNextLevel = (long)Math.round((float) nextLevel.timeToCharge * (1.0F / this.toolItem.getAttackSpeedModifier(this.item, this.player)));
+                long timeToChargeNextLevel = Math.round((float) nextLevel.timeToCharge * (1.0F / this.toolItem.getAttackSpeedModifier(this.item, this.player)));
                 if (timeSpentOnCurrent >= timeToChargeNextLevel) {
                     this.timeSpentUpToCurrentChargeLevel = (int)((long)this.timeSpentUpToCurrentChargeLevel + timeToChargeNextLevel);
                     this.chargeTimeRemaining -= nextLevel.timeToCharge;
@@ -76,7 +73,7 @@ public class AphoreaCustomChargeAttackHandler<T extends AphoreaChargeAttackToolI
 
     public float getChargePercent() {
         int chargeTime = this.timeSpentUpToCurrentChargeLevel + Math.round((float)this.chargeTimeRemaining * (1.0F / this.toolItem.getAttackSpeedModifier(this.item, this.player)));
-        return (float)Math.min(this.getTimeSinceStart(), (long)chargeTime) / (float)chargeTime;
+        return (float)Math.min(this.getTimeSinceStart(), chargeTime) / (float)chargeTime;
     }
 
     public void onUpdate() {
@@ -94,7 +91,7 @@ public class AphoreaCustomChargeAttackHandler<T extends AphoreaChargeAttackToolI
         this.player.showAttack(showItem, attackX, attackY, this.seed, attackContent);
         if (this.player.isServer()) {
             ServerClient client = this.player.getServerClient();
-            this.player.getLevel().getServer().network.sendToClientsAtExcept(new PacketShowAttack(this.player, showItem, attackX, attackY, this.seed, attackContent), client, client);
+            this.player.getLevel().getServer().network.sendToClientsWithEntityExcept(new PacketShowAttack(this.player, showItem, attackX, attackY, this.seed, attackContent), this.player, client);
         }
 
         if (this.currentChargeLevel >= 0) {
@@ -131,13 +128,13 @@ public class AphoreaCustomChargeAttackHandler<T extends AphoreaChargeAttackToolI
     }
 
     public void drawParticleExplosion(int particleCount, Color color, int minForce, int maxForce) {
-        ParticleTypeSwitcher typeSwitcher = new ParticleTypeSwitcher(new Particle.GType[]{Particle.GType.CRITICAL, Particle.GType.IMPORTANT_COSMETIC, Particle.GType.COSMETIC});
+        ParticleTypeSwitcher typeSwitcher = new ParticleTypeSwitcher(Particle.GType.CRITICAL, Particle.GType.IMPORTANT_COSMETIC, Particle.GType.COSMETIC);
         float anglePerParticle = 360.0F / (float)particleCount;
 
         for(int i = 0; i < particleCount; ++i) {
             int angle = (int)((float)i * anglePerParticle + GameRandom.globalRandom.nextFloat() * anglePerParticle);
-            float dx = (float)Math.sin(Math.toRadians((double)angle)) * (float)GameRandom.globalRandom.getIntBetween(minForce, maxForce);
-            float dy = (float)Math.cos(Math.toRadians((double)angle)) * (float)GameRandom.globalRandom.getIntBetween(minForce, maxForce) * 0.8F;
+            float dx = (float)Math.sin(Math.toRadians(angle)) * (float)GameRandom.globalRandom.getIntBetween(minForce, maxForce);
+            float dy = (float)Math.cos(Math.toRadians(angle)) * (float)GameRandom.globalRandom.getIntBetween(minForce, maxForce) * 0.8F;
             this.player.getLevel().entityManager.addParticle(this.player, typeSwitcher.next()).movesFriction(dx, dy, 0.8F).color(color).heightMoves(0.0F, 30.0F).lifeTime(500);
         }
 
@@ -170,14 +167,12 @@ public class AphoreaCustomChargeAttackHandler<T extends AphoreaChargeAttackToolI
             this.player.showAttack(attackItem, attackX, attackY, this.seed, attackContent);
             if (this.player.isServer()) {
                 ServerClient client = this.player.getServerClient();
-                this.player.getLevel().getServer().network.sendToClientsAtExcept(new PacketShowAttack(this.player, attackItem, attackX, attackY, this.seed, attackContent), client, client);
+                this.player.getLevel().getServer().network.sendToClientsWithEntityExcept(new PacketShowAttack(this.player, attackItem, attackX, attackY, this.seed, attackContent), this.player, client);
             }
 
             this.toolItem.superOnAttack(this.player.getLevel(), attackX, attackY, this.player, this.player.getCurrentAttackHeight(), attackItem, this.slot, 0, this.seed, new PacketReader(attackContent));
-            Iterator var11 = this.player.buffManager.getArrayBuffs().iterator();
 
-            while(var11.hasNext()) {
-                ActiveBuff b = (ActiveBuff)var11.next();
+            for (ActiveBuff b : this.player.buffManager.getArrayBuffs()) {
                 b.onItemAttacked(attackX, attackY, this.player, this.player.getCurrentAttackHeight(), attackItem, this.slot, 0);
             }
 
@@ -187,7 +182,7 @@ public class AphoreaCustomChargeAttackHandler<T extends AphoreaChargeAttackToolI
             this.player.stopAttack(false);
             if (this.player.isServer()) {
                 ServerClient client = this.player.getServerClient();
-                this.player.getLevel().getServer().network.sendToClientsAtExcept(new PacketPlayerStopAttack(client.slot), client, client);
+                this.player.getLevel().getServer().network.sendToClientsWithEntityExcept(new PacketPlayerStopAttack(client.slot), this.player, client);
             }
         }
 

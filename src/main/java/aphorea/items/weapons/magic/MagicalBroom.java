@@ -8,6 +8,7 @@ import necesse.engine.network.PacketReader;
 import necesse.engine.network.PacketWriter;
 import necesse.engine.network.client.Client;
 import necesse.engine.network.client.ClientClient;
+import necesse.engine.network.packet.PacketForceOfWind;
 import necesse.engine.network.packet.PacketRequestPlayerData;
 import necesse.engine.network.server.ServerClient;
 import necesse.engine.registries.BuffRegistry;
@@ -22,6 +23,8 @@ import necesse.entity.mobs.Attacker;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.buffs.ActiveBuff;
+import necesse.entity.mobs.buffs.BuffModifiers;
+import necesse.entity.particle.Particle;
 import necesse.gfx.drawOptions.itemAttack.ItemAttackDrawOptions;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.PlayerInventorySlot;
@@ -157,7 +160,7 @@ public class MagicalBroom extends AphoreaToolItem {
     }
 
     public ArrayList<Shape> getHitboxes(InventoryItem item, AttackAnimMob mob, int aimX, int aimY, ToolItemEvent event, boolean forDebug) {
-        ArrayList<Shape> out = new ArrayList();
+        ArrayList<Shape> out = new ArrayList<>();
         int attackRange = this.getAttackRange(item);
         float lastProgress = event.lastHitboxProgress;
         float nextProgress = mob.getAttackAnimProgress();
@@ -172,7 +175,7 @@ public class MagicalBroom extends AphoreaToolItem {
         }
 
         for(float progress = lastProgress; progress <= nextProgress; progress += percPerWidth) {
-            float angle = (Float)this.getSwingDirection(item, mob).apply(progress);
+            float angle = this.getSwingDirection(item, mob).apply(progress);
             Point2D.Float dir = GameMath.getAngleDir(angle);
             Line2D.Float attackLine = new Line2D.Float(base.x, base.y, dir.x * (float)attackRange + mob.x, dir.y * (float)attackRange + mob.y);
             if (this.width > 0.0F) {
@@ -194,12 +197,12 @@ public class MagicalBroom extends AphoreaToolItem {
             int strength = 50;
             Point2D.Float dir = GameMath.normalize((float)x - player.x, (float)y - player.y);
             PacketMagicalBroom.applyToPlayer(level, player, dir.x, dir.y, (float)strength);
-            player.buffManager.addBuff(new ActiveBuff(BuffRegistry.FOW_ACTIVE, player, 0.15F, (Attacker)null), level.isServer());
+            player.buffManager.addBuff(new ActiveBuff(BuffRegistry.FOW_ACTIVE, player, 0.15F, null), level.isServer());
             player.buffManager.forceUpdateBuffs();
 
             if(player.isServer()) {
                 ServerClient serverClient = player.getServerClient();
-                level.getServer().network.sendToClientsAtExcept(new PacketMagicalBroom(serverClient.slot, dir.x, dir.y, (float)strength), serverClient, serverClient);
+                level.getServer().network.sendToClientsWithEntityExcept(new PacketMagicalBroom(serverClient.slot, dir.x, dir.y, (float)strength), serverClient.playerMob, serverClient);
             } else if(player.isClient()) {
                 currentA = currentA == 0 ? 1 : 0;
                 animInverted = currentA == 1;
@@ -218,7 +221,7 @@ public class MagicalBroom extends AphoreaToolItem {
     }
 
     public ToolItemEnchantment getRandomEnchantment(GameRandom random, InventoryItem item) {
-        return (ToolItemEnchantment) Enchantable.getRandomEnchantment(random, EnchantmentRegistry.meleeItemEnchantments, this.getEnchantmentID(item), ToolItemEnchantment.class);
+        return Enchantable.getRandomEnchantment(random, EnchantmentRegistry.meleeItemEnchantments, this.getEnchantmentID(item), ToolItemEnchantment.class);
     }
 
     public boolean isValidEnchantment(InventoryItem item, ItemEnchantment enchantment) {
@@ -233,43 +236,13 @@ public class MagicalBroom extends AphoreaToolItem {
         return Localization.translate("item", "broom");
     }
 
-    public static class PacketMagicalBroom extends Packet {
-        public final int slot;
-        public final float dirX;
-        public final float dirY;
-        public final float strength;
-
+    public static class PacketMagicalBroom extends PacketForceOfWind {
         public PacketMagicalBroom(byte[] data) {
             super(data);
-            PacketReader reader = new PacketReader(this);
-            this.slot = reader.getNextByteUnsigned();
-            this.dirX = reader.getNextFloat();
-            this.dirY = reader.getNextFloat();
-            this.strength = reader.getNextFloat();
         }
 
         public PacketMagicalBroom(int slot, float dirX, float dirY, float strength) {
-            this.slot = slot;
-            this.dirX = dirX;
-            this.dirY = dirY;
-            this.strength = strength;
-            PacketWriter writer = new PacketWriter(this);
-            writer.putNextByteUnsigned(slot);
-            writer.putNextFloat(dirX);
-            writer.putNextFloat(dirY);
-            writer.putNextFloat(strength);
-        }
-
-        public void processClient(NetworkPacket packet, Client client) {
-            if (client.getLevel() != null) {
-                ClientClient target = client.getClient(this.slot);
-                if (target != null && target.isSamePlace(client.getLevel())) {
-                    applyToPlayer(target.playerMob.getLevel(), target.playerMob, this.dirX, this.dirY, this.strength);
-                } else {
-                    client.network.sendPacket(new PacketRequestPlayerData(this.slot));
-                }
-
-            }
+            super(slot, dirX, dirY, strength);
         }
 
         public static void applyToPlayer(Level level, Mob mob, float dirX, float dirY, float strength) {
@@ -282,6 +255,7 @@ public class MagicalBroom extends AphoreaToolItem {
             if (Math.abs(mob.dy) < Math.abs(forceY)) {
                 mob.dy = forceY;
             }
+
         }
     }
 

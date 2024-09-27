@@ -13,6 +13,8 @@ public class StunBuff extends Buff {
     }
 
     public void init(ActiveBuff buff, BuffEventSubscriber eventSubscriber) {
+        buff.addModifier(BuffModifiers.SLOW, 10F);
+        buff.addModifier(BuffModifiers.SPEED, -10F);
         buff.addModifier(BuffModifiers.PARALYZED, true);
     }
 }

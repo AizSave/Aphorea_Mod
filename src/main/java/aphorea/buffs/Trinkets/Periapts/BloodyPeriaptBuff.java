@@ -1,6 +1,6 @@
 package aphorea.buffs.Trinkets.Periapts;
 
-import aphorea.other.buffclass.PeriaptActivableBuff;
+import aphorea.other.buffs.trinkets.AphoreaPeriaptActivableBuff;
 import necesse.engine.registries.DamageTypeRegistry;
 import necesse.engine.util.GameRandom;
 import necesse.entity.ParticleTypeSwitcher;
@@ -16,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 
-public class BloodyPeriaptBuff extends PeriaptActivableBuff {
+public class BloodyPeriaptBuff extends AphoreaPeriaptActivableBuff {
 
     boolean drenar;
 

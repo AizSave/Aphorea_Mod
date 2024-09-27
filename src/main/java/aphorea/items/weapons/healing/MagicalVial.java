@@ -3,8 +3,6 @@ package aphorea.items.weapons.healing;
 import aphorea.other.magichealing.AphoreaMagicHealing;
 import aphorea.other.magichealing.AphoreaMagicHealingToolItem;
 import necesse.engine.localization.Localization;
-import necesse.engine.modifiers.Modifier;
-import necesse.engine.modifiers.ModifierContainer;
 import necesse.engine.network.PacketReader;
 import necesse.engine.sound.SoundEffect;
 import necesse.engine.sound.SoundManager;
@@ -13,7 +11,6 @@ import necesse.entity.ParticleTypeSwitcher;
 import necesse.entity.mobs.AttackAnimMob;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.PlayerMob;
-import necesse.entity.mobs.buffs.BuffModifiers;
 import necesse.entity.particle.Particle;
 import necesse.entity.pickup.PickupEntity;
 import necesse.gfx.GameResources;
@@ -157,10 +154,10 @@ public class MagicalVial extends AphoreaMagicHealingToolItem {
 
 
     public void addStatTooltips(ItemStatTipList list, InventoryItem currentItem, InventoryItem lastItem, Mob perspective, boolean forceAdd) {
-        int healing = AphoreaMagicHealing.getMagicHealing((PlayerMob) perspective, null, magicHealing.getValue(currentItem.item.getUpgradeTier(currentItem)), this, currentItem);
+        int healing = AphoreaMagicHealing.getMagicHealing(perspective, null, magicHealing.getValue(currentItem.item.getUpgradeTier(currentItem)), this, currentItem);
         DoubleItemStatTip tip = new LocalMessageDoubleItemStatTip("itemtooltip", "magichealingtip", "health", healing, 0);
         if (lastItem != null) {
-            int lastHealing = AphoreaMagicHealing.getMagicHealing((PlayerMob) perspective, null, magicHealing.getValue(lastItem.item.getUpgradeTier(lastItem)), this, lastItem);
+            int lastHealing = AphoreaMagicHealing.getMagicHealing(perspective, null, magicHealing.getValue(lastItem.item.getUpgradeTier(lastItem)), this, lastItem);
             tip.setCompareValue(lastHealing);
         }
         list.add(100, tip);

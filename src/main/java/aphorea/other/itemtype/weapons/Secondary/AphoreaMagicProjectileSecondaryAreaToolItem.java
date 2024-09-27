@@ -1,6 +1,6 @@
 package aphorea.other.itemtype.weapons.Secondary;
 
-import aphorea.other.AphoreaAreaList;
+import aphorea.other.area.AphoreaAreaList;
 import aphorea.other.AphoreaEnchantments;
 import aphorea.other.AphoreaModifiers;
 import aphorea.other.vanillaitemtypes.weapons.AphoreaMagicProjectileToolItem;

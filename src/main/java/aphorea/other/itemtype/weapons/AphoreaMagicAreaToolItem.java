@@ -1,6 +1,9 @@
 package aphorea.other.itemtype.weapons;
 
 import aphorea.other.*;
+import aphorea.other.area.AphoreaArea;
+import aphorea.other.area.AphoreaAreaList;
+import aphorea.other.area.AphoreaAreaType;
 import aphorea.other.magichealing.AphoreaMagicHealing;
 import aphorea.other.magichealing.AphoreaMagicHealingToolItem;
 import necesse.engine.localization.Localization;
@@ -111,11 +114,11 @@ public class AphoreaMagicAreaToolItem extends AphoreaMagicHealingToolItem {
 
             if(area.areaTypes.contains(AphoreaAreaType.HEALING)) {
 
-                int healing = AphoreaMagicHealing.getMagicHealing((PlayerMob) attacker, null, area.getHealing(currentItem), this, currentItem);
+                int healing = AphoreaMagicHealing.getMagicHealing((Mob) attacker, null, area.getHealing(currentItem), this, currentItem);
                 DoubleItemStatTip tip = new LocalMessageDoubleItemStatTip("itemtooltip", "magichealingtip", "health", healing, 0);
 
                 if (lastItem != null) {
-                    int lastHealing = AphoreaMagicHealing.getMagicHealing((PlayerMob) attacker, null, area.getHealing(lastItem), this, lastItem);
+                    int lastHealing = AphoreaMagicHealing.getMagicHealing((Mob) attacker, null, area.getHealing(lastItem), this, lastItem);
                     tip.setCompareValue(lastHealing);
                 }
 

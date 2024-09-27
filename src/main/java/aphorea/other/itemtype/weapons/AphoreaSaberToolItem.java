@@ -204,15 +204,15 @@ abstract public class AphoreaSaberToolItem extends AphoreaChargeAttackToolItem i
             float velocity = t == 0 ? 300.0F : 200.0F;
             int distanceExtra = t == 0 ? 7 : 3;
             GameDamage originalDamage = this.toolItem.getAttackDamage(this.item);
-            GameDamage damage = t == 0 ? originalDamage : originalDamage.setDamage(originalDamage.damage / 2);
-            float finalVelocity = (float)Math.round((Float)this.toolItem.getEnchantment(this.item).applyModifierLimited(ToolItemModifiers.VELOCITY, (Float)ToolItemModifiers.VELOCITY.defaultBuffManagerValue) * velocity * (Float)this.player.buffManager.getModifier(BuffModifiers.PROJECTILE_VELOCITY));
+            GameDamage damage = t == 0 ? originalDamage : originalDamage.modDamage(0.5F);
+            float finalVelocity = (float)Math.round(this.toolItem.getEnchantment(this.item).applyModifierLimited(ToolItemModifiers.VELOCITY, (Float)ToolItemModifiers.VELOCITY.defaultBuffManagerValue) * velocity * (Float)this.player.buffManager.getModifier(BuffModifiers.PROJECTILE_VELOCITY));
             Projectile projectile = new AircutProjectile(this.toolItem.getStringID(), this.player.getLevel(), this.player, this.player.x, this.player.y, this.player.x + dir.x * 100.0F, this.player.y + dir.y * 100.0F, finalVelocity, (int)((float)this.toolItem.getAttackRange(this.item)) * distanceExtra, damage, 0);
-            GameRandom random = new GameRandom((long)this.seed);
+            GameRandom random = new GameRandom(this.seed);
             projectile.resetUniqueID(random);
             this.player.getLevel().entityManager.projectiles.addHidden(projectile);
             projectile.moveDist(20.0);
             if (this.player.isServer()) {
-                this.player.getLevel().getServer().network.sendToClientsAtExcept(new PacketSpawnProjectile(projectile), this.player.getServerClient(), this.player.getServerClient());
+                this.player.getLevel().getServer().network.sendToClientsWithEntityExcept(new PacketSpawnProjectile(projectile), this.player, this.player.getServerClient());
             }
 
         }
@@ -332,7 +332,7 @@ abstract public class AphoreaSaberToolItem extends AphoreaChargeAttackToolItem i
 
                 Point2D.Float dir = GameMath.normalize((float)this.lastX - this.player.x, (float)this.lastY - this.player.y);
                 chargePercent = Math.min(chargePercent, 1.0F);
-                SaberDashLevelEvent event = new SaberDashLevelEvent(this.player, this.seed, dir.x, dir.y, this.getChargeDistance(chargePercent), (int) (200.0F * chargePercent), this.saberItem.getAttackDamage(this.item).modDamage(2.0F), 0);
+                SaberDashLevelEvent event = new SaberDashLevelEvent(this.player, this.seed, dir.x, dir.y, this.getChargeDistance(chargePercent), (int) (200.0F * chargePercent), this.saberItem.getAttackDamage(this.item), 0);
                 this.player.getLevel().entityManager.addLevelEventHidden(event);
                 if (this.player.isServer()) {
                     ServerClient serverClient = this.player.getServerClient();
@@ -398,17 +398,6 @@ abstract public class AphoreaSaberToolItem extends AphoreaChargeAttackToolItem i
                 this.owner.addBuff(buff, false);
             }
 
-        }
-
-        public void clientHit(Mob target, Packet content) {
-            super.clientHit(target, content);
-
-            this.owner.buffManager.removeBuff(BuffRegistry.getBuff("saberdashcooldown"), false);
-        }
-
-        public void serverHit(Mob target, Packet content, boolean clientSubmitted) {
-            super.serverHit(target, content, clientSubmitted);
-            this.owner.buffManager.removeBuff(BuffRegistry.getBuff("saberdashcooldown"), false);
         }
 
         public Shape getHitBox() {

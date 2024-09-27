@@ -58,10 +58,10 @@ public class UnstableGelSword extends AphoreaSwordSecondaryChargeToolItem {
     @Override
     public void endChargeAttack(PlayerMob player, Point2D.Float dir, int charge) {
         super.endChargeAttack(player, dir, charge);
-        launchrojectile(player, dir, charge);
+        launchProjectile(player, dir, charge);
     }
 
-    private void launchrojectile(PlayerMob player, Point2D.Float dir, int charge) {
+    private void launchProjectile(PlayerMob player, Point2D.Float dir, int charge) {
         float velocity = charge == 1 ? 300.0F : 200.0F;
         int distanceExtra = charge == 1 ? 7 : 3;
         GameDamage damage = this.getAttackDamage(player.attackingItem);
@@ -72,7 +72,7 @@ public class UnstableGelSword extends AphoreaSwordSecondaryChargeToolItem {
         player.getLevel().entityManager.projectiles.addHidden(projectile);
         projectile.moveDist(20.0);
         if (player.isServer()) {
-            player.getLevel().getServer().network.sendToClientsAtExcept(new PacketSpawnProjectile(projectile), player.getServerClient(), player.getServerClient());
+            player.getLevel().getServer().network.sendToClientsWithEntityExcept(new PacketSpawnProjectile(projectile), player, player.getServerClient());
         }
 
     }

@@ -3,7 +3,6 @@ package aphorea.buffs.SetBonus;
 import necesse.engine.localization.Localization;
 import necesse.engine.util.GameBlackboard;
 import necesse.entity.mobs.Mob;
-import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.buffs.ActiveBuff;
 import necesse.entity.mobs.buffs.BuffEventSubscriber;
 import necesse.entity.mobs.buffs.BuffModifiers;

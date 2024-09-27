@@ -19,7 +19,6 @@ import necesse.inventory.PlayerInventorySlot;
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.Arrays;
-import java.util.Iterator;
 
 public class AphoreaCustomGreatswordChargeAttackHandler<T extends AphoreaGreatswordCustomChargeToolItem> extends MouseAngleAttackHandler {
     public T toolItem;
@@ -92,7 +91,7 @@ public class AphoreaCustomGreatswordChargeAttackHandler<T extends AphoreaGreatsw
         this.player.showAttack(showItem, attackX, attackY, this.seed, attackContent);
         if (this.player.isServer()) {
             ServerClient client = this.player.getServerClient();
-            this.player.getLevel().getServer().network.sendToClientsAtExcept(new PacketShowAttack(this.player, showItem, attackX, attackY, this.seed, attackContent), client, client);
+            this.player.getLevel().getServer().network.sendToClientsWithEntityExcept(new PacketShowAttack(this.player, showItem, attackX, attackY, this.seed, attackContent), this.player, client);
         }
 
         if (this.currentChargeLevel >= 0) {
@@ -168,7 +167,7 @@ public class AphoreaCustomGreatswordChargeAttackHandler<T extends AphoreaGreatsw
             this.player.showAttack(attackItem, attackX, attackY, this.seed, attackContent);
             if (this.player.isServer()) {
                 ServerClient client = this.player.getServerClient();
-                this.player.getLevel().getServer().network.sendToClientsAtExcept(new PacketShowAttack(this.player, attackItem, attackX, attackY, this.seed, attackContent), client, client);
+                this.player.getLevel().getServer().network.sendToClientsWithEntityExcept(new PacketShowAttack(this.player, attackItem, attackX, attackY, this.seed, attackContent), this.player, client);
             }
 
             this.toolItem.superOnAttack(this.player.getLevel(), attackX, attackY, this.player, this.player.getCurrentAttackHeight(), attackItem, this.slot, 0, this.seed, new PacketReader(attackContent));
@@ -183,7 +182,7 @@ public class AphoreaCustomGreatswordChargeAttackHandler<T extends AphoreaGreatsw
             this.player.stopAttack(false);
             if (this.player.isServer()) {
                 ServerClient client = this.player.getServerClient();
-                this.player.getLevel().getServer().network.sendToClientsAtExcept(new PacketPlayerStopAttack(client.slot), client, client);
+                this.player.getLevel().getServer().network.sendToClientsWithEntityExcept(new PacketPlayerStopAttack(client.slot), this.player, client);
             }
         }
 

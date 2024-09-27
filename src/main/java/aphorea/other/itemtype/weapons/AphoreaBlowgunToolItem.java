@@ -37,8 +37,10 @@ abstract public class AphoreaBlowgunToolItem extends GunProjectileToolItem imple
 
     abstract public Projectile getProjectile(Level level, float x, float y, PlayerMob player, InventoryItem item);
 
+    public static String[] ammoItems = {"riceseed", "eggplantseed", "pumpkinseed", "onionseed", "iceblossomseed", "strawberryseed", "sunflowerseed", "cabbageseed", "firemoneseed", "cornseed", "potatoseed", "chilipepperseed", "sugarbeetseed", "tomatoseed", "wheatseed", "carrotseed", "grassseed", "swampgrassseed", "unstablegrassseed"};
+
     public AphoreaBlowgunToolItem(int enchantCost, String projectileID, int cadence) {
-        super(new String[]{"riceseed", "eggplantseed", "pumpkinseed", "onionseed", "iceblossomseed", "strawberryseed", "sunflowerseed", "cabbageseed", "firemoneseed", "cornseed", "potatoseed", "chilipepperseed", "sugarbeetseed", "tomatoseed", "wheatseed", "carrotseed", "grassseed", "swampgrassseed"}, enchantCost);
+        super(ammoItems, enchantCost);
         this.setItemCategory("equipment", "weapons", "rangedweapons");
         this.setItemCategory(ItemCategory.equipmentManager, "weapons", "rangedweapons");
         this.damageType = DamageTypeRegistry.RANGED;

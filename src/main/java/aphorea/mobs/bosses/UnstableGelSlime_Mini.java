@@ -34,12 +34,13 @@ public class UnstableGelSlime_Mini extends FlyingHostileMob {
 
     int escape;
     boolean initialTP = false;
+    int countTP;
 
     public static GameDamage attack = new GameDamage(25);
     public static int attack_knockback = 50;
 
-    public void setTP(Boolean tp) {
-        this.initialTP = tp;
+    public void setInitialTP(Boolean initialTP) {
+        this.initialTP = initialTP;
     }
 
     public static GameTexture texture;
@@ -73,6 +74,8 @@ public class UnstableGelSlime_Mini extends FlyingHostileMob {
         if(Math.random() > 0.5 && this.initialTP) {
             this.executeTeleport();
         }
+
+        countTP = 0;
     }
 
     public GameAreaStream<Mob> streamPossibleTargets(Point base, TargetFinderDistance<UnstableGelSlime_Mini> distance) {

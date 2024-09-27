@@ -58,7 +58,7 @@ public class AircutProjectile extends Projectile {
         super.init();
         givesLight = false;
         height = 18;
-        trailOffset = 0f;
+        trailOffset = -6f;
         setWidth(70, true);
         piercing = 5;
         bouncing = 0;
