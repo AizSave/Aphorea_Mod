@@ -16,3 +16,4 @@ latest-crash.log
 *.log
 
 .git
+bin/*
