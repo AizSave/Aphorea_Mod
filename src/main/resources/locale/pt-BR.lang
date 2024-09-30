@@ -180,7 +180,7 @@ gelslimenullifier=Eles vão parar de te incomodar com um simples clique!
 
 geltile=Solo pegajoso que desacelera muito tudo o que está em cima
 
-witchsetbonusbuff=Aumenta a Velocidade de Dano Mágico, Regeneração de Mana e Armadura conforme você tem menos vida, com um máximo de 50% / 6 de Armadura
+witchsetbonusbuff=Aumenta a Velocidade de Ataque Mágico, Regeneração de Mana e Armadura conforme você tem menos vida, com um máximo de 50% / 6 de Armadura
 
 floralring=Receba §7<healing>§0 de Cura Mágica a cada 3 segundos
 gelring=+30% de cura mágica recebida
@@ -188,7 +188,7 @@ heartring=+20 de vida máxima
 
 magicalvial=Cura Mágica de §7<healing>§0. Aponte para um humano ferido para curá-lo, não aponte para ninguém para se curar. Tempo de recarga de 20 segundos
 
-swampshield=Só protege contra ataques na direção que são recebidos\nSua própria Cura Mágica
+swampshield=Só protege contra ataques na direção que são recebidos\nCure-se magicamente com §7<healing>§0 do dano que você prevenir
 
 witchstatue=Colocar esta estátua na superfície de um pântano eliminará a aparição de bruxas em toda a ilha
 

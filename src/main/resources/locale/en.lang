@@ -180,7 +180,7 @@ gelslimenullifier=They will stop bothering you with a simple click!
 
 geltile=Sticky floor that greatly slows down everything on top
 
-witchsetbonusbuff=Increases Magic Damage Speed, Mana Regeneration, and Armor as you have less life, with a maximum of 50% / 6 Armor
+witchsetbonusbuff=Increases Magic Attack Speed, Mana Regeneration, and Armor as you have less life, with a maximum of 50% / 6 Armor
 
 floralring=Receive §7<healing>§0 Magic Healing every 3 seconds
 gelring=+30% magic healing received
@@ -188,7 +188,7 @@ heartring=+20 max health
 
 magicalvial=Magic Healing of §7<healing>§0. Point at an injured human to heal them, don't point at anyone to heal yourself. 20-second cooldown
 
-swampshield=Only protects attacks in the direction they are received\nYour own Magic Healing of §7<healing>§0 of the damage you prevent
+swampshield=Only protects attacks in the direction they are received\nMagic-Heal yourself with the §7<healing>§0 of the damage you prevent
 
 witchstatue=Placing this statue on the surface of a swamp will eliminate witch spawn throughout the island
 
