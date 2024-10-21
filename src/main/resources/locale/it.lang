@@ -66,6 +66,7 @@ rockyperiapt=Amuleto Roccioso
 unstableperiapt=Amuleto Instabile
 bloodyperiapt=Amuleto Sanguinario
 demonicperiapt=Amuleto Demoniaco
+abysmalperiapt=Amuleto Abissale
 frozenperiapt=Amuleto Congelato
 necromancyperiapt=Amuleto della Necromanzia
 
@@ -154,13 +155,13 @@ rockyperiapt2=Premi [input=trinketability] per ottenere 10 Armatura per 10 secon
 unstableperiapt=Evoca due §bPiccoli Slime di Gel Instabile§0 che ti proteggeranno. Questi slime §9infliggono 8 Danni d'Evocazione§0
 unstableperiapt2=Ti rende immune al debuff §9Appiccicoso§0
 
-bloodyperiapt=Le armi §6Dardo di Sangue§0 e §6Sangue Volante§0 ti cureranno del 10% del danno che infliggi con loro
-bloodyperiapt2=Premi [input=trinketability] per ottene +50% Velocità, +30% Velocità d'Attacco e\ne farlo funzionare con tutte le armi magiche per 10 secondi.\nNon puoi subire danni o muoverti mentre attivi l'abilità
+bloodyperiapt=Premi [input=trinketability] per ottenere +50% Velocità, +30% Velocità d'Attacco e\ne le armi §6Dardo di Sangue§0 e §6Sangue Volante§0 ti cureranno del 5% del danno che infliggi con esse.\nNon puoi subire danni o muoverti mentre attivi l'abilità
+
+demonicperiapt=Premi [input=trinketability] per ottenere +50% Velocità, +30% Velocità d'Attacco e\ne le armi magiche ti cureranno del 5% del danno che infliggi con esse per 10 secondi.\nNon puoi subire danni o muoverti mentre attivi l'abilità
+
+abysmalperiapt=Le armi magiche ti cureranno del 5% del danno che infliggi con esse
 
 necromancyperiapt=Ogni volte che tu o una delle tue evocazioni uccidete un mob ostile, evochi uno §bScheletro Non Morto§0\n che §9infligge 20 Danni d'Evocazione§0 per§9 10 secondi§0 con un massimo di§9 3 alla volta§0
-
-demonicperiapt=Le armi magiche ti cureranno del 10% del danno che infliggi con loro
-demonicperiapt2=Premi [input=trinketability] per ottenere +50% Velocità, +30% Velocità d'Attacco e\nfarlo funzionare con tutti i danno per 10 secondi.\nNon puoi subire danni o muoverti mentre attivi l'abilità
 
 frozenperiapt=Le armi da mischia e a distanza applicheranno l'effetto §6Congelare§0 per 3 secondi. Se il bersaglio è già congelato, aumenta il Danno base dell'attacco del §9+20%§0
 frozenperiapt2=Premi [input=trinketability] per ottenere +50% Velocità, +30% Velocità d'Attacco e\nfarlo funzionare con tutti i danni per 10 secondi.\nNon puoi subire danni o muoverti mentre attivi l'abilità

@@ -66,6 +66,7 @@ rockyperiapt=Amulette rocheuse
 unstableperiapt=Amulette instable
 bloodyperiapt=Amulette sanglante
 demonicperiapt=Amulette démoniaque
+abysmalperiapt=Amulette abyssale
 frozenperiapt=Amulette de glace
 necromancyperiapt=Amulette de nécromancie
 
@@ -154,13 +155,13 @@ rockyperiapt2=Appuyez [input=trinketability] pour gagner 10 Armor pendant 10 sec
 unstableperiapt=Invoque 2 §bBébé gélatineux instable§0 qui vous protègeront. Ils §9infligent 8 dégâts d'invocation§0
 unstableperiapt2=Vous devenez immunisé à l'effet §9collant§0
 
-bloodyperiapt=Les armes §6Éclair de sang§0 et §6Volée de sang§0 vous donne 10% de vol de vie
-bloodyperiapt2=Appuyez [input=trinketability] pour gagner +50% Vitesse, +30% Vitesse d'attaque et\ncette capacité fonctionne avec toutes les armes magiques pendant 10 secondes.\nVous ne pouvez pas subir de dégâts ou vous déplacer pendant que vous activez cette capacité
+bloodyperiapt=Appuyez [input=trinketability] pour gagner +50% Vitesse, +30% Vitesse d'attaque et\nles armes §6Éclair de sang§0 et §6Volée de sang§0 vous soigneront de 5% des dégâts que vous infligez avec elles.\nVous ne pouvez pas subir de dégâts ou vous déplacer pendant que vous activez cette capacité
+
+demonicperiapt=Appuyez [input=trinketability] pour gagner +50% Vitesse, +30% Vitesse d'attaque et\nles armes magiques vous soigneront de 5% des dégâts que vous infligez avec elles pendant 10 secondes.\nVous ne pouvez pas subir de dégâts ou vous déplacer pendant que vous activez cette capacité
+
+abysmalperiapt=Les armes magiques vous soigneront de 5% des dégâts que vous infligez avec elles
 
 necromancyperiapt=Chaque fois que vous ou l'une de vos invocations tuez un ennemi, vous invoquez un §bSquelette réanimé§0\n qui §9inflige 20 dégâts d'invocation§0 pendant§9 10 secondes§0 avec un maximum de§9 3 en même temps§0
-
-demonicperiapt=Les armes magiques vous donne 10% de vol de vie
-demonicperiapt2=Appuyez [input=trinketability] pour gagner +50% Vitesse, +30% Vitesse d'attaque et\ncette capacité fonctionne avec tous les dégâts pendant 10 secondes.\nVous ne pouvez pas subir de dégâts ou vous déplacer pendant que vous activez cette capacité
 
 frozenperiapt=Les armes de mêlée et à distance inflige l'état §6Gelé§0 pendant 3 secondes. Si la cible est déjà gelé, les dégâts de base sont augmentés de §9+20%§0
 frozenperiapt2=Appuyez [input=trinketability] pour gagner +50% Vitesse, +30% Vitesse d'attaque et\ncette capacité fonctionne avec tous les dégâts pendant 10 secondes.\nVous ne pouvez pas subir de dégâts ou vous déplacer pendant que vous activez cette capacité

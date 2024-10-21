@@ -66,6 +66,7 @@ rockyperiapt=Talismán Rocoso
 unstableperiapt=Talismán Inestable
 bloodyperiapt=Talismán Sangriento
 demonicperiapt=Talismán Demoníaco
+abysmalperiapt=Talismán Abismal
 frozenperiapt=Talismán Congelado
 necromancyperiapt=Talismán de la Necromancia
 
@@ -154,13 +155,13 @@ rockyperiapt2=Presiona [input=trinketability] para recibir 10 de Armadura durant
 unstableperiapt=Llama a dos §bSlimes de Gel Inestable Bebé§0 que te protegerán. Estos slimes §9hacen 8 de Daño de Invocador§0
 unstableperiapt2=Te vuelve inmune al debuff §9Pegajoso§0
 
-bloodyperiapt=Las armas §6Rayo de sangre§0 y §6Descarga carmesí§0 te sanarán un 10% del Daño que inflijas con ellas
-bloodyperiapt2=Presiona [input=trinketability] para recibir +50% de Velocidad, +30% de Velocidad de Ataque y\nque esto funcione con todas las armas mágicas durante 10 segundos.\nNo puedes recibir daño ni moverte mientras activas la habilidad
+bloodyperiapt=Presiona [input=trinketability] para recibir +50% de Velocidad, +30% de Velocidad de Ataque y\nlas armas §6Rayo de sangre§0 y §6Descarga carmesí§0 te sanarán un 5% del Daño que inflijas con ellas.\nNo puedes recibir daño ni moverte mientras activas la habilidad
+
+demonicperiapt=Presiona [input=trinketability] para recibir +50% de Velocidad, +30% de Velocidad de Ataque y\nlas armas mágicas te sanarán un 5% del Daño que inflijas con ellas durante 10 segundos.\nNo puedes recibir daño ni moverte mientras activas la habilidad
+
+abysmalperiapt=Las armas mágicas te sanarán un 5% del Daño que inflijas con ellas
 
 necromancyperiapt=Cada vez que tú o uno de tus esbirros mata a un mob hostil, invocas un §bEsqueleto No-Muerto§0\n que §9inflige 20 de Daño de Invocador§0 durante§9 10 segundos§0, con un máximo de§9 3 a la vez§0
-
-demonicperiapt=Las armas mágicas te sanarán un 10% del Daño que inflijas con ellas
-demonicperiapt2=Presiona [input=trinketability] para recibir +50% de Velocidad, +30% de Velocidad de Ataque y\nque esto funcione con todo el daño durante 10 segundos.\nNo puedes recibir daño ni moverte mientras activas la habilidad
 
 frozenperiapt=Las armas cuerpo a cuerpo y a distancia §6Congelarán§0 durante 3 segundos. Si el objetivo ya está congelado aumenta en §9+20%§0 el Daño base del ataque
 frozenperiapt2=Presiona [input=trinketability] para recibir +50% de Velocidad, +30% de Velocidad de Ataque y\nhacer que esto funcione con todo el daño durante 10 segundos.\nNo puedes recibir daño ni moverte mientras activas la habilidad

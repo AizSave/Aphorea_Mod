@@ -17,7 +17,6 @@ public class BloodyPeriapt extends AphoreaTrinketItem {
     public ListGameTooltips getPreEnchantmentTooltips(InventoryItem item, PlayerMob perspective, GameBlackboard blackboard) {
         ListGameTooltips tooltips = super.getPreEnchantmentTooltips(item, perspective, blackboard);
         tooltips.add(Localization.translate("itemtooltip", "bloodyperiapt"));
-        tooltips.add(Localization.translate("itemtooltip", "bloodyperiapt2"));
         return tooltips;
     }
 

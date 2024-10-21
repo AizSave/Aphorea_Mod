@@ -66,6 +66,7 @@ rockyperiapt=Rocky Periapt
 unstableperiapt=Unstable Periapt
 bloodyperiapt=Bloody Periapt
 demonicperiapt=Demonic Periapt
+abysmalperiapt=Abysmal Periapt
 frozenperiapt=Frozen Periapt
 necromancyperiapt=Necromancy Periapt
 
@@ -154,13 +155,14 @@ rockyperiapt2=Press [input=trinketability] to gain 10 Armor for 10 seconds\nYou 
 unstableperiapt=Calls two §bBaby Unstable Gel Slimes§0 who will protect you. These slimes §9deal 8 Summoner Damage§0
 unstableperiapt2=Makes you immune to the §9Sticky§0 debuff
 
-bloodyperiapt=The weapons §6Blood Bolt§0 and §6Blood Volley§0 will heal you for 10% of the damage you deal with them
-bloodyperiapt2=Press [input=trinketability] to gain +50% Speed, +30% Attack Speed and\nmake this work with all magic weapons for 10 seconds.\nYou cannot take damage or move while activating the ability
+bloodyperiapt=Press [input=trinketability] to gain +50% Speed, +30% Attack Speed, and\nthe weapons §6Blood Bolt§0 and §6Blood Volley§0 will heal you for 5% of the damage you deal with them.\nYou cannot take damage or move while activating the ability
+
+demonicperiapt=Press [input=trinketability] to gain +50% Speed, +30% Attack Speed, and\nmagic weapons will heal you for 5% of the damage you deal with them for 10 seconds.\nYou cannot take damage or move while activating the ability
+
+abysmalperiapt=Magic weapons will heal you for 5% of the damage you deal with them
 
 necromancyperiapt=Every time you or one of your summons kills a hostile mob you summon a §bUndead Skeleton§0\n that §9deals 20 Summoner Damage§0 for§9 10 seconds§0 with a maximum of§9 3 at a time§0
 
-demonicperiapt=Magic weapons will heal you for 10% of the damage you deal with them
-demonicperiapt2=Press [input=trinketability] to gain +50% Speed, +30% Attack Speed and\nmake this work with all damage for 10 seconds.\nYou cannot take damage or move while activating the ability
 
 frozenperiapt=Melee and Ranged weapons will §6Freeze§0 for 3 seconds. If the target is already frozen, increases the base Damage of the attack by §9+20%§0
 frozenperiapt2=Press [input=trinketability] to gain +50% Speed, +30% Attack Speed and\nmake this work with all damage for 10 seconds.\nYou cannot take damage or move while activating the ability

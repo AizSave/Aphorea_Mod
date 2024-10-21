@@ -14,6 +14,7 @@ public class RockyPeriaptActiveBuff extends Buff {
 
     public void init(ActiveBuff buff, BuffEventSubscriber eventSubscriber) {
         buff.addModifier(BuffModifiers.ARMOR_FLAT, 10);
+        buff.addModifier(BuffModifiers.MAX_RESILIENCE_FLAT, 2);
     }
 }
 

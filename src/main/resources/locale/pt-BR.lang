@@ -66,6 +66,7 @@ rockyperiapt=Talismã Rochoso
 unstableperiapt=Talismã Instável
 bloodyperiapt=Talismã Sangrento
 demonicperiapt=Talismã Demoníaco
+abysmalperiapt=Talismã Abissal
 frozenperiapt=Talismã Congelado
 necromancyperiapt=Talismã de Necromancia
 
@@ -154,13 +155,13 @@ rockyperiapt2=Pressione [input=trinketability] para ganhar 10 de Armadura por 10
 unstableperiapt=Chama dois §bSlimes Bebês de Gel Instável§0 que te protegerão. Esses slimes §9causam 8 de Dano de Invocador§0
 unstableperiapt2=Te deixa imune ao debuff §9Pegajoso§0
 
-bloodyperiapt=As armas §6Disparo de Sangue§0 e §6Rajada de Sangue§0 te curarão 10% do dano que você causar com elas
-bloodyperiapt2=Pressione [input=trinketability] para ganhar +50% de Velocidade, +30% de Velocidade de Ataque e\nfaça isso funcionar com todas as armas mágicas por 10 segundos.\nVocê não pode receber dano ou se mover enquanto ativa a habilidade
+bloodyperiapt=Pressione [input=trinketability] para ganhar +50% de Velocidade, +30% de Velocidade de Ataque e\nas armas §6Disparo de Sangue§0 e §6Rajada de Sangue§0 te curarão 5% do dano que você causar com elas.\nVocê não pode receber dano ou se mover enquanto ativa a habilidade
+
+demonicperiapt=Pressione [input=trinketability] para ganhar +50% de Velocidade, +30% de Velocidade de Ataque e\nas armas mágicas te curarão 5% do dano que você causar com elas por 10 segundos.\nVocê não pode receber dano ou se mover enquanto ativa a habilidade
+
+abysmalperiapt=As armas mágicas te curarão 5% do dano que você causar com elas
 
 necromancyperiapt=Cada vez que você ou um dos seus invocados mata um mob hostil, você invoca um §bEsqueleto Morto-Vivo§0\n que §9causa 20 de Dano de Invocador§0 por§9 10 segundos§0 com um máximo de§9 3 de cada vez§0
-
-demonicperiapt=Armas mágicas te curarão 10% do dano que você causar com elas
-demonicperiapt2=Pressione [input=trinketability] para ganhar +50% de Velocidade, +30% de Velocidade de Ataque e\nfaça isso funcionar com todo o dano por 10 segundos.\nVocê não pode receber dano ou se mover enquanto ativa a habilidade
 
 frozenperiapt=Armas corpo a corpo e de longo alcance §9Congelarão§0 por 3 segundos. Se o alvo já estiver congelado, aumenta em §9+20%§0 o Dano base do ataque
 frozenperiapt2=Pressione [input=trinketability] para ganhar +50% de Velocidade, +30% de Velocidade de Ataque e\nfaça isso funcionar com todo o dano por 10 segundos.\nVocê não pode receber dano ou se mover enquanto ativa a habilidade

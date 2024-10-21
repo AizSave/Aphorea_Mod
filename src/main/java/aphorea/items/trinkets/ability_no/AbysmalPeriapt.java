@@ -1,4 +1,4 @@
-package aphorea.items.trinkets.ability_yes;
+package aphorea.items.trinkets.ability_no;
 
 import aphorea.other.vanillaitemtypes.AphoreaTrinketItem;
 import necesse.engine.localization.Localization;
@@ -9,18 +9,18 @@ import necesse.entity.mobs.buffs.staticBuffs.armorBuffs.trinketBuffs.TrinketBuff
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.InventoryItem;
 
-public class DemonicPeriapt extends AphoreaTrinketItem {
-    public DemonicPeriapt() {
-        super(Rarity.RARE, 400);
+public class AbysmalPeriapt extends AphoreaTrinketItem {
+    public AbysmalPeriapt() {
+        super(Rarity.RARE, 500);
     }
 
     public ListGameTooltips getPreEnchantmentTooltips(InventoryItem item, PlayerMob perspective, GameBlackboard blackboard) {
         ListGameTooltips tooltips = super.getPreEnchantmentTooltips(item, perspective, blackboard);
-        tooltips.add(Localization.translate("itemtooltip", "demonicperiapt"));
+        tooltips.add(Localization.translate("itemtooltip", "abysmalperiapt"));
         return tooltips;
     }
 
     public TrinketBuff[] getBuffs(InventoryItem item) {
-        return new TrinketBuff[]{(TrinketBuff)BuffRegistry.getBuff("demonicperiaptbuff")};
+        return new TrinketBuff[]{(TrinketBuff)BuffRegistry.getBuff("abysmalperiaptbuff")};
     }
 }

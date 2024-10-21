@@ -127,6 +127,7 @@ public class AphoreaMod {
                 {"unstableperiapt", new UnstablePeriapt(), 100.0F},
                 {"bloodyperiapt", new BloodyPeriapt()},
                 {"demonicperiapt", new DemonicPeriapt()},
+                {"abysmalperiapt", new AbysmalPeriapt()},
                 {"frozenperiapt", new FrozenPeriapt()},
                 {"necromancyperiapt", new NecromancyPeriapt()},
 
@@ -253,6 +254,8 @@ public class AphoreaMod {
 
         BuffRegistry.registerBuff("demonicperiaptbuff", new DemonicPeriaptBuff());
         BuffRegistry.registerBuff("demonicperiaptactivebuff", new DemonicPeriaptActiveBuff());
+
+        BuffRegistry.registerBuff("abysmalperiaptbuff", new AbysmalPeriaptBuff());
 
         BuffRegistry.registerBuff("frozenperiaptbuff", new FrozenPeriaptBuff());
         BuffRegistry.registerBuff("frozenperiaptactivebuff", new FrozenPeriaptActiveBuff());
@@ -527,6 +530,10 @@ public class AphoreaMod {
                 new AphoreaCraftingRecipe("demonicperiapt", 1,
                         new Ingredient("bloodyperiapt", 1),
                         new Ingredient("demonicbar", 5)
+                ),
+                new AphoreaCraftingRecipe("abysmalperiapt", 1,
+                        new Ingredient("demonicperiapt", 1),
+                        new Ingredient("tungstenbar", 5)
                 ),
                 new AphoreaCraftingRecipe("necromancyperiapt", 1,
                         new Ingredient("unstableperiapt", 1),
