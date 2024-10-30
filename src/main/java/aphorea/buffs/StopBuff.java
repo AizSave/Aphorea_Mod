@@ -33,6 +33,7 @@ public class StopBuff extends Buff {
         buff.addModifier(BuffModifiers.SLOW, 10F);
         buff.addModifier(BuffModifiers.SPEED, -10F);
         buff.addModifier(BuffModifiers.PARALYZED, true);
+        buff.addModifier(BuffModifiers.UNTARGETABLE, true);
     }
 
     public void onBeforeHit(ActiveBuff buff, MobBeforeHitEvent event) {

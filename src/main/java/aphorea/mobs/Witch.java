@@ -3,6 +3,7 @@ package aphorea.mobs;
 import aphorea.other.data.AphoreaSwampLevelData;
 import aphorea.projectiles.WitchProjectile;
 import necesse.engine.gameLoop.tickManager.TickManager;
+import necesse.engine.network.gameNetworkData.GNDItemMap;
 import necesse.engine.network.server.Server;
 import necesse.engine.network.server.ServerClient;
 import necesse.engine.util.GameRandom;
@@ -18,6 +19,8 @@ import necesse.gfx.drawables.OrderableDrawables;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.inventory.lootTable.LootTable;
 import necesse.inventory.lootTable.lootItem.ChanceLootItem;
+import necesse.inventory.lootTable.lootItem.LootItem;
+import necesse.inventory.lootTable.lootItem.RotationLootItem;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
 
@@ -26,7 +29,7 @@ import java.util.List;
 
 public class Witch extends FlyingHostileMob {
 
-    public static GameDamage attack = new GameDamage(10, 100000);
+    public static GameDamage attack = new GameDamage(20, 100000);
     public static int attack_knockback = 50;
 
     public static MaxHealthGetter MAX_HEALTH = new MaxHealthGetter(400, 500, 600, 700, 800);
@@ -37,12 +40,17 @@ public class Witch extends FlyingHostileMob {
 
     public static LootTable lootTable = new LootTable(
             ChanceLootItem.between(1f, "stardust", 2, 3),
-            ChanceLootItem.between(0.6f, "healthpotion", 1, 2),
-            ChanceLootItem.between(0.6f, "manapotion", 1, 2),
-            new ChanceLootItem(0.3f, "broom"),
-            new ChanceLootItem(0.2f, "witchhat"),
-            new ChanceLootItem(0.1f, "magicalvial")
-            );
+            RotationLootItem.globalLootRotation(
+                    ChanceLootItem.between("healthpotion", 1, 2, (new GNDItemMap())),
+                    ChanceLootItem.between("manapotion", 1, 2, (new GNDItemMap()))
+            ),
+            RotationLootItem.globalLootRotation(
+                    new LootItem("broom", (new GNDItemMap())),
+                    new LootItem("witchmedallion", (new GNDItemMap())),
+                    new LootItem("witchhat", (new GNDItemMap())),
+                    new LootItem("magicalvial", (new GNDItemMap()))
+            )
+    );
 
     public static AphoreaSwampLevelData aphoreaSwampLevelData = new AphoreaSwampLevelData();
 

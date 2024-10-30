@@ -1,4 +1,4 @@
-package aphorea.items;
+package aphorea.items.consumable;
 
 import aphorea.other.data.AphoreaWorldData;
 import aphorea.other.vanillaitemtypes.AphoreaConsumableItem;

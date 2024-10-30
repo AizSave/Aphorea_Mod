@@ -1,6 +1,7 @@
-package aphorea.other.magichealing;
+package aphorea.other.itemtype.healing;
 
 import aphorea.other.AphoreaEnchantments;
+import aphorea.other.magichealing.AphoreaMagicHealing;
 import aphorea.other.vanillaitemtypes.AphoreaToolItem;
 import necesse.engine.localization.Localization;
 import necesse.engine.util.GameRandom;
@@ -12,6 +13,7 @@ import necesse.inventory.enchants.ItemEnchantment;
 import necesse.inventory.enchants.ToolItemEnchantment;
 import necesse.inventory.item.ItemCategory;
 import necesse.inventory.item.upgradeUtils.IntUpgradeValue;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Set;
 
@@ -25,6 +27,10 @@ abstract public class AphoreaMagicHealingToolItem extends AphoreaToolItem {
 
         this.setItemCategory("equipment", "tools", "healing");
         this.setItemCategory(ItemCategory.equipmentManager, "tools", "healingtools");
+    }
+
+    public int getHealing(@Nullable InventoryItem item) {
+        return item == null ? magicHealing.getValue(0) : magicHealing.getValue(item.item.getUpgradeTier(item));
     }
 
     public void healMob(PlayerMob player, Mob target, int healing, InventoryItem item) {

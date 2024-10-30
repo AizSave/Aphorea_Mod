@@ -1,31 +1,52 @@
 package aphorea.other.magichealing;
 
 import aphorea.other.AphoreaModifiers;
+import aphorea.other.itemtype.healing.AphoreaMagicHealingToolItem;
+import aphorea.projectiles.HealingToolItemProjectile;
 import necesse.entity.levelEvent.LevelEvent;
 import necesse.entity.levelEvent.mobAbilityLevelEvent.MobHealthChangeEvent;
 import necesse.entity.mobs.Mob;
+import necesse.entity.mobs.PlayerMob;
 import necesse.inventory.InventoryItem;
+import necesse.inventory.item.DoubleItemStatTip;
+import necesse.inventory.item.ItemStatTipList;
+import necesse.inventory.item.LocalMessageDoubleItemStatTip;
 import necesse.inventory.item.toolItem.ToolItem;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class AphoreaMagicHealing {
 
+    static Map<Mob, Long> cooldowns = new HashMap<>();
 
-    public static void healMob(Mob healer, Mob target, int healing) {
-        healMob(healer, target, healing, null, null);
+    public static boolean canHealMob(Mob healer, Mob target) {
+        return target.getHealthPercent() != 1 && !target.canBeTargeted(healer, ((PlayerMob) healer).getNetworkClient()) && (cooldowns.get(target) == null || target.getWorldTime() >= cooldowns.get(target));
     }
 
-    public static void healMob(Mob healer, Mob target, int healing, @Nullable ToolItem toolItem, @Nullable InventoryItem item) {
+    public static boolean canHealMob(HealingToolItemProjectile healer, Mob target) {
+        if(healer.getOwner() == null) return true;
+        return canHealMob(healer.getOwner(), target);
+    }
+
+    public static boolean healMob(Mob healer, Mob target, int healing) {
+        return healMob(healer, target, healing, null, null);
+    }
+
+    public static boolean healMob(Mob healer, Mob target, int healing, @Nullable ToolItem toolItem, @Nullable InventoryItem item) {
         int magicalHealing = AphoreaMagicHealing.getMagicHealing(healer, target, healing, toolItem, item);
         int realHealing = Math.min(magicalHealing, target.getMaxHealth() - target.getHealth());
         if(realHealing > 0) {
             LevelEvent healEvent = new MobHealthChangeEvent(target, realHealing);
             target.getLevel().entityManager.addLevelEvent(healEvent);
 
-            healer.buffManager.getArrayBuffs().stream().filter(buff -> buff.buff instanceof AphoreaMagicHealingFunctions).forEach(buff -> ((AphoreaMagicHealingFunctions) buff.buff).onMagicalHealing(healer, target, healing, toolItem, item));
+            healer.buffManager.getArrayBuffs().stream().filter(buff -> buff.buff instanceof AphoreaMagicHealingFunctions).forEach(buff -> ((AphoreaMagicHealingFunctions) buff.buff).onMagicalHealing(healer, target, healing, realHealing, toolItem, item));
             if(toolItem instanceof AphoreaMagicHealingFunctions) {
-                ((AphoreaMagicHealingFunctions) toolItem).onMagicalHealing(healer, target, healing, toolItem, item);
+                ((AphoreaMagicHealingFunctions) toolItem).onMagicalHealing(healer, target, healing, realHealing, toolItem, item);
             }
+
+            cooldowns.put(target, target.getWorldTime() + 50);
 
             if(healer.getID() != target.getID()) {
                 float healGrace = healer.buffManager.getModifier(AphoreaModifiers.MAGIC_HEALING_GRACE) + (toolItem == null || item == null ? 0 : toolItem.getEnchantment(item).getModifier(AphoreaModifiers.TOOL_MAGIC_HEALING_GRACE));
@@ -36,6 +57,10 @@ public class AphoreaMagicHealing {
                     target.getLevel().entityManager.addLevelEvent(healEventhealer);
                 }
             }
+
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -90,5 +115,17 @@ public class AphoreaMagicHealing {
             toolTip += " -" + healing;
         }
         return toolTip;
+    }
+
+    public static void addMagicHealingTip(AphoreaMagicHealingToolItem aphoreaMagicHealingToolItem, ItemStatTipList list, InventoryItem currentItem, InventoryItem lastItem, Mob perspective) {
+        int healing = getMagicHealing(perspective, null, aphoreaMagicHealingToolItem.getHealing(currentItem), aphoreaMagicHealingToolItem, currentItem);
+        DoubleItemStatTip tip = new LocalMessageDoubleItemStatTip("itemtooltip", "magichealingtip", "health", healing, 0);
+
+        if (lastItem != null) {
+            int lastHealing = getMagicHealing(perspective, null, aphoreaMagicHealingToolItem.getHealing(lastItem), aphoreaMagicHealingToolItem, lastItem);
+            tip.setCompareValue(lastHealing);
+        }
+
+        list.add(100, tip);
     }
 }

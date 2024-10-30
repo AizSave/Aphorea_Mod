@@ -115,14 +115,19 @@ swampmask=Swamp Mask
 swamphood=Swamp Hood
 swampshield=Swamp Shield
 
+woodenrod=Wooden Rod
+woodenwand=Wooden Wand
+
+witchmedallion=Witch Medallion
+
 [itemtooltip]
 line=--------------------
 
-magichealingtip=Magic healing: <health>
-rangetip=Range: <range>
+magichealingtip=Magic healing: §7<health>
+rangetip=Range: §9<range>
 areatip=§aArea <number>
 
-magichealinggrace=§aMagic Healing Grace:§0 Heals yourself with a % of the magic healing intended for allies
+magichealinggrace=§aMagic Healing Grace:§0 Heals yourself with a % of the §9[Magic Healing]§0 intended for allies
 
 saber=Quick charge dealing x2 damage after 0.5 seconds, then discharges over another 0.5 seconds
 saber2=A perfect attack will launch an aircut that deals base damage. A good one will also launch a weak one
@@ -163,7 +168,6 @@ abysmalperiapt=Magic weapons will heal you for 5% of the damage you deal with th
 
 necromancyperiapt=Every time you or one of your summons kills a hostile mob you summon a §bUndead Skeleton§0\n that §9deals 20 Summoner Damage§0 for§9 10 seconds§0 with a maximum of§9 3 at a time§0
 
-
 frozenperiapt=Melee and Ranged weapons will §6Freeze§0 for 3 seconds. If the target is already frozen, increases the base Damage of the attack by §9+20%§0
 frozenperiapt2=Press [input=trinketability] to gain +50% Speed, +30% Attack Speed and\nmake this work with all damage for 10 seconds.\nYou cannot take damage or move while activating the ability
 frozenperiapt3=Makes you immune to the §9Freeze§0 and §9Frostslow§0 debuffs
@@ -184,15 +188,19 @@ geltile=Sticky floor that greatly slows down everything on top
 
 witchsetbonusbuff=Increases Magic Attack Speed, Mana Regeneration, and Armor as you have less life, with a maximum of 50% / 6 Armor
 
-floralring=Receive §7<healing>§0 Magic Healing every 3 seconds
-gelring=+30% magic healing received
+floralring=Self §9[Magic Healing]§0 with §7<healing>§0 every 3 seconds
+gelring=+30% §9[Magic Healing]§0 received
 heartring=+20 max health
 
-magicalvial=Magic Healing of §7<healing>§0. Point at an injured human to heal them, don't point at anyone to heal yourself. 20-second cooldown
+magicalvial=§9[Magic Healing]§0 of §7<healing>§0. Point at an injured human to heal them, don't point at anyone to heal yourself. 20-second cooldown
 
-swampshield=Only protects attacks in the direction they are received\nMagic-Heal yourself with the §7<healing>§0 of the damage you prevent
+swampshield=Only protects attacks in the direction they are received\nSelf §9[Magic Healing]§0 with the §7<healing>§0 of the damage you prevent
 
 witchstatue=Placing this statue on the surface of a swamp will eliminate witch spawn throughout the island
+
+woodenrod=Self §9[Magic Healing]§0 with §7<healing>§0 every 10 attacks
+
+witchmedallion=Deals 15 Area Damage for every 20 §9[Magic Healing]§0 done
 
 deleteditem=This item has been removed, use this item to recover the materials before it is permanently removed
 

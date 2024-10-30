@@ -12,12 +12,14 @@ import necesse.inventory.item.toolItem.ToolItem;
 import org.jetbrains.annotations.Nullable;
 
 abstract public class AphoreaDamageWhenHealTrinketBuff extends TrinketBuff implements AphoreaMagicHealingFunctions {
+    int healingPerAttack;
     int healingDone;
     boolean showParticles = false;
 
     AphoreaAreaList areaDamage;
 
-    public AphoreaDamageWhenHealTrinketBuff(AphoreaArea... areaDamage) {
+    public AphoreaDamageWhenHealTrinketBuff(int healingPerAttack, AphoreaArea... areaDamage) {
+        this.healingPerAttack = healingPerAttack;
         this.areaDamage = new AphoreaAreaList(areaDamage);
     }
 
@@ -31,16 +33,16 @@ abstract public class AphoreaDamageWhenHealTrinketBuff extends TrinketBuff imple
         super.tickEffect(buff, owner);
         if(showParticles) {
             this.showParticles = false;
-            this.areaDamage.showAllAreaParticles(buff.owner, 1F);
+            this.areaDamage.showAllAreaParticles(buff.owner);
         }
     }
 
-    public void onMagicalHealing(Mob healer, Mob target, int healing, @Nullable ToolItem toolItem, @Nullable InventoryItem item) {
-        this.healingDone += healing;
+    public void onMagicalHealing(Mob healer, Mob target, int healing, int realHealing, @Nullable ToolItem toolItem, @Nullable InventoryItem item) {
+        this.healingDone += realHealing;
 
-        if(this.healingDone > 30) {
-            this.healingDone -= 30;
-            this.areaDamage.executeAreas(healer, 1F);
+        if(this.healingDone > healingPerAttack) {
+            this.healingDone -= healingPerAttack;
+            this.areaDamage.executeAreas(healer);
             this.showParticles = true;
         }
     }

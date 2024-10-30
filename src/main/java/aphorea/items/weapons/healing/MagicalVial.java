@@ -1,7 +1,9 @@
 package aphorea.items.weapons.healing;
 
+import aphorea.other.area.AphoreaArea;
+import aphorea.other.area.AphoreaAreaList;
 import aphorea.other.magichealing.AphoreaMagicHealing;
-import aphorea.other.magichealing.AphoreaMagicHealingToolItem;
+import aphorea.other.itemtype.healing.AphoreaMagicHealingToolItem;
 import necesse.engine.localization.Localization;
 import necesse.engine.network.PacketReader;
 import necesse.engine.sound.SoundEffect;
@@ -18,7 +20,10 @@ import necesse.gfx.camera.GameCamera;
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.PlayerInventorySlot;
-import necesse.inventory.item.*;
+import necesse.inventory.item.DoubleItemStatTip;
+import necesse.inventory.item.ItemCategory;
+import necesse.inventory.item.ItemStatTipList;
+import necesse.inventory.item.LocalMessageDoubleItemStatTip;
 import necesse.level.maps.Level;
 import necesse.level.maps.TilePosition;
 
@@ -26,8 +31,14 @@ import java.awt.*;
 
 public class MagicalVial extends AphoreaMagicHealingToolItem {
 
+    static AphoreaAreaList area = new AphoreaAreaList(
+            new AphoreaArea(400, new Color(255, 0, 0))
+    );
+
+
     Mob actualMob = null;
     int count;
+    int particlesAreaCount = 0;
     int particleCount = 0;
 
     public MagicalVial() {
@@ -55,14 +66,24 @@ public class MagicalVial extends AphoreaMagicHealingToolItem {
 
     @Override
     public boolean onMouseHoverMob(InventoryItem item, GameCamera camera, PlayerMob perspective, Mob mob, boolean isDebug) {
-        if(((mob.isSameTeam(perspective) && mob.isPlayer) || mob.isHuman) && !mob.isHostile && (actualMob == null || actualMob == mob) && perspective.getPositionPoint().distance(mob.x, mob.y) <= 400 && mob.getHealthPercent() != 1) {
+        boolean canHealMob = AphoreaMagicHealing.canHealMob(perspective, mob);
+        boolean inInDistance = perspective.getPositionPoint().distance(mob.x, mob.y) <= 400;
+        if (canHealMob && (actualMob == null || actualMob == mob) && inInDistance) {
             actualMob = mob;
             count = 0;
-        } else if(actualMob != null) {
-            if(count > 20) {
+        } else if (actualMob != null) {
+            if (count > 40) {
                 actualMob = null;
             } else {
                 count++;
+            }
+        }
+        if(canHealMob && !perspective.isItemOnCooldown(this) && !inInDistance) {
+            if (particlesAreaCount >= 3) {
+                particlesAreaCount = 0;
+                area.showAllAreaParticles(perspective, 1, 0.5F, 0, (int) (Math.random() * 200) + 400);
+            } else {
+                particlesAreaCount++;
             }
         }
         return false;
@@ -70,8 +91,8 @@ public class MagicalVial extends AphoreaMagicHealingToolItem {
 
     @Override
     public void onMouseHoverTile(InventoryItem item, GameCamera camera, PlayerMob perspective, int mouseX, int mouseY, TilePosition pos, boolean isDebug) {
-        if(actualMob != null) {
-            if(count > 20) {
+        if (actualMob != null) {
+            if (count > 40) {
                 actualMob = null;
             } else {
                 count++;
@@ -82,8 +103,8 @@ public class MagicalVial extends AphoreaMagicHealingToolItem {
 
     @Override
     public boolean onMouseHoverPickup(InventoryItem item, GameCamera camera, PlayerMob perspective, PickupEntity pickupEntity, boolean isDebug) {
-        if(actualMob != null) {
-            if(count > 20) {
+        if (actualMob != null) {
+            if (count > 40) {
                 actualMob = null;
             } else {
                 count++;
@@ -95,14 +116,14 @@ public class MagicalVial extends AphoreaMagicHealingToolItem {
     @Override
     public void tickHolding(InventoryItem item, PlayerMob player) {
         super.tickHolding(item, player);
-        if(player.isClient() && !player.isItemOnCooldown(this)) {
-            if(actualMob != null && (player.getPositionPoint().distance(actualMob.x, actualMob.y) > 400 || actualMob.getHealthPercent() == 1)) {
+        if (player.isClient() && !player.isItemOnCooldown(this)) {
+            if (actualMob != null && (player.getPositionPoint().distance(actualMob.x, actualMob.y) > 400 || actualMob.getHealthPercent() == 1)) {
                 actualMob = null;
             }
             Mob target = actualMob == null ? player : actualMob;
-            if(target.getHealthPercent() != 1) {
+            if (target.getHealthPercent() != 1) {
                 particleCount++;
-                if(particleCount >= 80) {
+                if (particleCount >= 80) {
                     particleCount = 0;
                 }
                 circleParticle(player, target);
@@ -125,13 +146,14 @@ public class MagicalVial extends AphoreaMagicHealingToolItem {
     @Override
     public String canAttack(Level level, int x, int y, PlayerMob player, InventoryItem item) {
         Mob target = actualMob == null ? player : actualMob;
-        return target.getHealthPercent() == 1 ? Localization.translate("message", "healthalreadyfull") : null;
+
+        return AphoreaMagicHealing.canHealMob(player, target) ? "Can't heal" : null;
     }
 
     @Override
     public InventoryItem onAttack(Level level, int x, int y, PlayerMob player, int attackHeight, InventoryItem item, PlayerInventorySlot slot, int animAttack, int seed, PacketReader contentReader) {
         this.animInverted = actualMob == null;
-        if(level.isServer()) {
+        if (level.isServer()) {
             healMob(player, actualMob == null ? player : actualMob, item);
             actualMob = null;
         }

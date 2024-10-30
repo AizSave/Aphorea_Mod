@@ -1,4 +1,4 @@
-package aphorea.items;
+package aphorea.items.consumable;
 
 import java.awt.Point;
 import java.util.ArrayList;

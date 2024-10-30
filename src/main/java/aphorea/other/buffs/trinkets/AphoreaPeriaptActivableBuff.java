@@ -75,18 +75,20 @@ abstract public class AphoreaPeriaptActivableBuff extends TrinketBuff implements
     }
 
     public void onActiveAbilityStopped(PlayerMob player, ActiveBuff buff) {
-        SoundManager.playSound(GameResources.explosionLight, SoundEffect.effect(player)
-                .volume(0.7f)
-                .pitch(GameRandom.globalRandom.getFloatBetween(1.0f, 1.1f)));
-        for(int i = 0; i < 40; i++) {
-            int angle = (int)(360.0F + GameRandom.globalRandom.nextFloat() * 360.0F);
-            float dx = (float)Math.sin(Math.toRadians(angle)) * (float)GameRandom.globalRandom.getIntBetween(30, 50);
-            float dy = (float)Math.cos(Math.toRadians(angle)) * (float)GameRandom.globalRandom.getIntBetween(30, 50) * 0.8F;
-            player.getLevel().entityManager.addParticle(player, new ParticleTypeSwitcher(Particle.GType.CRITICAL, Particle.GType.IMPORTANT_COSMETIC, Particle.GType.COSMETIC).next()).movesFriction(dx, dy, 0.8F).color(getColor()).heightMoves(10.0F, 30.0F).lifeTime(1000);
-        }
+        if(player.getLevel() != null) {
+            SoundManager.playSound(GameResources.explosionLight, SoundEffect.effect(player)
+                    .volume(0.7f)
+                    .pitch(GameRandom.globalRandom.getFloatBetween(1.0f, 1.1f)));
+            for(int i = 0; i < 40; i++) {
+                int angle = (int)(360.0F + GameRandom.globalRandom.nextFloat() * 360.0F);
+                float dx = (float)Math.sin(Math.toRadians(angle)) * (float)GameRandom.globalRandom.getIntBetween(30, 50);
+                float dy = (float)Math.cos(Math.toRadians(angle)) * (float)GameRandom.globalRandom.getIntBetween(30, 50) * 0.8F;
+                player.getLevel().entityManager.addParticle(player, new ParticleTypeSwitcher(Particle.GType.CRITICAL, Particle.GType.IMPORTANT_COSMETIC, Particle.GType.COSMETIC).next()).movesFriction(dx, dy, 0.8F).color(getColor()).heightMoves(10.0F, 30.0F).lifeTime(1000);
+            }
 
-        if(player.buffManager.hasBuff(activeBuff)) {
-            player.buffManager.removeBuff(activeBuff, false);
+            if(player.buffManager.hasBuff(activeBuff)) {
+                player.buffManager.removeBuff(activeBuff, false);
+            }
         }
     }
 }

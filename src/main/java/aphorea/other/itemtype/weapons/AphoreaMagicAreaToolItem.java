@@ -5,7 +5,7 @@ import aphorea.other.area.AphoreaArea;
 import aphorea.other.area.AphoreaAreaList;
 import aphorea.other.area.AphoreaAreaType;
 import aphorea.other.magichealing.AphoreaMagicHealing;
-import aphorea.other.magichealing.AphoreaMagicHealingToolItem;
+import aphorea.other.itemtype.healing.AphoreaMagicHealingToolItem;
 import necesse.engine.localization.Localization;
 import necesse.engine.network.PacketReader;
 import necesse.engine.registries.DamageTypeRegistry;

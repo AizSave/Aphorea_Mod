@@ -5,48 +5,28 @@ import aphorea.buffs.SetBonus.*;
 import aphorea.buffs.Trinkets.Healing.*;
 import aphorea.buffs.Trinkets.Periapts.*;
 import aphorea.buffs.TrinketsActive.*;
-import aphorea.items.GelSlimeNullifier;
-import aphorea.items.UnstableCore;
-import aphorea.items.armor.Gold.GoldHat;
-import aphorea.items.armor.Rocky.RockyBoots;
-import aphorea.items.armor.Rocky.RockyChestplate;
-import aphorea.items.armor.Rocky.RockyHelmet;
-import aphorea.items.armor.Swamp.SwampBoots;
-import aphorea.items.armor.Swamp.SwampChestplate;
-import aphorea.items.armor.Swamp.SwampHood;
-import aphorea.items.armor.Swamp.SwampMask;
-import aphorea.items.armor.Witch.MagicalBoots;
-import aphorea.items.armor.Witch.MagicalSuit;
-import aphorea.items.armor.Witch.WitchHat;
+import aphorea.items.consumable.*;
+import aphorea.items.armor.Gold.*;
+import aphorea.items.armor.Rocky.*;
+import aphorea.items.armor.Swamp.*;
+import aphorea.items.armor.Witch.*;
 import aphorea.items.backpacks.*;
 import aphorea.items.trinkets.ability_no.*;
 import aphorea.items.trinkets.ability_yes.*;
-import aphorea.items.weapons.healing.HealingStaff;
-import aphorea.items.weapons.healing.MagicalVial;
-import aphorea.items.weapons.magic.MagicalBroom;
-import aphorea.items.weapons.magic.UnstableGelStaff;
+import aphorea.items.weapons.healing.*;
+import aphorea.items.weapons.magic.*;
 import aphorea.items.weapons.melee.*;
-import aphorea.items.weapons.range.Blowgun;
-import aphorea.items.weapons.range.FireSling;
-import aphorea.items.weapons.range.FrozenSling;
-import aphorea.items.weapons.range.Sling;
-import aphorea.items.weapons.throwable.GelBall;
-import aphorea.items.weapons.throwable.GelBallGroup;
-import aphorea.mobs.GelSlime;
-import aphorea.mobs.RockyGelSlime;
-import aphorea.mobs.Witch;
-import aphorea.mobs.bosses.UnstableGelSlime;
-import aphorea.mobs.bosses.UnstableGelSlime_Mini;
-import aphorea.mobs.summon.BabyUnstableGelSlime;
-import aphorea.mobs.summon.UndeadSkeleton;
-import aphorea.objects.WitchStatue;
-import aphorea.other.AphoreaEnchantments;
-import aphorea.other.AphoreaModifiers;
-import aphorea.other.data.AphoreaSwampLevelData;
-import aphorea.other.data.AphoreaWorldData;
-import aphorea.other.itemtype.weapons.AphoreaSaberToolItem;
+import aphorea.items.weapons.range.*;
+import aphorea.items.weapons.throwable.*;
+import aphorea.mobs.*;
+import aphorea.mobs.bosses.*;
+import aphorea.mobs.summon.*;
+import aphorea.objects.*;
+import aphorea.other.*;
+import aphorea.other.data.*;
+import aphorea.other.itemtype.weapons.*;
 import aphorea.projectiles.*;
-import aphorea.tiles.GelTile;
+import aphorea.tiles.*;
 import necesse.engine.modLoader.annotations.ModEntry;
 import necesse.engine.network.server.ServerClient;
 import necesse.engine.registries.*;
@@ -172,11 +152,16 @@ public class AphoreaMod {
                 {"ringofhealth", new RingOfHealth()},
                 {"magicalvial", new MagicalVial()},
 
+                {"witchmedallion", new WitchMedallion(), 100.0F},
+
                 {"swampboots", new SwampBoots()},
                 {"swampchestplate", new SwampChestplate()},
                 {"swampmask", new SwampMask()},
                 {"swamphood", new SwampHood()},
                 {"swampshield", new SwampShield()},
+
+                {"woodenwand", new WoodenWand()},
+                {"woodenrod", new WoodenRod()},
         };
 
         for (Object[] newItem : newItems) {
@@ -217,6 +202,8 @@ public class AphoreaMod {
         ProjectileRegistry.registerProjectile("frozenstoneprojectile", FrozenStoneProjectile.class, "frozenstoneprojectile", "ball_shadow");
 
         ProjectileRegistry.registerProjectile("seedprojectile", SeedProjectile.class, "seedprojectile", "none");
+
+        ProjectileRegistry.registerProjectile("healingtoolitemprojectile", HealingToolItemProjectile.class, "none", "none");
 
         // Projectiles [Mobs]
         ProjectileRegistry.registerProjectile("witchprojectile", WitchProjectile.class, "none", "none");
@@ -274,6 +261,8 @@ public class AphoreaMod {
         BuffRegistry.registerBuff("heartringbuff", new HeartRingBuff());
         BuffRegistry.registerBuff("ringofhealthbuff", new RingOfHealthBuff());
 
+        BuffRegistry.registerBuff("witchmedallionbuff", new WitchMedallionBuff());
+
         // LevelEvent
 
         LevelEventRegistry.registerEvent("saberdashlevelevent", AphoreaSaberToolItem.SaberDashLevelEvent.class);
@@ -320,6 +309,14 @@ public class AphoreaMod {
         // Recipes
 
         addCraftingList("woodstaff", RecipeTechRegistry.WORKSTATION,
+                new AphoreaCraftingRecipe("woodenwand", 1,
+                        new Ingredient("anylog", 1),
+                        new Ingredient("anysapling", 2)
+                ),
+                new AphoreaCraftingRecipe("woodenrod", 1,
+                        new Ingredient("woodenwand", 4),
+                        new Ingredient("wool", 2)
+                ),
                 new AphoreaCraftingRecipe("healingstaff", 1,
                         new Ingredient("woodstaff", 1),
                         new Ingredient("stardust", 5)

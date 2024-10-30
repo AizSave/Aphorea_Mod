@@ -16,7 +16,7 @@ magichealingreceived=<mod>% cura mágica recebida
 magichealingreceivedflat=<mod> cura mágica recebida
 magichealinggrace=<mod>% graça de cura mágica
 
-arearange=<mod>% faixa de área
+arearange=<mod>% alcance da área
 
 [enchantment]
 godly=Divino
@@ -58,7 +58,7 @@ unstablegelstaff=Cajado de Gel Instável
 
 sling=Estilingue
 firesling=Estilingue de Fogo
-frozensling=Estilingue Congelante
+frozensling=Estilingue Congelado
 
 blowgun=Zarabatana
 
@@ -72,7 +72,7 @@ necromancyperiapt=Talismã de Necromancia
 
 rockyboots=Botas Rochosas
 rockychestplate=Peitoral Rochoso
-rockyhelmet=Capacete Rochoso
+rockyhelmet=Elmo Rochoso
 
 goldhat=Chapéu de Ouro
 
@@ -106,68 +106,73 @@ healingstaff=Cajado de Cura
 
 floralring=Anel Floral
 gelring=Anel de Gel
-heartring=Anel do Lar
-ringofhealth=Anel da Saúde
+heartring=Anel de Coração
+ringofhealth=Anel de Saúde
 
-swampboots=Botas do Pântano
-swampchestplate=Peitoral do Pântano
-swampmask=Máscara do Pântano
-swamphood=Capuz do Pântano
-swampshield=Escudo do Pântano
+swampboots=Botas de Pântano
+swampchestplate=Peitoral de Pântano
+swampmask=Máscara de Pântano
+swamphood=Capuz de Pântano
+swampshield=Escudo de Pântano
+
+woodenrod=Vara de Madeira
+woodenwand=Varinha de Madeira
+
+witchmedallion=Medalhão de Bruxa
 
 [itemtooltip]
 line=--------------------
 
-magichealingtip=Cura mágica: <health>
-rangetip=Alcance: <range>
+magichealingtip=Cura mágica: §7<health>
+rangetip=Alcance: §9<range>
 areatip=§aÁrea <number>
 
-magichealinggrace=§aGraça de Cura Mágica:§0 Cura-se com uma % da cura mágica destinada aos aliados
+magichealinggrace=§aGraça de Cura Mágica:§0 Cura a si mesmo com uma % da §9[Cura Mágica]§0 destinada aos aliados
 
-saber=Carga rápida causando x2 de dano após 0.5 segundos, depois descarrega em outros 0.5 segundos
+saber=Carga rápida causando 2x dano após 0,5 segundos, depois descarrega por mais 0,5 segundos
 saber2=Um ataque perfeito lançará um corte aéreo que causa dano base. Um bom também lançará um fraco
-saber3=Segure [input=mouse2] para carregar um dash para cortar inimigos causando dano base
+saber3=Mantenha [input=mouse2] para carregar um dash para cortar inimigos causando dano base
 
 battleaxe=Requer muito tempo de carga
-battleaxe2=Pressione [input=mouse2] para ativar a Fúria do Berserker. Você não pode receber dano ou se mover enquanto ativa a habilidade
+battleaxe2=Pressione [input=mouse2] para ativar o Ataque do Berserker. Não pode sofrer dano ou se mover enquanto ativa a habilidade
 
-sling=Joga pedras com força
-sling2=50% de chance de atordoar o inimigo por 0.5 segundos
+sling=Atira pedras com força
+sling2=50% de chance de atordoar o inimigo por 0,5 segundos
 
 blowgun=Dispara 3 sementes uma por uma
 blowgun2=[input=mouse2] para disparar as sementes ao mesmo tempo
 
-unstablegelsword=[input=mouse2] para fazer o próximo ataque ser carregado. Liberará um corte aéreo e se estiver completamente carregado causará o dobro de dano
+unstablegelsword=[input=mouse2] para tornar o próximo ataque carregado. Liberará um corte aéreo e se totalmente carregado causará dano duplo
 
-fisicareasecondaryattack=[input=mouse2] para que o próximo ataque seja em área
-magicareasecondaryattack=[input=mouse2] para realizar um ataque em área gastando <mana> de Mana
+fisicareasecondaryattack=[input=mouse2] para tornar o próximo ataque um ataque de área
+magicareasecondaryattack=[input=mouse2] para realizar um ataque de área consumindo <mana> Mana
 
-stikybuff1=Deixa o inimigo §9Pegajoso§0 por 1 segundo
-stikybuff2=Deixa o inimigo §9Pegajoso§0 por 2 segundos
-stikybuff3=Deixa o inimigo §9Pegajoso§0 por 3 segundos
+stikybuff1=Torna o inimigo §9Pegajoso§0 por 1 segundo
+stikybuff2=Torna o inimigo §9Pegajoso§0 por 2 segundos
+stikybuff3=Torna o inimigo §9Pegajoso§0 por 3 segundos
 
-gelball=Arremessa uma bola de gel
+gelball=Joga uma bola de gel
 unstablecore=§bLibera uma aura instável...§0 Só pode ser usado durante o dia
 
-rockyperiapt=+5 de Armadura, mas -5% de Velocidade de Movimento
-rockyperiapt2=Pressione [input=trinketability] para ganhar 10 de Armadura por 10 segundos\nVocê não pode receber dano ou se mover enquanto ativa a habilidade
+rockyperiapt=+5 Armadura, mas -5% Velocidade de Movimento
+rockyperiapt2=Pressione [input=trinketability] para ganhar 10 de Armadura por 10 segundos\nVocê não pode sofrer dano ou se mover enquanto ativa a habilidade
 
-unstableperiapt=Chama dois §bSlimes Bebês de Gel Instável§0 que te protegerão. Esses slimes §9causam 8 de Dano de Invocador§0
-unstableperiapt2=Te deixa imune ao debuff §9Pegajoso§0
+unstableperiapt=Chama duas §bGel Slimes Bebês Instáveis§0 que irão protegê-lo. Estas slimes §9causam 8 de Dano de Invocador§0
+unstableperiapt2=Torna-se imune ao debuff §9Pegajoso§0
 
-bloodyperiapt=Pressione [input=trinketability] para ganhar +50% de Velocidade, +30% de Velocidade de Ataque e\nas armas §6Disparo de Sangue§0 e §6Rajada de Sangue§0 te curarão 5% do dano que você causar com elas.\nVocê não pode receber dano ou se mover enquanto ativa a habilidade
+bloodyperiapt=Pressione [input=trinketability] para ganhar +50% de Velocidade, +30% de Velocidade de Ataque, e\nas armas §6Disparo de Sangue§0 e §6Rajada de Sangue§0 irão curá-lo por 5% do dano que causar com elas.\nVocê não pode sofrer dano ou se mover enquanto ativa a habilidade
 
-demonicperiapt=Pressione [input=trinketability] para ganhar +50% de Velocidade, +30% de Velocidade de Ataque e\nas armas mágicas te curarão 5% do dano que você causar com elas por 10 segundos.\nVocê não pode receber dano ou se mover enquanto ativa a habilidade
+demonicperiapt=Pressione [input=trinketability] para ganhar +50% de Velocidade, +30% de Velocidade de Ataque, e\nas armas mágicas irão curá-lo por 5% do dano que causar com elas por 10 segundos.\nVocê não pode sofrer dano ou se mover enquanto ativa a habilidade
 
-abysmalperiapt=As armas mágicas te curarão 5% do dano que você causar com elas
+abysmalperiapt=Armas mágicas irão curá-lo por 5% do dano que causar com elas
 
-necromancyperiapt=Cada vez que você ou um dos seus invocados mata um mob hostil, você invoca um §bEsqueleto Morto-Vivo§0\n que §9causa 20 de Dano de Invocador§0 por§9 10 segundos§0 com um máximo de§9 3 de cada vez§0
+necromancyperiapt=Cada vez que você ou um dos seus invocados mata um mob hostil você invoca um §bEsqueleto Morto-Vivo§0\n que §9causa 20 de Dano de Invocador§0 por§9 10 segundos§0 com um máximo de§9 3 ao mesmo tempo§0
 
-frozenperiapt=Armas corpo a corpo e de longo alcance §9Congelarão§0 por 3 segundos. Se o alvo já estiver congelado, aumenta em §9+20%§0 o Dano base do ataque
-frozenperiapt2=Pressione [input=trinketability] para ganhar +50% de Velocidade, +30% de Velocidade de Ataque e\nfaça isso funcionar com todo o dano por 10 segundos.\nVocê não pode receber dano ou se mover enquanto ativa a habilidade
-frozenperiapt3=Te deixa imune aos debuffs §9Congelar§0 e §9Congelamento Lento§0
+frozenperiapt=Armas Corpo a Corpo e de Longo Alcance irão §6Congelar§0 por 3 segundos. Se o alvo já estiver congelado, aumenta o dano base do ataque em §9+20%§0
+frozenperiapt2=Pressione [input=trinketability] para ganhar +50% de Velocidade, +30% de Velocidade de Ataque e\nfazer com que isso funcione com todo o dano por 10 segundos.\nVocê não pode sofrer dano ou se mover enquanto ativa a habilidade
+frozenperiapt3=Torna-se imune aos debuffs §9Congelar§0 e §9Lentidão de Gelo§0
 
-goldhatsetbonusbuff=+60% de Velocidade de Ataque à Distância enquanto você não se mover
+goldhatsetbonusbuff=+60% de Velocidade de Ataque a Longo Alcance enquanto você não estiver se movendo
 
 firesling=Queima os inimigos
 frozensling=Congela os inimigos
@@ -177,23 +182,27 @@ backpack2=§6Não tenha mochilas com itens no inventário quando for criar uma m
 backpackslots=Capacidade de <slots> itens
 stored=Itens armazenados: <items>
 
-gelslimenullifier=Eles vão parar de te incomodar com um simples clique!
+gelslimenullifier=Eles vão parar de incomodá-lo com um simples clique!
 
-geltile=Solo pegajoso que desacelera muito tudo o que está em cima
+geltile=Chão pegajoso que desacelera bastante tudo o que estiver em cima
 
-witchsetbonusbuff=Aumenta a Velocidade de Ataque Mágico, Regeneração de Mana e Armadura conforme você tem menos vida, com um máximo de 50% / 6 de Armadura
+witchsetbonusbuff=Aumenta a Velocidade de Ataque Mágico, Regeneração de Mana e Armadura conforme você tem menos vida, com um máximo de 50% / 6 Armor
 
-floralring=Receba §7<healing>§0 de Cura Mágica a cada 3 segundos
-gelring=+30% de cura mágica recebida
-heartring=+20 de vida máxima
+floralring=Auto §9[Cura Mágica]§0 com §7<healing>§0 a cada 3 segundos
+gelring=+30% §9[Cura Mágica]§0 recebida
+heartring=+20 de saúde máxima
 
-magicalvial=Cura Mágica de §7<healing>§0. Aponte para um humano ferido para curá-lo, não aponte para ninguém para se curar. Tempo de recarga de 20 segundos
+magicalvial=§9[Cura Mágica]§0 de §7<healing>§0. Aponte para um humano ferido para curá-lo, ou não aponte para ninguém para se curar. Tempo de recarga de 20 segundos
 
-swampshield=Só protege contra ataques na direção que são recebidos\nCure-se magicamente com §7<healing>§0 do dano que você prevenir
+swampshield=Protege apenas contra ataques na direção em que são recebidos\nAuto §9[Cura Mágica]§0 com o §7<healing>§0 do dano que você impede
 
 witchstatue=Colocar esta estátua na superfície de um pântano eliminará a aparição de bruxas em toda a ilha
 
-deleteditem=Este item foi removido, use este item para recuperar os materiais antes que seja removido permanentemente
+woodenrod=Auto §9[Cura Mágica]§0 com §7<healing>§0 a cada 10 ataques
+
+witchmedallion=Causa 15 de Dano em área a cada 20 de §9[Cura Mágica]§0 realizada
+
+deleteditem=Este item foi removido, use-o para recuperar os materiais antes de ser permanentemente eliminado
 
 [mob]
 gelslime=Slime de Gel
@@ -201,9 +210,9 @@ rockygelslime=Slime de Gel Rochoso
 unstablegelslime=Slime de Gel Instável
 unstablegelslime_mini=Mini Slime de Gel Instável
 
-witch=Feiticeira
+witch=Bruxa
 
-babyunstablegelslime=Slime Bebê de Gel Instável
+babyunstablegelslime=Bebê Slime de Gel Instável
 undeadskeleton=Esqueleto Morto-Vivo
 
 [buff]
@@ -219,21 +228,21 @@ periaptcooldownbuff=Habilidade de Talismã em Recarga
 
 periaptactivebuff=Habilidade de Talismã Ativa
 
-saberdashcooldown=Recarga do Dash
+saberdashcooldown=Recarga de Dash
 
 [message]
-unstablegelslime_enfadando=§6Slime de Gel Instável está ficando irritado... <anger>/10
-unstablegelslime_enfadado=§6Slime de Gel Instável ficou irritado! <anger>/10
+unstablegelslime_enfadando=§6Slime de Gel Instável está ficando bravo... <anger>/10
+unstablegelslime_enfadado=§6Slime de Gel Instável ficou bravo! <anger>/10
 unstablegelslime_night=§6Slime de Gel Instável§0 desapareceu ao cair da noite!
 
 gelslimesnulled=Slimes de Gel anulados neste mundo. Eles não aparecerão mais
-gelslimesunnulled=Slimes de Gel admitidos neste mundo. Eles voltaram!
+gelslimesunnulled=Slimes de Gel permitidos neste mundo. Eles agora aparecerão
 
 witchesnulled=Bruxas anuladas em (<x>, <y>)
-witchesunnulled=Bruxas admitidas em (<x>, <y>)
+witchesunnulled=Bruxas permitidas em (<x>, <y>)
 
-needfreeslots=Você precisa de <slots> slots livres no inventário para usar isso
+needfreeslots=Você precisa de <slots> espaços livres no inventário para usar isto
 
-healthalreadyfull=A saúde já está cheia
+healthalreadyfull=Saúde já está completa
 
-cantuseatnight=Você não pode usar isso à noite
+cantuseatnight=Não pode ser usado à noite
