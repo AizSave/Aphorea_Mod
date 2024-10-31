@@ -27,7 +27,7 @@ public class WoodenWand extends AphoreaHealingProjectileToolItem {
     }
 
     public Projectile getProjectile(Level level, int x, int y, PlayerMob player, InventoryItem item) {
-        return new HealingToolItemProjectile(new Color(0, 214, 0), this, item, level, player,
+        return new HealingToolItemProjectile(new Color(0, 214, 0), this.getHealing(item), this, item, level, player,
                 player.x, player.y,
                 x, y,
                 getProjectileVelocity(item, player),

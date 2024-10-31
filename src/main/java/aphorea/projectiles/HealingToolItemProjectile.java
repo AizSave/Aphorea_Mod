@@ -2,17 +2,12 @@ package aphorea.projectiles;
 
 import aphorea.other.itemtype.healing.AphoreaHealingProjectileToolItem;
 import aphorea.other.magichealing.AphoreaMagicHealing;
+import aphorea.other.utils.AphoreaDistances;
 import necesse.engine.gameLoop.tickManager.TickManager;
-import necesse.engine.network.NetworkClient;
 import necesse.engine.network.server.ServerClient;
-import necesse.engine.util.ComputedObjectValue;
-import necesse.engine.util.ComputedValue;
 import necesse.engine.util.GameUtils;
-import necesse.engine.util.gameAreaSearch.GameAreaStream;
-import necesse.entity.Entity;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.PlayerMob;
-import necesse.entity.projectile.Projectile;
 import necesse.entity.projectile.followingProjectile.FollowingProjectile;
 import necesse.entity.trails.Trail;
 import necesse.gfx.camera.GameCamera;
@@ -37,6 +32,7 @@ public class HealingToolItemProjectile extends FollowingProjectile {
     Color color = new Color(255, 255, 255);
     AphoreaHealingProjectileToolItem toolItem;
     InventoryItem item;
+    int healing;
 
     @Override
     public boolean canHit(Mob mob) {
@@ -46,8 +42,9 @@ public class HealingToolItemProjectile extends FollowingProjectile {
     public HealingToolItemProjectile() {
     }
 
-    public HealingToolItemProjectile(Color color, AphoreaHealingProjectileToolItem toolItem, InventoryItem item, Level level, Mob owner, float x, float y, float targetX, float targetY, float speed, int distance, float turnSpeed) {
+    public HealingToolItemProjectile(Color color, int healing, AphoreaHealingProjectileToolItem toolItem, InventoryItem item, Level level, Mob owner, float x, float y, float targetX, float targetY, float speed, int distance, float turnSpeed) {
         this.color = color;
+        this.healing = healing;
         this.toolItem = toolItem;
         this.item = item;
 
@@ -75,17 +72,9 @@ public class HealingToolItemProjectile extends FollowingProjectile {
     public void updateTarget() {
         super.updateTarget();
         if (traveledDistance > 20) {
-            findTarget(
-                    this::canHit,
-                    200, 450
-            );
+            this.target = null;
+            target = AphoreaDistances.findClosestMob(this.getOwner(), m -> AphoreaMagicHealing.canHealMob(this.getOwner(), m) && canHit(m), this.distance / 2);
         }
-    }
-
-    public void findTarget(Predicate<Mob> filter, float frontOffset, float maxDistance) {
-        this.target = null;
-        target = this.getLevel().entityManager.streamAreaMobsAndPlayers(this.getOwner().x, this.getOwner().y, (int)maxDistance).filter(filter)
-                .findBestDistance(0, Comparator.comparing((mob1) -> this.getOwner().getDistance(mob1))).orElse(null);
     }
 
     @Override
@@ -122,7 +111,11 @@ public class HealingToolItemProjectile extends FollowingProjectile {
     @Override
     public void doHitLogic(Mob mob, LevelObjectHit object, float x, float y) {
         if(isServer() && this.getOwner() != null && mob != null) {
-            toolItem.healMob((PlayerMob) this.getOwner(), mob, item);
+            if(toolItem != null) {
+                toolItem.healMob((PlayerMob) this.getOwner(), mob, item);
+            } else if(healing != 0) {
+                AphoreaMagicHealing.healMob(this.getOwner(), mob, healing);
+            }
         }
     }
 

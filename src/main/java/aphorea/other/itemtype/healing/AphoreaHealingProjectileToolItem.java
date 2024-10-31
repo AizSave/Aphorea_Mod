@@ -56,9 +56,12 @@ abstract public class AphoreaHealingProjectileToolItem extends AphoreaMagicHeali
     }
 
     public InventoryItem onAttack(Level level, int x, int y, PlayerMob player, int attackHeight, InventoryItem item, PlayerInventorySlot slot, int animAttack, int seed, PacketReader contentReader) {
+        onItemUsed(player, item);
+
         Projectile projectile = this.getProjectile(level, x, y, player, item);
         projectile.getUniqueID(new GameRandom(seed));
         level.entityManager.projectiles.addHidden(projectile);
+
         if (this.moveDist != 0) {
             projectile.moveDist(this.moveDist);
         }

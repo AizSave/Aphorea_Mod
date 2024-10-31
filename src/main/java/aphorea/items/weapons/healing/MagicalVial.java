@@ -153,6 +153,7 @@ public class MagicalVial extends AphoreaMagicHealingToolItem {
     @Override
     public InventoryItem onAttack(Level level, int x, int y, PlayerMob player, int attackHeight, InventoryItem item, PlayerInventorySlot slot, int animAttack, int seed, PacketReader contentReader) {
         this.animInverted = actualMob == null;
+        onItemUsed(player, item);
         if (level.isServer()) {
             healMob(player, actualMob == null ? player : actualMob, item);
             actualMob = null;

@@ -8,4 +8,6 @@ import org.jetbrains.annotations.Nullable;
 public interface AphoreaMagicHealingFunctions {
     default void onMagicalHealing(Mob healer, Mob target, int healing, int realHealing, @Nullable ToolItem toolItem, @Nullable InventoryItem item) {
     }
+    default void onMagicalHealingItemUsed(Mob mob, ToolItem toolItem, InventoryItem item) {
+    }
 }

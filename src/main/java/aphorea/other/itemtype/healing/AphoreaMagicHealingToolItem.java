@@ -2,17 +2,21 @@ package aphorea.other.itemtype.healing;
 
 import aphorea.other.AphoreaEnchantments;
 import aphorea.other.magichealing.AphoreaMagicHealing;
+import aphorea.other.magichealing.AphoreaMagicHealingFunctions;
 import aphorea.other.vanillaitemtypes.AphoreaToolItem;
 import necesse.engine.localization.Localization;
+import necesse.engine.network.PacketReader;
 import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.PlayerMob;
 import necesse.inventory.InventoryItem;
+import necesse.inventory.PlayerInventorySlot;
 import necesse.inventory.enchants.Enchantable;
 import necesse.inventory.enchants.ItemEnchantment;
 import necesse.inventory.enchants.ToolItemEnchantment;
 import necesse.inventory.item.ItemCategory;
 import necesse.inventory.item.upgradeUtils.IntUpgradeValue;
+import necesse.level.maps.Level;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Set;
@@ -41,6 +45,12 @@ abstract public class AphoreaMagicHealingToolItem extends AphoreaToolItem {
         healMob(player, target, magicHealing.getValue(item.item.getUpgradeTier(item)), item);
     }
 
+    @Override
+    public InventoryItem onAttack(Level level, int x, int y, PlayerMob player, int attackHeight, InventoryItem item, PlayerInventorySlot slot, int animAttack, int seed, PacketReader contentReader) {
+        onItemUsed(player, item);
+        return super.onAttack(level, x, y, player, attackHeight, item, slot, animAttack, seed, contentReader);
+    }
+
     public ToolItemEnchantment getRandomEnchantment(GameRandom random, InventoryItem item) {
         return Enchantable.getRandomEnchantment(random, this.getValidEnchantmentIDs(item), this.getEnchantmentID(item), ToolItemEnchantment.class);
     }
@@ -56,5 +66,14 @@ abstract public class AphoreaMagicHealingToolItem extends AphoreaToolItem {
 
     public String getTranslatedTypeName() {
         return Localization.translate("item", "healingtool");
+    }
+
+    public void onItemUsed(Mob mob, InventoryItem item) {
+        mob.buffManager.getArrayBuffs().stream().filter(buff -> buff.buff instanceof AphoreaMagicHealingFunctions).forEach(buff -> ((AphoreaMagicHealingFunctions) buff.buff).onMagicalHealingItemUsed(mob, this, item));
+
+        if(this instanceof AphoreaMagicHealingFunctions) {
+            ((AphoreaMagicHealingFunctions) this).onMagicalHealingItemUsed(mob, this, item);
+        }
+
     }
 }

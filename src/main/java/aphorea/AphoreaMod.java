@@ -162,6 +162,9 @@ public class AphoreaMod {
 
                 {"woodenwand", new WoodenWand()},
                 {"woodenrod", new WoodenRod()},
+
+
+                {"testitem", new TestItem()},
         };
 
         for (Object[] newItem : newItems) {
@@ -204,6 +207,7 @@ public class AphoreaMod {
         ProjectileRegistry.registerProjectile("seedprojectile", SeedProjectile.class, "seedprojectile", "none");
 
         ProjectileRegistry.registerProjectile("healingtoolitemprojectile", HealingToolItemProjectile.class, "none", "none");
+        ProjectileRegistry.registerProjectile("damageprojectile", DamageProjectile.class, "none", "none");
 
         // Projectiles [Mobs]
         ProjectileRegistry.registerProjectile("witchprojectile", WitchProjectile.class, "none", "none");
@@ -262,6 +266,8 @@ public class AphoreaMod {
         BuffRegistry.registerBuff("ringofhealthbuff", new RingOfHealthBuff());
 
         BuffRegistry.registerBuff("witchmedallionbuff", new WitchMedallionBuff());
+
+        BuffRegistry.registerBuff("testitembuff", new TestItemBuff());
 
         // LevelEvent
 

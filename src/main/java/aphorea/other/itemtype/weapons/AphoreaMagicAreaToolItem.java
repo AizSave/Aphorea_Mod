@@ -43,6 +43,11 @@ public class AphoreaMagicAreaToolItem extends AphoreaMagicHealingToolItem {
 
     @Override
     public InventoryItem onAttack(Level level, int x, int y, PlayerMob player, int attackHeight, InventoryItem item, PlayerInventorySlot slot, int animAttack, int seed, PacketReader contentReader) {
+
+        if(areaList.someType(AphoreaAreaType.HEALING)) {
+            onItemUsed(player, item);
+        }
+
         this.consumeMana(player, item);
 
         float rangeModifier = 1 + this.getEnchantment(item).getModifier(AphoreaModifiers.TOOL_AREA_RANGE);

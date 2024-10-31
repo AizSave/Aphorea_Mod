@@ -66,7 +66,7 @@ public class AphoreaAreaList {
             attacker.getLevel().entityManager.streamAreaMobsAndPlayers(attacker.x, attacker.y, range).forEach(
                     (Mob target) -> {
                         for (AphoreaArea area : this.areas) {
-                            area.execute(attacker, target, range, toolItem, magicHealingToolItem, attackDamage, item, event);
+                            area.execute(attacker, target, rangeModifier, toolItem, magicHealingToolItem, attackDamage, item, event);
                         }
                     }
             );
@@ -95,5 +95,9 @@ public class AphoreaAreaList {
                     }
             );
         }
+    }
+
+    public boolean someType(AphoreaAreaType type) {
+        return Arrays.stream(areas).anyMatch(a -> a.areaTypes.contains(type));
     }
 }
