@@ -29,7 +29,7 @@ public class SwampShield extends AphoreaShieldTrinketItem {
             if (attackOwner != null && !hasOwnerInChain) {
                 float finalDamageMultiplier = this.getShieldFinalDamageMultiplier(item, mob);
                 if (finalDamageMultiplier > 0.0F) {
-                    float damage = (hitEvent.damage / finalDamageMultiplier) * 0.15F;
+                    float damage = (hitEvent.damage / finalDamageMultiplier) * 0.3F;
                     AphoreaMagicHealing.healMob(mob, mob, (int) damage);
                 }
             }
