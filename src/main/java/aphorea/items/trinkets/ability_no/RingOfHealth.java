@@ -18,7 +18,7 @@ public class RingOfHealth extends AphoreaTrinketItem {
 
     public ListGameTooltips getPreEnchantmentTooltips(InventoryItem item, PlayerMob perspective, GameBlackboard blackboard) {
         ListGameTooltips tooltips = super.getPreEnchantmentTooltips(item, perspective, blackboard);
-        tooltips.add(Localization.translate("itemtooltip", "floralring", "healing", AphoreaMagicHealing.getMagicHealing(perspective, perspective, 1)));
+        tooltips.add(Localization.translate("itemtooltip", "floralring", "healing", AphoreaMagicHealing.getMagicHealing(perspective, perspective, 3)));
         tooltips.add(Localization.translate("itemtooltip", "gelring"));
         tooltips.add(Localization.translate("itemtooltip", "heartring"));
         return tooltips;

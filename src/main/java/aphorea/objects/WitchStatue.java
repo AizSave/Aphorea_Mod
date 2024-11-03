@@ -7,6 +7,7 @@ import necesse.engine.network.packet.PacketChatMessage;
 import necesse.engine.network.server.ServerClient;
 import necesse.engine.util.GameBlackboard;
 import necesse.engine.util.GameUtils;
+import necesse.entity.mobs.Attacker;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.objectEntity.ObjectEntity;
 import necesse.entity.pickup.ItemPickupEntity;
@@ -87,7 +88,7 @@ public class WitchStatue extends GameObject {
     public static AphoreaSwampLevelData aphoreaSwampLevelData = new AphoreaSwampLevelData();
 
     @Override
-    public void onDestroyed(Level level, int x, int y, ServerClient client, ArrayList<ItemPickupEntity> itemsDropped) {
+    public void onDestroyed(Level level, int layerID, int x, int y, Attacker attacker, ServerClient client, ArrayList<ItemPickupEntity> itemsDropped) {
         if(client != null) {
             AphoreaSwampLevelData currentData = aphoreaSwampLevelData.getData(client.getLevel());
             if(currentData.witchesnulled) {
@@ -98,7 +99,7 @@ public class WitchStatue extends GameObject {
 
             }
         }
-        super.onDestroyed(level, x, y, client, itemsDropped);
+        super.onDestroyed(level, layerID, x, y, attacker, client, itemsDropped);
     }
 
     public static class WitchStatueItem extends ObjectItem {
@@ -109,7 +110,7 @@ public class WitchStatue extends GameObject {
         }
 
         @Override
-        public boolean onPlaceObject(GameObject object, Level level, int tileX, int tileY, int rotation, ServerClient client, InventoryItem item) {
+        public boolean onPlaceObject(GameObject object, Level level, int layerID, int tileX, int tileY, int rotation, ServerClient client, InventoryItem item) {
             AphoreaSwampLevelData currentData = aphoreaSwampLevelData.getData(client.getLevel());
             if(!currentData.witchesnulled) {
                 currentData.witchesnulled = true;
@@ -117,7 +118,7 @@ public class WitchStatue extends GameObject {
                 PacketChatMessage message = new PacketChatMessage(Localization.translate("message", "witchesnulled", "x", level.getIslandX(), "y", level.getIslandY()));
                 GameUtils.streamServerClients(level).forEach((j) -> j.sendPacket(message));
             }
-            return super.onPlaceObject(object, level, tileX, tileY, rotation, client, item);
+            return super.onPlaceObject(object, level, layerID, tileX, tileY, rotation, client, item);
         }
 
         @Override

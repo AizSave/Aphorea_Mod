@@ -24,7 +24,7 @@ public class RingOfHealthBuff extends TrinketBuff {
     public void serverTick(ActiveBuff buff) {
         super.serverTick(buff);
         if(count == 0) {
-            AphoreaMagicHealing.healMob(buff.owner, buff.owner, 1);
+            AphoreaMagicHealing.healMob(buff.owner, buff.owner, 3);
             count = 60;
         }
         count--;

@@ -26,6 +26,9 @@ import necesse.inventory.item.toolItem.projectileToolItem.gunProjectileToolItem.
 import necesse.level.maps.Level;
 
 import java.awt.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Iterator;
 
 abstract public class AphoreaBlowgunToolItem extends GunProjectileToolItem implements ItemInteractAction {
 
@@ -37,7 +40,12 @@ abstract public class AphoreaBlowgunToolItem extends GunProjectileToolItem imple
 
     abstract public Projectile getProjectile(Level level, float x, float y, PlayerMob player, InventoryItem item);
 
-    public static String[] ammoItems = {"riceseed", "eggplantseed", "pumpkinseed", "onionseed", "iceblossomseed", "strawberryseed", "sunflowerseed", "cabbageseed", "firemoneseed", "cornseed", "potatoseed", "chilipepperseed", "sugarbeetseed", "tomatoseed", "wheatseed", "carrotseed", "grassseed", "swampgrassseed"};
+    public static HashSet<String> ammoItems = new HashSet<>(Arrays.asList(
+            "riceseed", "eggplantseed", "pumpkinseed", "onionseed", "iceblossomseed",
+            "strawberryseed", "sunflowerseed", "cabbageseed", "firemoneseed", "cornseed",
+            "potatoseed", "chilipepperseed", "sugarbeetseed", "tomatoseed", "wheatseed",
+            "carrotseed", "grassseed", "swampgrassseed", "plainsgrassseed"
+    ));
 
     public AphoreaBlowgunToolItem(int enchantCost, String projectileID, int cadence) {
         super(ammoItems, enchantCost);
@@ -60,10 +68,11 @@ abstract public class AphoreaBlowgunToolItem extends GunProjectileToolItem imple
         if (player == null) {
             return null;
         } else {
-            Item firstAvaliable = null;
-            String[] var3 = this.ammoTypes;
 
-            for (String s : var3) {
+            Item firstAvaliable = null;
+
+            for (Iterator var3 = this.ammoTypes.iterator(); var3.hasNext();) {
+                String s = (String)var3.next();
                 if (player.getInv().main.getAmount(player.getLevel(), player, ItemRegistry.getItem(s), "ammoseed") > 0) {
                     firstAvaliable = ItemRegistry.getItem(s);
                 }
