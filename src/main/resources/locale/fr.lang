@@ -38,6 +38,7 @@ dimmed=Affaiblissement
 
 [itemcategory]
 healing=Soin
+healingtools=Soin
 
 [itemtype]
 battleaxe=Hache de Guerre

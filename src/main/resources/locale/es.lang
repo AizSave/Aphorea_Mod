@@ -38,6 +38,7 @@ dimmed=Mitigado
 
 [itemcategory]
 healing=Curativo
+healingtools=Curativo
 
 [itemtype]
 battleaxe=Hacha de Guerra

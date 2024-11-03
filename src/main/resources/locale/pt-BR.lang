@@ -38,6 +38,7 @@ dimmed=Esvaziado
 
 [itemcategory]
 healing=Cura
+healingtools=Cura
 
 [itemtype]
 battleaxe=Machado de Batalha

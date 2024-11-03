@@ -38,6 +38,7 @@ public class AphoreaMagicAreaToolItem extends AphoreaMagicHealingToolItem {
         if(isMagicWeapon) {
             this.setItemCategory("equipment", "weapons", "magicweapons");
             this.setItemCategory(ItemCategory.equipmentManager, "weapons", "magicweapons");
+            this.setItemCategory(ItemCategory.craftingManager, "equipment", "weapons", "magicweapons");
         }
     }
 

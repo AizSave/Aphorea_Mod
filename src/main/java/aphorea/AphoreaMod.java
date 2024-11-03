@@ -11,6 +11,7 @@ import aphorea.items.armor.Rocky.*;
 import aphorea.items.armor.Swamp.*;
 import aphorea.items.armor.Witch.*;
 import aphorea.items.backpacks.*;
+import aphorea.items.misc.GelSlimeNullifier;
 import aphorea.items.trinkets.ability_no.*;
 import aphorea.items.trinkets.ability_yes.*;
 import aphorea.items.weapons.healing.*;
@@ -68,8 +69,11 @@ public class AphoreaMod {
         System.out.println("AphoreaMod starting...");
 
         ItemCategory.createCategory("A-A-E", "equipment", "tools", "healing");
+
         ItemCategory.equipmentManager.createCategory("C-A-A", "tools");
         ItemCategory.equipmentManager.createCategory("C-B-A", "tools", "healingtools");
+
+        ItemCategory.craftingManager.createCategory("D-B-F", "equipment", "tools", "healingtools");
 
         // Data
         WorldDataRegistry.registerWorldData("aphoreaworlddata", AphoreaWorldData.class);
@@ -314,62 +318,41 @@ public class AphoreaMod {
     public void postInit() {
         // Recipes
 
-        addCraftingList("woodstaff", RecipeTechRegistry.WORKSTATION,
-                new AphoreaCraftingRecipe("woodenwand", 1,
-                        new Ingredient("anylog", 1),
-                        new Ingredient("anysapling", 2)
+        // WORSKTATION
+
+        addCraftingList("stonepathtile", RecipeTechRegistry.WORKSTATION,
+                new AphoreaCraftingRecipe("geltile", 1,
+                        new Ingredient("stonepathtile", 1),
+                        new Ingredient("gelball", 3)
+                )
+        );
+
+        addCraftingList("regenpendant", RecipeTechRegistry.WORKSTATION,
+                new AphoreaCraftingRecipe("frozenperiapt", 1,
+                        new Ingredient("frostshard", 10),
+                        new Ingredient("goldbar", 5)
                 ),
-                new AphoreaCraftingRecipe("woodenrod", 1,
-                        new Ingredient("woodenwand", 4),
-                        new Ingredient("wool", 2)
-                ),
-                new AphoreaCraftingRecipe("healingstaff", 1,
-                        new Ingredient("woodstaff", 1),
-                        new Ingredient("stardust", 5)
-                ),
-                new AphoreaCraftingRecipe("gelsword", 1,
-                        new Ingredient("gelball", 15)
-                ),
-                new AphoreaCraftingRecipe("gelballgroup", 1,
-                        new Ingredient("gelball", 12),
-                        new Ingredient("mysteriousportal", 1)
-                ),
+                new AphoreaCraftingRecipe("rockyperiapt", 1,
+                        new Ingredient("stone", 10),
+                        new Ingredient("rockygel", 4)
+                )
+        );
+
+        addCraftingList("hardenedshield", RecipeTechRegistry.WORKSTATION,
+                new AphoreaCraftingRecipe("swampshield", 1,
+                        new Ingredient("willowlog", 10),
+                        new Ingredient("swampsludge", 3),
+                        new Ingredient("stardust", 2)
+                )
+        );
+
+
+        addCraftingList(null, RecipeTechRegistry.WORKSTATION,
                 new AphoreaCraftingRecipe("gelslimenullifier", 1,
                         new Ingredient("gelball", 20),
                         new Ingredient("unstablegel", 5)
                 ),
-                new AphoreaCraftingRecipe("unstablegelsword", 1,
-                        new Ingredient("gelsword", 1),
-                        new Ingredient("unstablegel", 10)
-                ),
-                new AphoreaCraftingRecipe("unstablegelstaff", 1,
-                        new Ingredient("gelballgroup", 1),
-                        new Ingredient("unstablegel", 15)
-                ),
 
-                new AphoreaCraftingRecipe("sling", 1,
-                        new Ingredient("leather", 4),
-                        new Ingredient("rope", 2)
-                ),
-                new AphoreaCraftingRecipe("sling", 1,
-                        new Ingredient("leather", 4),
-                        new Ingredient("rope", 2)
-                ),
-                new AphoreaCraftingRecipe("firesling", 1,
-                        new Ingredient("sling", 1),
-                        new Ingredient("torch", 60)
-                ),
-                new AphoreaCraftingRecipe("frozensling", 1,
-                        new Ingredient("sling", 1),
-                        new Ingredient("frostshard", 10)
-                ),
-
-                new AphoreaCraftingRecipe("blowgun", 1,
-                        new Ingredient("anysapling", 10)
-                )
-        );
-
-        addCraftingList("trackerboot", RecipeTechRegistry.WORKSTATION,
                 new AphoreaCraftingRecipe("basicbackpack", 1,
                         new Ingredient("leather", 6),
                         new Ingredient("ironbar", 1),
@@ -397,64 +380,85 @@ public class AphoreaMod {
                 )
         );
 
-        addCraftingList("clothboots", RecipeTechRegistry.WORKSTATION,
-                new AphoreaCraftingRecipe("magicalsuit", 1,
-                        new Ingredient("clothrobe", 1),
-                        new Ingredient("stardust", 4)
+        // DEMONIC WORSKTATION
+
+        addCraftingList("chainshirt", RecipeTechRegistry.DEMONIC_WORKSTATION,
+                new AphoreaCraftingRecipe("bloodyperiapt", 1,
+                        new Ingredient("voidshard", 10),
+                        new Ingredient("batwing", 10)
                 ),
-                new AphoreaCraftingRecipe("magicalboots", 1,
-                        new Ingredient("clothboots", 1),
-                        new Ingredient("stardust", 3)
+                new AphoreaCraftingRecipe("demonicperiapt", 1,
+                        new Ingredient("bloodyperiapt", 1),
+                        new Ingredient("demonicbar", 5)
                 ),
-                new AphoreaCraftingRecipe("swampmask", 1,
-                        new Ingredient("willowlog", 10),
-                        new Ingredient("stardust", 3)
+                new AphoreaCraftingRecipe("heartring", 1,
+                        new Ingredient("greaterhealthpotion", 1),
+                        new Ingredient("firemone", 10),
+                        new Ingredient("voidshard", 6)
                 ),
-                new AphoreaCraftingRecipe("swamphood", 1,
-                        new Ingredient("swampsludge", 5),
-                        new Ingredient("stardust", 3)
+                new AphoreaCraftingRecipe("ringofhealth", 1,
+                        new Ingredient("floralring", 1),
+                        new Ingredient("gelring", 1),
+                        new Ingredient("heartring", 1),
+                        new Ingredient("goldbar", 1)
                 ),
-                new AphoreaCraftingRecipe("swampchestplate", 1,
-                        new Ingredient("willowlog", 5),
-                        new Ingredient("swampsludge", 3),
-                        new Ingredient("stardust", 2)
-                ),
-                new AphoreaCraftingRecipe("swampboots", 1,
-                        new Ingredient("willowlog", 8),
+                new AphoreaCraftingRecipe("ringofhealth", 1,
+                        new Ingredient("floralring", 1),
+                        new Ingredient("heartring", 1),
+                        new Ingredient("goldbar", 1),
+                        new Ingredient("gelball", 10),
                         new Ingredient("stardust", 1)
-                ),
-                new AphoreaCraftingRecipe("swampshield", 1,
-                        new Ingredient("willowlog", 10),
-                        new Ingredient("swampsludge", 3),
-                        new Ingredient("stardust", 2)
                 )
         );
 
-        addCraftingList("stonepathtile", RecipeTechRegistry.IRON_ANVIL,
-                new AphoreaCraftingRecipe("geltile", 1,
-                        new Ingredient("stonepathtile", 1),
-                        new Ingredient("gelball", 3)
+        // TUNGSTEN WORKSTATION
+
+        addCraftingList("demonicperiapt", RecipeTechRegistry.TUNGSTEN_WORKSTATION,
+                new AphoreaCraftingRecipe("abysmalperiapt", 1,
+                        new Ingredient("demonicperiapt", 1),
+                        new Ingredient("tungstenbar", 5)
+                ),
+                new AphoreaCraftingRecipe("necromancyperiapt", 1,
+                        new Ingredient("unstableperiapt", 1),
+                        new Ingredient("bone", 10),
+                        new Ingredient("demonicbar", 5)
                 )
         );
 
-        addCraftingList("goldgreatbow", RecipeTechRegistry.IRON_ANVIL,
-                new AphoreaCraftingRecipe("rockyhelmet", 1,
-                        new Ingredient("stone", 30),
-                        new Ingredient("rockygel", 7)
-                ),
-                new AphoreaCraftingRecipe("rockychestplate", 1,
-                        new Ingredient("stone", 40),
-                        new Ingredient("rockygel", 10)
-                ),
-                new AphoreaCraftingRecipe("rockyboots", 1,
-                        new Ingredient("stone", 20),
-                        new Ingredient("rockygel", 5)
-                ),
-                new AphoreaCraftingRecipe("rockyperiapt", 1,
-                        new Ingredient("stone", 10),
-                        new Ingredient("rockygel", 4)
-                ),
 
+        // IRON ANVIL
+
+        addCraftingList(null, RecipeTechRegistry.IRON_ANVIL,
+                new AphoreaCraftingRecipe("woodenwand", 1,
+                        new Ingredient("anylog", 1),
+                        new Ingredient("anysapling", 2)
+                ),
+                new AphoreaCraftingRecipe("healingstaff", 1,
+                        new Ingredient("woodstaff", 1),
+                        new Ingredient("stardust", 5)
+                ),
+                new AphoreaCraftingRecipe("magicalvial", 1,
+                        new Ingredient("greaterhealthpotion", 2),
+                        new Ingredient("stardust", 3)
+                )
+        );
+
+        addCraftingList("woodboomerang", RecipeTechRegistry.IRON_ANVIL,
+                new AphoreaCraftingRecipe("woodenrod", 1,
+                        new Ingredient("woodenwand", 4),
+                        new Ingredient("wool", 2)
+                ),
+                new AphoreaCraftingRecipe("gelsword", 1,
+                        new Ingredient("gelball", 15)
+                )
+        );
+
+
+        addCraftingList("spiderboomerang", RecipeTechRegistry.IRON_ANVIL,
+                new AphoreaCraftingRecipe("unstablegelsword", 1,
+                        new Ingredient("gelsword", 1),
+                        new Ingredient("unstablegel", 10)
+                ),
                 new AphoreaCraftingRecipe("unstablegelsaber", 1,
                         new Ingredient("unstablegel", 10),
                         new Ingredient("rockygel", 3)
@@ -466,10 +470,61 @@ public class AphoreaMod {
                 new AphoreaCraftingRecipe("unstablegelbattleaxe", 1,
                         new Ingredient("unstablegel", 20),
                         new Ingredient("rockygel", 15)
+                )
+        );
+
+        addCraftingList(null, RecipeTechRegistry.IRON_ANVIL,
+                new AphoreaCraftingRecipe("gelballgroup", 1,
+                        new Ingredient("gelball", 12),
+                        new Ingredient("mysteriousportal", 1)
+                )
+        );
+
+
+        addCraftingList("venomstaff", RecipeTechRegistry.IRON_ANVIL,
+                new AphoreaCraftingRecipe("unstablegelstaff", 1,
+                        new Ingredient("gelballgroup", 1),
+                        new Ingredient("unstablegel", 15)
+                )
+        );
+
+        addCraftingList("goldgreatbow", RecipeTechRegistry.IRON_ANVIL,
+                new AphoreaCraftingRecipe("blowgun", 1,
+                        new Ingredient("anysapling", 10)
                 ),
+                new AphoreaCraftingRecipe("sling", 1,
+                        new Ingredient("leather", 4),
+                        new Ingredient("rope", 2)
+                ),
+                new AphoreaCraftingRecipe("firesling", 1,
+                        new Ingredient("sling", 1),
+                        new Ingredient("torch", 60)
+                ),
+                new AphoreaCraftingRecipe("frozensling", 1,
+                        new Ingredient("sling", 1),
+                        new Ingredient("frostshard", 10)
+                )
+        );
+
+        addCraftingList(null, RecipeTechRegistry.IRON_ANVIL,
                 new AphoreaCraftingRecipe("witchstatue", 1,
                         new Ingredient("goldbar", 10),
                         new Ingredient("stardust", 3)
+                )
+        );
+
+        addCraftingList("ironboots", RecipeTechRegistry.IRON_ANVIL,
+                new AphoreaCraftingRecipe("rockyhelmet", 1,
+                        new Ingredient("stone", 30),
+                        new Ingredient("rockygel", 7)
+                ),
+                new AphoreaCraftingRecipe("rockychestplate", 1,
+                        new Ingredient("stone", 40),
+                        new Ingredient("rockygel", 10)
+                ),
+                new AphoreaCraftingRecipe("rockyboots", 1,
+                        new Ingredient("stone", 20),
+                        new Ingredient("rockygel", 5)
                 )
         );
 
@@ -501,7 +556,49 @@ public class AphoreaMod {
                 )
         );
 
-        addCraftingList("demonicsword", RecipeTechRegistry.DEMONIC,
+        addCraftingList("frostboots", RecipeTechRegistry.IRON_ANVIL,
+                new AphoreaCraftingRecipe("swampmask", 1,
+                        new Ingredient("willowlog", 10),
+                        new Ingredient("stardust", 3)
+                ),
+                new AphoreaCraftingRecipe("swamphood", 1,
+                        new Ingredient("swampsludge", 5),
+                        new Ingredient("stardust", 3)
+                ),
+                new AphoreaCraftingRecipe("swampchestplate", 1,
+                        new Ingredient("willowlog", 5),
+                        new Ingredient("swampsludge", 3),
+                        new Ingredient("stardust", 2)
+                ),
+                new AphoreaCraftingRecipe("swampboots", 1,
+                        new Ingredient("willowlog", 8),
+                        new Ingredient("stardust", 1)
+                )
+        );
+
+
+        addCraftingList("clothboots", RecipeTechRegistry.IRON_ANVIL,
+                new AphoreaCraftingRecipe("magicalsuit", 1,
+                        new Ingredient("clothrobe", 1),
+                        new Ingredient("stardust", 4)
+                ),
+                new AphoreaCraftingRecipe("magicalboots", 1,
+                        new Ingredient("clothboots", 1),
+                        new Ingredient("stardust", 3)
+                )
+        );
+
+        // DEMONIC ANVIL
+
+        addCraftingList("quartzstaff", RecipeTechRegistry.DEMONIC_ANVIL,
+                new AphoreaCraftingRecipe("magicalbroom", 1,
+                        new Ingredient("broom", 1),
+                        new Ingredient("voidshard", 8),
+                        new Ingredient("stardust", 3)
+                )
+        );
+
+        addCraftingList("demonicsword", RecipeTechRegistry.DEMONIC_ANVIL,
                 new AphoreaCraftingRecipe("demonicsaber", 1,
                         new Ingredient("demonicbar", 12)
                 ),
@@ -511,67 +608,15 @@ public class AphoreaMod {
                 )
         );
 
-        addCraftingList("sapphirerevolver", RecipeTechRegistry.DEMONIC,
+        addCraftingList("goldcrown", RecipeTechRegistry.DEMONIC_ANVIL,
                 new AphoreaCraftingRecipe("goldhat", 1,
                         new Ingredient("goldbar", 8),
                         new Ingredient("sapphire", 5)
                 )
         );
 
-        addCraftingList("froststaff", RecipeTechRegistry.IRON_ANVIL,
-                new AphoreaCraftingRecipe("frozenperiapt", 1,
-                        new Ingredient("frostshard", 10),
-                        new Ingredient("goldbar", 5)
-                )
-        );
 
-        addCraftingList("bloodplateboots", RecipeTechRegistry.DEMONIC,
-                new AphoreaCraftingRecipe("bloodyperiapt", 1,
-                        new Ingredient("voidshard", 10),
-                        new Ingredient("batwing", 10)
-                ),
-                new AphoreaCraftingRecipe("demonicperiapt", 1,
-                        new Ingredient("bloodyperiapt", 1),
-                        new Ingredient("demonicbar", 5)
-                ),
-                new AphoreaCraftingRecipe("abysmalperiapt", 1,
-                        new Ingredient("demonicperiapt", 1),
-                        new Ingredient("tungstenbar", 5)
-                ),
-                new AphoreaCraftingRecipe("necromancyperiapt", 1,
-                        new Ingredient("unstableperiapt", 1),
-                        new Ingredient("bone", 10),
-                        new Ingredient("demonicbar", 5)
-                ),
-                new AphoreaCraftingRecipe("magicalbroom", 1,
-                        new Ingredient("broom", 1),
-                        new Ingredient("voidshard", 8),
-                        new Ingredient("stardust", 3)
-                ),
-                new AphoreaCraftingRecipe("magicalvial", 1,
-                        new Ingredient("greaterhealthpotion", 2),
-                        new Ingredient("healthpotion", 8),
-                        new Ingredient("stardust", 3)
-                ),
-                new AphoreaCraftingRecipe("heartring", 1,
-                        new Ingredient("greaterhealthpotion", 1),
-                        new Ingredient("firemone", 10),
-                        new Ingredient("voidshard", 6)
-                ),
-                new AphoreaCraftingRecipe("ringofhealth", 1,
-                        new Ingredient("floralring", 1),
-                        new Ingredient("gelring", 1),
-                        new Ingredient("heartring", 1),
-                        new Ingredient("goldbar", 1)
-                ),
-                new AphoreaCraftingRecipe("ringofhealth", 1,
-                        new Ingredient("floralring", 1),
-                        new Ingredient("heartring", 1),
-                        new Ingredient("goldbar", 1),
-                        new Ingredient("gelball", 10),
-                        new Ingredient("stardust", 1)
-                )
-        );
+
 
         // Spawn tables
 

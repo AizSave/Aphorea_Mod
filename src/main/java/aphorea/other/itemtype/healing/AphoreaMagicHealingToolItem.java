@@ -31,6 +31,7 @@ abstract public class AphoreaMagicHealingToolItem extends AphoreaToolItem {
 
         this.setItemCategory("equipment", "tools", "healing");
         this.setItemCategory(ItemCategory.equipmentManager, "tools", "healingtools");
+        this.setItemCategory(ItemCategory.craftingManager, "equipment", "tools", "healingtools");
     }
 
     public int getHealing(@Nullable InventoryItem item) {

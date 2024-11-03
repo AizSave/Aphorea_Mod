@@ -34,6 +34,7 @@ abstract public class AphoreaSlingToolItem extends ProjectileToolItem {
         super(enchantCost);
         this.setItemCategory("equipment", "weapons", "rangedweapons");
         this.setItemCategory(ItemCategory.equipmentManager, "weapons", "rangedweapons");
+        this.setItemCategory(ItemCategory.craftingManager, "equipment", "weapons", "rangedweapons");
         this.damageType = DamageTypeRegistry.RANGED;
         this.knockback.setBaseValue(25);
         this.attackRange.setBaseValue(500);

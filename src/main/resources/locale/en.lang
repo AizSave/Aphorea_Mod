@@ -38,6 +38,7 @@ dimmed=Dimmed
 
 [itemcategory]
 healing=Healing
+healingtools=Healing
 
 [itemtype]
 battleaxe=Battleaxe

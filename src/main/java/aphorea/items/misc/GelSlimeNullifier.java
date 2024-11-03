@@ -1,7 +1,7 @@
-package aphorea.items.consumable;
+package aphorea.items.misc;
 
 import aphorea.other.data.AphoreaWorldData;
-import aphorea.other.vanillaitemtypes.AphoreaConsumableItem;
+import aphorea.other.vanillaitemtypes.AphoreaMiscItem;
 import necesse.engine.localization.Localization;
 import necesse.engine.network.PacketReader;
 import necesse.engine.network.packet.PacketChatMessage;
@@ -11,20 +11,16 @@ import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.PlayerMob;
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.InventoryItem;
+import necesse.inventory.PlayerInventorySlot;
 import necesse.level.maps.Level;
 
-public class GelSlimeNullifier extends AphoreaConsumableItem {
+public class GelSlimeNullifier extends AphoreaMiscItem {
 
     public static AphoreaWorldData worldData = new AphoreaWorldData();
 
     public GelSlimeNullifier() {
-        super(1, false);
+        super(1);
         this.rarity = Rarity.LEGENDARY;
-    }
-
-    @Override
-    public String canPlace(Level level, int x, int y, PlayerMob player, InventoryItem item, PacketReader contentReader) {
-        return null;
     }
 
     @Override
@@ -38,8 +34,7 @@ public class GelSlimeNullifier extends AphoreaConsumableItem {
     }
 
     @Override
-    public InventoryItem onPlace(Level level, int x, int y, PlayerMob player, InventoryItem item, PacketReader contentReader) {
-
+    public InventoryItem onAttack(Level level, int x, int y, PlayerMob player, int attackHeight, InventoryItem item, PlayerInventorySlot slot, int animAttack, int seed, PacketReader contentReader) {
         if(level.isServer()) {
             AphoreaWorldData currentData = worldData.getData(level.getWorldEntity());
             boolean gelSlimesNulled = currentData.gelslimesnulled;
@@ -60,7 +55,7 @@ public class GelSlimeNullifier extends AphoreaConsumableItem {
             }
         }
 
-        return super.onPlace(level, x, y, player, item, contentReader);
+        return super.onAttack(level, x, y, player, attackHeight, item, slot, animAttack, seed, contentReader);
     }
 
     @Override

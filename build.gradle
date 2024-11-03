@@ -8,7 +8,7 @@ plugins {
 
 project.ext.modID = "aphorea" // The unique id of your mod. Must be all lowercase and cannot use special characters.
 project.ext.modName = "Aphorea Mod" // The display name of your mod.
-project.ext.modVersion = "0.3.2.2" // Your current builds version. Must follow the xx.xx... format.
+project.ext.modVersion = "0.3.2.3" // Your current builds version. Must follow the xx.xx... format.
 project.ext.gameVersion = "0.28.1" // The target game version.
 project.ext.modDescription = "This mod adds content without destroying the original game experience!" // Short description of what your mod is.
 project.ext.author = "AizSave" // Your name

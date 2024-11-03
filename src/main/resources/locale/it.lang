@@ -18,9 +18,6 @@ magichealinggrace=<mod>% grazia magica curativa
 
 arearange=<mod>% raggio d'azione
 
-[itemcategory]
-healing=Curativo
-
 [enchantment]
 godly=Divino
 absent=Assente
@@ -38,6 +35,10 @@ cursed=Maledetto
 
 booming=Rimbombante
 dimmed=Offuscato
+
+[itemcategory]
+healing=Curativo
+healingtools=Curativo
 
 [itemtype]
 battleaxe=Ascia da Battaglia
