@@ -121,7 +121,7 @@ public class MagicalVial extends AphoreaMagicHealingToolItem {
                 actualMob = null;
             }
             Mob target = actualMob == null ? player : actualMob;
-            if (target.getHealthPercent() != 1) {
+            if (AphoreaMagicHealing.canHealMob(player, target)) {
                 particleCount++;
                 if (particleCount >= 80) {
                     particleCount = 0;
@@ -147,7 +147,7 @@ public class MagicalVial extends AphoreaMagicHealingToolItem {
     public String canAttack(Level level, int x, int y, PlayerMob player, InventoryItem item) {
         Mob target = actualMob == null ? player : actualMob;
 
-        return AphoreaMagicHealing.canHealMob(player, target) ? "Can't heal" : null;
+        return AphoreaMagicHealing.canHealMob(player, target) ? null : "Can't heal";
     }
 
     @Override

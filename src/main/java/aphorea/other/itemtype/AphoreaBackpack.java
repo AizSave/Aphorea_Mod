@@ -1,17 +1,32 @@
 package aphorea.other.itemtype;
 
+import necesse.engine.GameState;
 import necesse.engine.localization.Localization;
+import necesse.engine.localization.message.GameMessage;
+import necesse.engine.network.packet.PacketMobChat;
 import necesse.engine.util.ComparableSequence;
 import necesse.engine.util.GameBlackboard;
+import necesse.engine.world.GameClock;
+import necesse.engine.world.WorldSettings;
+import necesse.entity.Entity;
 import necesse.entity.mobs.PlayerMob;
+import necesse.gfx.gameFont.FontOptions;
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.Inventory;
 import necesse.inventory.InventoryItem;
+import necesse.inventory.InventorySlot;
 import necesse.inventory.item.Item;
 import necesse.inventory.item.miscItem.PouchItem;
 import necesse.level.maps.Level;
+import necesse.level.maps.hudManager.floatText.UniqueFloatText;
+
+import java.awt.*;
+import java.util.function.Consumer;
 
 abstract public class AphoreaBackpack extends PouchItem {
+    boolean pickupAutoEnabled = false;
+    boolean messageInventoryFull = false;
+
     public AphoreaBackpack() {
         this.rarity = Rarity.COMMON;
     }
@@ -97,4 +112,42 @@ abstract public class AphoreaBackpack extends PouchItem {
         }
     }
 
+    @Override
+    public void setPouchPickupDisabled(InventoryItem item, boolean disabled) {
+        if(pickupAutoEnabled && disabled) {
+            messageInventoryFull = true;
+        } else {
+            super.setPouchPickupDisabled(item, disabled);
+        }
+    }
+
+    @Override
+    public void tick(Inventory inventory, int slot, InventoryItem item, GameClock clock, GameState state, Entity entity, WorldSettings worldSettings, Consumer<InventoryItem> setItem) {
+        if(entity.isServer()) {
+            if(inventory != null && inventory.streamSlots().noneMatch(InventorySlot::isSlotClear)) {
+                if(!pickupAutoEnabled) {
+                    pickupAutoEnabled = true;
+                    setPouchPickupDisabled(item, false);
+                }
+            } else if(pickupAutoEnabled) {
+                pickupAutoEnabled = false;
+                setPouchPickupDisabled(item, true);
+            }
+        }
+        if(messageInventoryFull && entity.isClient()) {
+            messageInventoryFull = false;
+
+            UniqueFloatText text = new UniqueFloatText(entity.getX(), entity.getY() - 20, "Pickup cannot be disabled because inventory is full", (new FontOptions(16)).outline().color(new Color(200, 100, 100)), "mountfail") {
+                public int getAnchorX() {
+                    return entity.getX();
+                }
+
+                public int getAnchorY() {
+                    return entity.getY() - 20;
+                }
+            };
+            entity.getLevel().hudManager.addElement(text);
+        }
+        super.tick(inventory, slot, item, clock, state, entity, worldSettings, setItem);
+    }
 }

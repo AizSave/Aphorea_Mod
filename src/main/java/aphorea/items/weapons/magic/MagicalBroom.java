@@ -51,6 +51,7 @@ public class MagicalBroom extends AphoreaToolItem {
         super(500);
         this.setItemCategory("equipment", "weapons", "magicweapons");
         this.setItemCategory(ItemCategory.equipmentManager, "weapons", "magicweapons");
+        this.setItemCategory(ItemCategory.craftingManager, "equipment", "weapons", "magicweapons");
         this.keyWords.add("broom");
         damageType = DamageTypeRegistry.MAGIC;
         this.width = 15.0F;

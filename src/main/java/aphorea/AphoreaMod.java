@@ -67,7 +67,6 @@ public class AphoreaMod {
 
     public void init() throws Exception {
         System.out.println("AphoreaMod starting...");
-
         ItemCategory.createCategory("A-A-E", "equipment", "tools", "healing");
 
         ItemCategory.equipmentManager.createCategory("C-A-A", "tools");
