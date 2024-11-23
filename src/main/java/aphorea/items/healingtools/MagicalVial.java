@@ -1,4 +1,4 @@
-package aphorea.items.weapons.healing;
+package aphorea.items.healingtools;
 
 import aphorea.other.area.AphoreaArea;
 import aphorea.other.area.AphoreaAreaList;
@@ -68,11 +68,11 @@ public class MagicalVial extends AphoreaMagicHealingToolItem {
     public boolean onMouseHoverMob(InventoryItem item, GameCamera camera, PlayerMob perspective, Mob mob, boolean isDebug) {
         boolean canHealMob = AphoreaMagicHealing.canHealMob(perspective, mob);
         boolean inInDistance = perspective.getPositionPoint().distance(mob.x, mob.y) <= 400;
-        if (canHealMob && (actualMob == null || actualMob == mob) && inInDistance) {
+        if (canHealMob && inInDistance) {
             actualMob = mob;
             count = 0;
         } else if (actualMob != null) {
-            if (count > 40) {
+            if (count > 100) {
                 actualMob = null;
             } else {
                 count++;
@@ -81,7 +81,7 @@ public class MagicalVial extends AphoreaMagicHealingToolItem {
         if(canHealMob && !perspective.isItemOnCooldown(this) && !inInDistance) {
             if (particlesAreaCount >= 3) {
                 particlesAreaCount = 0;
-                area.showAllAreaParticles(perspective, 1, 0.5F, 0, (int) (Math.random() * 200) + 400);
+                area.showAllAreaParticles(perspective, perspective.x, perspective.y, 1, 0.5F, 0, (int) (Math.random() * 200) + 400);
             } else {
                 particlesAreaCount++;
             }
@@ -92,7 +92,7 @@ public class MagicalVial extends AphoreaMagicHealingToolItem {
     @Override
     public void onMouseHoverTile(InventoryItem item, GameCamera camera, PlayerMob perspective, int mouseX, int mouseY, TilePosition pos, boolean isDebug) {
         if (actualMob != null) {
-            if (count > 40) {
+            if (count > 100) {
                 actualMob = null;
             } else {
                 count++;
@@ -104,7 +104,7 @@ public class MagicalVial extends AphoreaMagicHealingToolItem {
     @Override
     public boolean onMouseHoverPickup(InventoryItem item, GameCamera camera, PlayerMob perspective, PickupEntity pickupEntity, boolean isDebug) {
         if (actualMob != null) {
-            if (count > 40) {
+            if (count > 100) {
                 actualMob = null;
             } else {
                 count++;
@@ -147,7 +147,7 @@ public class MagicalVial extends AphoreaMagicHealingToolItem {
     public String canAttack(Level level, int x, int y, PlayerMob player, InventoryItem item) {
         Mob target = actualMob == null ? player : actualMob;
 
-        return AphoreaMagicHealing.canHealMob(player, target) ? null : "Can't heal";
+        return AphoreaMagicHealing.canHealMob(player, target) ? null : Localization.translate("message", "cantheal");
     }
 
     @Override

@@ -244,6 +244,10 @@ witchesunnulled=Witches admitted in (<x>, <y>)
 
 needfreeslots=You need <slots> free slots in the inventory to use this
 
+cantuseatnight=Cannot be used at night
+
 healthalreadyfull=Health is already full
 
-cantuseatnight=Cannot be used at night
+cantheal=Can't heal
+
+pickupenabledinventoryfull=Pickup cannot be disabled because inventory is full

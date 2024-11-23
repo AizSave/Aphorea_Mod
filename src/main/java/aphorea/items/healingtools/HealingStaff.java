@@ -1,10 +1,9 @@
-package aphorea.items.weapons.healing;
+package aphorea.items.healingtools;
 
 import aphorea.other.area.AphoreaArea;
 import aphorea.other.area.AphoreaAreaList;
 import aphorea.other.itemtype.weapons.AphoreaMagicAreaToolItem;
 import necesse.inventory.item.ItemInteractAction;
-import necesse.inventory.item.upgradeUtils.IntUpgradeValue;
 
 import java.awt.*;
 

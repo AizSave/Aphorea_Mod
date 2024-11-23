@@ -2,8 +2,9 @@ package aphorea.other.itemtype;
 
 import necesse.engine.GameState;
 import necesse.engine.localization.Localization;
-import necesse.engine.localization.message.GameMessage;
-import necesse.engine.network.packet.PacketMobChat;
+import necesse.engine.network.packet.PacketOpenContainer;
+import necesse.engine.network.server.ServerClient;
+import necesse.engine.registries.ContainerRegistry;
 import necesse.engine.util.ComparableSequence;
 import necesse.engine.util.GameBlackboard;
 import necesse.engine.world.GameClock;
@@ -15,6 +16,8 @@ import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.Inventory;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.InventorySlot;
+import necesse.inventory.PlayerInventorySlot;
+import necesse.inventory.container.item.ItemInventoryContainer;
 import necesse.inventory.item.Item;
 import necesse.inventory.item.miscItem.PouchItem;
 import necesse.level.maps.Level;
@@ -31,6 +34,7 @@ abstract public class AphoreaBackpack extends PouchItem {
         this.rarity = Rarity.COMMON;
     }
 
+    @Override
     public ListGameTooltips getTooltips(InventoryItem item, PlayerMob perspective, GameBlackboard blackboard) {
         ListGameTooltips tooltips = super.getTooltips(item, perspective, blackboard);
         tooltips.add(Localization.translate("global", "aphorea"));
@@ -42,29 +46,27 @@ abstract public class AphoreaBackpack extends PouchItem {
         return tooltips;
     }
 
+    @Override
     public boolean isValidPouchItem(InventoryItem item) {
         if(item == null || item.item == null) return false;
-        return this.isValidRequestType(item.item);
+        return this.isValidRequestItem(item.item);
     }
 
+    @Override
     public boolean isValidRequestItem(Item item) {
-        if(item == null) return false;
-        return this.isValidRequestType(item);
-    }
-
-    public boolean isValidRequestType(Item item) {
         if(item == null) return false;
         return !item.getStringID().contains("backpack") && !item.getStringID().equals("coin");
     }
 
+    @Override
     public boolean isValidRequestType(Item.Type type) {
         return false;
     }
 
-
+    @Override
     public int getInventoryAmount(Level level, PlayerMob player, InventoryItem item, Item.Type requestType, String purpose) {
         int amount = super.getInventoryAmount(level, player, item, requestType, purpose);
-        if (this.isValidRequestType(item.item)) {
+        if (this.isValidRequestItem(item.item)) {
             Inventory internalInventory = this.getInternalInventory(item);
             amount += internalInventory.getAmount(level, player, requestType, purpose);
         }
@@ -72,8 +74,9 @@ abstract public class AphoreaBackpack extends PouchItem {
         return amount;
     }
 
+    @Override
     public Item getInventoryFirstItem(Level level, PlayerMob player, InventoryItem item, Item.Type requestType, String purpose) {
-        if (this.isValidRequestType(item.item)) {
+        if (this.isValidRequestItem(item.item)) {
             Inventory internalInventory = this.getInternalInventory(item);
             Item firstItem = internalInventory.getFirstItem(level, player, requestType, purpose);
             if (firstItem != null) {
@@ -84,9 +87,10 @@ abstract public class AphoreaBackpack extends PouchItem {
         return super.getInventoryFirstItem(level, player, item, requestType, purpose);
     }
 
+    @Override
     public int removeInventoryAmount(Level level, PlayerMob player, InventoryItem item, Item.Type requestType, int amount, String purpose) {
         int removed = 0;
-        if (this.isValidRequestType(item.item)) {
+        if (this.isValidRequestItem(item.item)) {
             Inventory internalInventory = this.getInternalInventory(item);
             removed = internalInventory.removeItems(level, player, requestType, amount, purpose);
             if (removed > 0) {
@@ -97,10 +101,12 @@ abstract public class AphoreaBackpack extends PouchItem {
         return removed < amount ? removed + super.removeInventoryAmount(level, player, item, requestType, amount, purpose) : removed;
     }
 
+    @Override
     public boolean ignoreCombineStackLimit(Level level, PlayerMob player, InventoryItem me, InventoryItem them, String purpose) {
         return false;
     }
 
+    @Override
     public ComparableSequence<Integer> getInventoryAddPriority(Level level, PlayerMob player, Inventory inventory, int inventorySlot, InventoryItem item, InventoryItem input, String purpose) {
         boolean inInventory = inventory.streamSlots()
                 .anyMatch(slot -> slot != null && slot.getItem() != null && slot.getItem().item.getID() == item.item.getID());
@@ -137,7 +143,7 @@ abstract public class AphoreaBackpack extends PouchItem {
         if(messageInventoryFull && entity.isClient()) {
             messageInventoryFull = false;
 
-            UniqueFloatText text = new UniqueFloatText(entity.getX(), entity.getY() - 20, "Pickup cannot be disabled because inventory is full", (new FontOptions(16)).outline().color(new Color(200, 100, 100)), "mountfail") {
+            UniqueFloatText text = new UniqueFloatText(entity.getX(), entity.getY() - 20, Localization.translate("message", "pickupenabledinventoryfull"), (new FontOptions(16)).outline().color(new Color(200, 100, 100)), "mountfail") {
                 public int getAnchorX() {
                     return entity.getX();
                 }

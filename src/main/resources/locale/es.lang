@@ -243,6 +243,10 @@ witchesunnulled=Brujas admitidas en (<x>, <y>)
 
 needfreeslots=Necesitas <slots> slots libres en el inventario para usar esto
 
+cantuseatnight=No se puede usar en la noche
+
 healthalreadyfull=La vida ya está al máximo
 
-cantuseatnight=No se puede usar en la noche
+cantheal=No se puede curar
+
+pickupenabledinventoryfull=La recogida automática no puede ser desactivada porque el inventario está lleno

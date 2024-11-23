@@ -8,6 +8,7 @@ import necesse.engine.localization.Localization;
 import necesse.engine.network.PacketReader;
 import necesse.engine.network.packet.PacketSpawnProjectile;
 import necesse.engine.registries.BuffRegistry;
+import necesse.engine.registries.DamageTypeRegistry;
 import necesse.engine.sound.SoundEffect;
 import necesse.engine.sound.SoundManager;
 import necesse.engine.util.GameBlackboard;
@@ -32,7 +33,7 @@ import java.awt.*;
 public class UnstableGelStaff extends AphoreaMagicProjectileSecondaryAreaToolItem implements ItemInteractAction {
 
     public UnstableGelStaff() {
-        super(500, new AphoreaAreaList(new AphoreaArea(200, new Color(191, 102, 255)).setDamageArea(20, 90)), 800, 6.0F);
+        super(500, new AphoreaAreaList(new AphoreaArea(200, new Color(191, 102, 255)).setDamageArea(20, 90)).setDamageType(DamageTypeRegistry.MAGIC), 800, 6.0F);
         rarity = Rarity.UNCOMMON;
         attackAnimTime.setBaseValue(800);
         attackDamage.setBaseValue(20)

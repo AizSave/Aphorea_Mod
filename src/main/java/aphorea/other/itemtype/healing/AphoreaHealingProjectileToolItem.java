@@ -18,6 +18,8 @@ import necesse.inventory.item.ItemStatTipList;
 import necesse.inventory.item.upgradeUtils.IntUpgradeValue;
 import necesse.level.maps.Level;
 
+import java.util.Arrays;
+
 abstract public class AphoreaHealingProjectileToolItem extends AphoreaMagicHealingToolItem {
     protected IntUpgradeValue velocity = new IntUpgradeValue(50, 0.0F);
     public int moveDist;
@@ -26,7 +28,7 @@ abstract public class AphoreaHealingProjectileToolItem extends AphoreaMagicHeali
         super(enchantCost);
     }
 
-    protected abstract Projectile getProjectile(Level level, int x, int y, PlayerMob player, InventoryItem item);
+    protected abstract Projectile[] getProjectiles(Level level, int x, int y, PlayerMob player, InventoryItem item);
 
     public int getFlatVelocity(InventoryItem item) {
         GNDItemMap gndData = item.getGndData();
@@ -58,17 +60,20 @@ abstract public class AphoreaHealingProjectileToolItem extends AphoreaMagicHeali
     public InventoryItem onAttack(Level level, int x, int y, PlayerMob player, int attackHeight, InventoryItem item, PlayerInventorySlot slot, int animAttack, int seed, PacketReader contentReader) {
         onItemUsed(player, item);
 
-        Projectile projectile = this.getProjectile(level, x, y, player, item);
-        projectile.getUniqueID(new GameRandom(seed));
-        level.entityManager.projectiles.addHidden(projectile);
+        Projectile[] projectiles = this.getProjectiles(level, x, y, player, item);
 
-        if (this.moveDist != 0) {
-            projectile.moveDist(this.moveDist);
-        }
+        Arrays.stream(projectiles).forEach(projectile -> {
+            projectile.getUniqueID(new GameRandom(seed));
+            level.entityManager.projectiles.addHidden(projectile);
 
-        if (level.isServer()) {
-            level.getServer().network.sendToClientsWithEntityExcept(new PacketSpawnProjectile(projectile), projectile, player.getServerClient());
-        }
+            if (this.moveDist != 0) {
+                projectile.moveDist(this.moveDist);
+            }
+
+            if (level.isServer()) {
+                level.getServer().network.sendToClientsWithEntityExcept(new PacketSpawnProjectile(projectile), projectile, player.getServerClient());
+            }
+        });
 
         return item;
     }

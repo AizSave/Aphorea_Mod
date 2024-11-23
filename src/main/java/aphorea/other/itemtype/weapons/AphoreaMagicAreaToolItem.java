@@ -10,6 +10,7 @@ import necesse.engine.localization.Localization;
 import necesse.engine.network.PacketReader;
 import necesse.engine.registries.DamageTypeRegistry;
 import necesse.engine.registries.EnchantmentRegistry;
+import necesse.engine.util.GameMath;
 import necesse.entity.mobs.*;
 import necesse.gfx.drawOptions.itemAttack.ItemAttackDrawOptions;
 import necesse.inventory.InventoryItem;
@@ -17,14 +18,17 @@ import necesse.inventory.PlayerInventorySlot;
 import necesse.inventory.item.*;
 import necesse.level.maps.Level;
 
+import java.awt.geom.Point2D;
 import java.util.HashSet;
 import java.util.Set;
 
-public class AphoreaMagicAreaToolItem extends AphoreaMagicHealingToolItem {
+abstract public class AphoreaMagicAreaToolItem extends AphoreaMagicHealingToolItem {
 
     AphoreaAreaList areaList;
     public boolean isMagicWeapon;
     public boolean isHealingTool;
+
+    float rotationOffset;
 
     public AphoreaMagicAreaToolItem(int enchantCost, boolean isMagicWeapon, boolean isHealingTool, AphoreaAreaList areaList) {
         super(enchantCost);
@@ -65,10 +69,6 @@ public class AphoreaMagicAreaToolItem extends AphoreaMagicHealingToolItem {
     @Override
     public GameDamage getAttackDamage(InventoryItem item) {
         return super.getAttackDamage(item);
-    }
-
-    public void setDrawAttackRotation(InventoryItem item, ItemAttackDrawOptions drawOptions, float attackDirX, float attackDirY, float attackProgress) {
-        drawOptions.pointRotation(attackDirX, attackDirY);
     }
 
     public boolean animDrawBehindHand(InventoryItem item) {
@@ -162,5 +162,10 @@ public class AphoreaMagicAreaToolItem extends AphoreaMagicHealingToolItem {
         } else {
             return super.getTranslatedTypeName();
         }
+    }
+
+    @Override
+    public void setDrawAttackRotation(InventoryItem item, ItemAttackDrawOptions drawOptions, float attackDirX, float attackDirY, float attackProgress) {
+        drawOptions.rotation(0 + this.rotationOffset);
     }
 }

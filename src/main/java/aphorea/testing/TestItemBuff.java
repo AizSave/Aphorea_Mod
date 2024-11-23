@@ -1,14 +1,12 @@
-package aphorea.buffs.Trinkets.Healing;
+package aphorea.testing;
 
-import aphorea.other.area.AphoreaArea;
 import aphorea.other.area.AphoreaAreaList;
 import aphorea.other.magichealing.AphoreaMagicHealing;
 import aphorea.other.magichealing.AphoreaMagicHealingFunctions;
 import aphorea.other.utils.AphoreaDistances;
-import aphorea.projectiles.DamageProjectile;
-import aphorea.projectiles.HealingToolItemProjectile;
+import aphorea.projectiles.base.AphoreaDamageProjectile;
+import aphorea.projectiles.base.AphoreaHealingToolItemProjectile;
 import necesse.engine.util.GameRandom;
-import necesse.engine.util.GameUtils;
 import necesse.entity.mobs.GameDamage;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.PlayerMob;
@@ -19,10 +17,8 @@ import necesse.entity.projectile.Projectile;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.item.toolItem.ToolItem;
 import necesse.level.maps.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
-import java.util.Comparator;
 import java.util.Objects;
 
 public class TestItemBuff extends TrinketBuff implements AphoreaMagicHealingFunctions {
@@ -80,7 +76,7 @@ public class TestItemBuff extends TrinketBuff implements AphoreaMagicHealingFunc
     }
 
     static public Projectile healingProjectile(Level level, int x, int y, PlayerMob player, InventoryItem item, int healing) {
-        return new HealingToolItemProjectile(new Color(0, 214, 0), healing, null, item, level, player,
+        return new AphoreaHealingToolItemProjectile(new Color(0, 214, 0), healing, null, item, level, player,
                 player.x, player.y,
                 x, y,
                 200,
@@ -90,7 +86,7 @@ public class TestItemBuff extends TrinketBuff implements AphoreaMagicHealingFunc
     }
 
     static public Projectile damageProjectile(Level level, int x, int y, PlayerMob player, int damage) {
-        return new DamageProjectile(new Color(214, 0, 0), new GameDamage(damage), level, player,
+        return new AphoreaDamageProjectile(new Color(214, 0, 0), new GameDamage(damage), level, player,
                 player.x, player.y,
                 x, y,
                 200,

@@ -2,7 +2,7 @@ package aphorea.other.magichealing;
 
 import aphorea.other.AphoreaModifiers;
 import aphorea.other.itemtype.healing.AphoreaMagicHealingToolItem;
-import aphorea.projectiles.HealingToolItemProjectile;
+import aphorea.projectiles.base.AphoreaHealingToolItemProjectile;
 import necesse.entity.levelEvent.LevelEvent;
 import necesse.entity.levelEvent.mobAbilityLevelEvent.MobHealthChangeEvent;
 import necesse.entity.mobs.Mob;
@@ -22,10 +22,10 @@ public class AphoreaMagicHealing {
     static Map<Mob, Long> cooldowns = new HashMap<>();
 
     public static boolean canHealMob(Mob healer, Mob target) {
-        return target.getHealthPercent() != 1 && !target.canBeTargeted(healer, ((PlayerMob) healer).getNetworkClient()) && (cooldowns.get(target) == null || target.getWorldTime() >= cooldowns.get(target));
+        return target.getHealthPercent() != 1 && !target.isHostile && !target.canBeTargeted(healer, ((PlayerMob) healer).getNetworkClient()) && (cooldowns.get(target) == null || target.getWorldTime() >= cooldowns.get(target));
     }
 
-    public static boolean canHealMob(HealingToolItemProjectile healer, Mob target) {
+    public static boolean canHealMob(AphoreaHealingToolItemProjectile healer, Mob target) {
         if(healer.getOwner() == null) return true;
         return canHealMob(healer.getOwner(), target);
     }

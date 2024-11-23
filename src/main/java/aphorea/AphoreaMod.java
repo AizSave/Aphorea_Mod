@@ -11,10 +11,10 @@ import aphorea.items.armor.Rocky.*;
 import aphorea.items.armor.Swamp.*;
 import aphorea.items.armor.Witch.*;
 import aphorea.items.backpacks.*;
-import aphorea.items.misc.GelSlimeNullifier;
+import aphorea.items.misc.*;
 import aphorea.items.trinkets.ability_no.*;
 import aphorea.items.trinkets.ability_yes.*;
-import aphorea.items.weapons.healing.*;
+import aphorea.items.healingtools.*;
 import aphorea.items.weapons.magic.*;
 import aphorea.items.weapons.melee.*;
 import aphorea.items.weapons.range.*;
@@ -26,7 +26,9 @@ import aphorea.objects.*;
 import aphorea.other.*;
 import aphorea.other.data.*;
 import aphorea.other.itemtype.weapons.*;
+import aphorea.other.utils.*;
 import aphorea.projectiles.*;
+import aphorea.projectiles.base.*;
 import aphorea.tiles.*;
 import necesse.engine.modLoader.annotations.ModEntry;
 import necesse.engine.network.server.ServerClient;
@@ -164,10 +166,9 @@ public class AphoreaMod {
                 {"swampshield", new SwampShield()},
 
                 {"woodenwand", new WoodenWand()},
-                {"woodenrod", new WoodenRod()},
+                {"goldenwand", new GoldenWand()},
 
-
-                {"testitem", new TestItem()},
+                {"woodenrod", new WoodenRod()}
         };
 
         for (Object[] newItem : newItems) {
@@ -197,6 +198,14 @@ public class AphoreaMod {
         MobRegistry.registerMob("babyunstablegelslime", BabyUnstableGelSlime.class, false);
         MobRegistry.registerMob("undeadskeleton", UndeadSkeleton.class, false);
 
+        // Projectiles [Base]
+        ProjectileRegistry.registerProjectile("healingtoolitemprojectile", AphoreaHealingToolItemProjectile.class, "none", "none");
+        ProjectileRegistry.registerProjectile("healingareatoolitemprojectile", AphoreaHealingAreaToolItemProjectile.class, "none", "none");
+
+        ProjectileRegistry.registerProjectile("damageprojectile", AphoreaDamageProjectile.class, "none", "none");
+        ProjectileRegistry.registerProjectile("damagetoolitemprojectile", AphoreaDamageToolItemProjectile.class, "none", "none");
+        ProjectileRegistry.registerProjectile("damageareatoolitemprojectile", AphoreaDamageAreaToolItemProjectile.class, "none", "none");
+
         // Projectiles
         ProjectileRegistry.registerProjectile("gelprojectile", GelProjectile.class, "gelprojectile", "ball_shadow");
         ProjectileRegistry.registerProjectile("unstablegelprojectile", UnstableGelProjectile.class, "unstablegelprojectile", "ball_shadow");
@@ -208,9 +217,6 @@ public class AphoreaMod {
         ProjectileRegistry.registerProjectile("frozenstoneprojectile", FrozenStoneProjectile.class, "frozenstoneprojectile", "ball_shadow");
 
         ProjectileRegistry.registerProjectile("seedprojectile", SeedProjectile.class, "seedprojectile", "none");
-
-        ProjectileRegistry.registerProjectile("healingtoolitemprojectile", HealingToolItemProjectile.class, "none", "none");
-        ProjectileRegistry.registerProjectile("damageprojectile", DamageProjectile.class, "none", "none");
 
         // Projectiles [Mobs]
         ProjectileRegistry.registerProjectile("witchprojectile", WitchProjectile.class, "none", "none");
@@ -270,15 +276,13 @@ public class AphoreaMod {
 
         BuffRegistry.registerBuff("witchmedallionbuff", new WitchMedallionBuff());
 
-        BuffRegistry.registerBuff("testitembuff", new TestItemBuff());
-
         // LevelEvent
 
         LevelEventRegistry.registerEvent("saberdashlevelevent", AphoreaSaberToolItem.SaberDashLevelEvent.class);
 
         // Packet
 
-        PacketRegistry.registerPacket(MagicalBroom.PacketMagicalBroom.class);
+        PacketRegistry.registerPacket(AphoreaCustomPushPacket.class);
 
         // Enchantments
         AphoreaEnchantments.registerCore();
@@ -391,7 +395,7 @@ public class AphoreaMod {
                         new Ingredient("demonicbar", 5)
                 ),
                 new AphoreaCraftingRecipe("heartring", 1,
-                        new Ingredient("greaterhealthpotion", 1),
+                        new Ingredient("healthpotion", 5),
                         new Ingredient("firemone", 10),
                         new Ingredient("voidshard", 6)
                 ),
@@ -437,7 +441,7 @@ public class AphoreaMod {
                         new Ingredient("stardust", 5)
                 ),
                 new AphoreaCraftingRecipe("magicalvial", 1,
-                        new Ingredient("greaterhealthpotion", 2),
+                        new Ingredient("healthpotion", 10),
                         new Ingredient("stardust", 3)
                 )
         );

@@ -1,4 +1,4 @@
-package aphorea.items.trinkets.ability_no;
+package aphorea.testing;
 
 import aphorea.other.magichealing.AphoreaMagicHealing;
 import aphorea.other.vanillaitemtypes.AphoreaTrinketItem;

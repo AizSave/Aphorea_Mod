@@ -1,15 +1,9 @@
 package aphorea.items.weapons.magic;
 
+import aphorea.other.utils.AphoreaCustomPushPacket;
 import aphorea.other.vanillaitemtypes.AphoreaToolItem;
 import necesse.engine.localization.Localization;
-import necesse.engine.network.NetworkPacket;
-import necesse.engine.network.Packet;
 import necesse.engine.network.PacketReader;
-import necesse.engine.network.PacketWriter;
-import necesse.engine.network.client.Client;
-import necesse.engine.network.client.ClientClient;
-import necesse.engine.network.packet.PacketForceOfWind;
-import necesse.engine.network.packet.PacketRequestPlayerData;
 import necesse.engine.network.server.ServerClient;
 import necesse.engine.registries.BuffRegistry;
 import necesse.engine.registries.DamageTypeRegistry;
@@ -19,12 +13,9 @@ import necesse.engine.util.GameRandom;
 import necesse.engine.util.LineHitbox;
 import necesse.entity.levelEvent.toolItemEvent.ToolItemEvent;
 import necesse.entity.mobs.AttackAnimMob;
-import necesse.entity.mobs.Attacker;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.buffs.ActiveBuff;
-import necesse.entity.mobs.buffs.BuffModifiers;
-import necesse.entity.particle.Particle;
 import necesse.gfx.drawOptions.itemAttack.ItemAttackDrawOptions;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.PlayerInventorySlot;
@@ -116,10 +107,6 @@ public class MagicalBroom extends AphoreaToolItem {
         return itemSprite.itemEnd();
     }
 
-    @Override
-    public void setDrawAttackRotation(InventoryItem item, ItemAttackDrawOptions drawOptions, float attackDirX, float attackDirY, float attackProgress) {
-    }
-
     public float getHitboxSwingAngle(InventoryItem item, int dir) {
         return 180.0F;
     }
@@ -195,15 +182,16 @@ public class MagicalBroom extends AphoreaToolItem {
 
     public InventoryItem onAttack(Level level, int x, int y, PlayerMob player, int attackHeight, InventoryItem item, PlayerInventorySlot slot, int animAttack, int seed, PacketReader contentReader) {
         if (animAttack == 0) {
+
             int strength = 50;
             Point2D.Float dir = GameMath.normalize((float)x - player.x, (float)y - player.y);
-            PacketMagicalBroom.applyToPlayer(level, player, dir.x, dir.y, (float)strength);
+            AphoreaCustomPushPacket.applyToPlayer(level, player, dir.x, dir.y, (float)strength);
             player.buffManager.addBuff(new ActiveBuff(BuffRegistry.FOW_ACTIVE, player, 0.15F, null), level.isServer());
             player.buffManager.forceUpdateBuffs();
 
             if(player.isServer()) {
                 ServerClient serverClient = player.getServerClient();
-                level.getServer().network.sendToClientsWithEntityExcept(new PacketMagicalBroom(serverClient.slot, dir.x, dir.y, (float)strength), serverClient.playerMob, serverClient);
+                level.getServer().network.sendToClientsWithEntityExcept(new AphoreaCustomPushPacket(serverClient.slot, dir.x, dir.y, (float)strength), serverClient.playerMob, serverClient);
             } else if(player.isClient()) {
                 currentA = currentA == 0 ? 1 : 0;
                 animInverted = currentA == 1;
@@ -235,29 +223,6 @@ public class MagicalBroom extends AphoreaToolItem {
 
     public String getTranslatedTypeName() {
         return Localization.translate("item", "broom");
-    }
-
-    public static class PacketMagicalBroom extends PacketForceOfWind {
-        public PacketMagicalBroom(byte[] data) {
-            super(data);
-        }
-
-        public PacketMagicalBroom(int slot, float dirX, float dirY, float strength) {
-            super(slot, dirX, dirY, strength);
-        }
-
-        public static void applyToPlayer(Level level, Mob mob, float dirX, float dirY, float strength) {
-            float forceX = dirX * strength;
-            float forceY = dirY * strength;
-            if (Math.abs(mob.dx) < Math.abs(forceX)) {
-                mob.dx = forceX;
-            }
-
-            if (Math.abs(mob.dy) < Math.abs(forceY)) {
-                mob.dy = forceY;
-            }
-
-        }
     }
 
 

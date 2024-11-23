@@ -7,6 +7,7 @@ import necesse.entity.levelEvent.toolItemEvent.ToolItemEvent;
 import necesse.entity.mobs.GameDamage;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.PlayerMob;
+import necesse.entity.mobs.gameDamageType.DamageType;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.item.toolItem.ToolItem;
 import necesse.inventory.item.upgradeUtils.FloatUpgradeValue;
@@ -28,48 +29,55 @@ public class AphoreaAreaList {
         }
     }
 
-    public void showAllAreaParticles(Mob mob, float rangeModifier, float borderParticleModifier, float innerParticleModifier, int particleTime) {
-        Arrays.stream(areas).forEach((AphoreaArea area) -> area.showAreaParticles(mob, this, null, rangeModifier, borderParticleModifier, innerParticleModifier, particleTime));
+    public void showAllAreaParticles(Mob mob, float x, float y, float rangeModifier, float borderParticleModifier, float innerParticleModifier, int particleTime) {
+        Arrays.stream(areas).forEach((AphoreaArea area) -> area.showAreaParticles(mob, x, y, this, null, rangeModifier, borderParticleModifier, innerParticleModifier, particleTime));
     }
 
-    public void showAllAreaParticles(Mob mob, float rangeModifier, float particleModifier, int particleTime) {
-        showAllAreaParticles(mob, rangeModifier, particleModifier, particleModifier, particleTime);
+    public void showAllAreaParticles(Mob mob, float x, float y, float rangeModifier, float particleModifier, int particleTime) {
+        showAllAreaParticles(mob, x, y, rangeModifier, particleModifier, particleModifier, particleTime);
     }
 
-    public void showAllAreaParticles(Mob mob, float rangeModifier, int particleTime) {
-        showAllAreaParticles(mob, rangeModifier, 1, 0.2F, particleTime);
+    public void showAllAreaParticles(Mob mob, float x, float y, float rangeModifier, int particleTime) {
+        showAllAreaParticles(mob, x, y, rangeModifier, 1, 0.2F, particleTime);
+    }
+
+    public void showAllAreaParticles(Mob mob, float x, float y, float rangeModifier) {
+        showAllAreaParticles(mob, x, y, rangeModifier, 1, 0.2F, (int) (Math.random() * 200) + 900);
+    }
+
+    public void showAllAreaParticles(Mob mob, float x, float y) {
+        showAllAreaParticles(mob, x, y, 1);
     }
 
     public void showAllAreaParticles(Mob mob, float rangeModifier) {
-        showAllAreaParticles(mob, rangeModifier, 1, 0.2F, (int) (Math.random() * 200) + 900);
+        showAllAreaParticles(mob, mob.x, mob.y, rangeModifier);
     }
 
     public void showAllAreaParticles(Mob mob) {
-        showAllAreaParticles(mob, 1);
+        showAllAreaParticles(mob, mob.x, mob.y, 1);
     }
 
     public void executeAreas(ToolItem toolItem, @Nullable AphoreaMagicHealingToolItem magicHealingToolItem, FloatUpgradeValue attackDamage, int x, int y, PlayerMob attacker, InventoryItem item, int seed, float rangeModifier) {
+        executeAreas(toolItem, magicHealingToolItem, attackDamage, x, y, attacker, item, seed, rangeModifier, true);
+    }
+
+    public void executeAreas(ToolItem toolItem, @Nullable AphoreaMagicHealingToolItem magicHealingToolItem, FloatUpgradeValue attackDamage, int x, int y, PlayerMob attacker, InventoryItem item, int seed, float rangeModifier, boolean centerIsAttacker) {
         if(attacker.isServer()) {
+
             ToolItemEvent event = new ToolItemEvent(attacker, seed, item, x, y, toolItem.getAttackAnimTime(item, attacker), 1000);
 
-            if (this.areas[0].areaTypes.contains(AphoreaAreaType.HEALING)) {
-                AphoreaArea area = this.areas[0];
-                if (magicHealingToolItem == null) {
-                    AphoreaMagicHealing.healMob(attacker, attacker, area.getHealing(item));
-                } else {
-                    magicHealingToolItem.healMob(attacker, attacker, area.getHealing(item), item);
-                }
-            }
-
             int range = Math.round(this.areas[this.areas.length - 1].range * rangeModifier);
+            float centerX = centerIsAttacker ? attacker.x : x;
+            float centerY = centerIsAttacker ? attacker.y : y;
 
-            attacker.getLevel().entityManager.streamAreaMobsAndPlayers(attacker.x, attacker.y, range).forEach(
+            attacker.getLevel().entityManager.streamAreaMobsAndPlayers(centerX, centerY, range).forEach(
                     (Mob target) -> {
                         for (AphoreaArea area : this.areas) {
-                            area.execute(attacker, target, rangeModifier, toolItem, magicHealingToolItem, attackDamage, item, event);
+                            area.execute(attacker, target, rangeModifier, toolItem, magicHealingToolItem, attackDamage, item, event, x, y, centerIsAttacker);
                         }
                     }
             );
+
         }
     }
 
@@ -78,26 +86,33 @@ public class AphoreaAreaList {
     }
 
     public void executeAreas(Mob attacker, float rangeModifier) {
+        executeAreas(attacker, rangeModifier, 0, 0, true);
+    }
+
+    public void executeAreas(Mob attacker, float rangeModifier, int x, int y, boolean centerIsAttacker) {
         if(attacker.isServer()) {
 
-            if (this.areas[0].areaTypes.contains(AphoreaAreaType.HEALING)) {
-                AphoreaArea area = this.areas[0];
-                AphoreaMagicHealing.healMob(attacker, attacker, area.getHealing(null));
-            }
-
             int range = Math.round(this.areas[this.areas.length - 1].range * rangeModifier);
+            float centerX = centerIsAttacker ? attacker.x : x;
+            float centerY = centerIsAttacker ? attacker.y : y;
 
-            attacker.getLevel().entityManager.streamAreaMobsAndPlayers(attacker.x, attacker.y, range).forEach(
+            attacker.getLevel().entityManager.streamAreaMobsAndPlayers(centerX, centerY, range).forEach(
                     (Mob target) -> {
                         for (AphoreaArea area : this.areas) {
-                            area.execute((PlayerMob) attacker, target, rangeModifier);
+                            area.execute((PlayerMob) attacker, target, rangeModifier, x, y, centerIsAttacker);
                         }
                     }
             );
+
         }
     }
 
     public boolean someType(AphoreaAreaType type) {
         return Arrays.stream(areas).anyMatch(a -> a.areaTypes.contains(type));
+    }
+
+    public AphoreaAreaList setDamageType(DamageType damageType) {
+        Arrays.stream(this.areas).forEach(area -> area.damageType = damageType);
+        return this;
     }
 }

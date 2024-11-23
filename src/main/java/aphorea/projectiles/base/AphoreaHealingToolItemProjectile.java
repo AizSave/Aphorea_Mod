@@ -1,4 +1,4 @@
-package aphorea.projectiles;
+package aphorea.projectiles.base;
 
 import aphorea.other.itemtype.healing.AphoreaHealingProjectileToolItem;
 import aphorea.other.magichealing.AphoreaMagicHealing;
@@ -24,11 +24,10 @@ import java.awt.*;
 import java.awt.geom.Line2D;
 import java.util.*;
 import java.util.List;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class HealingToolItemProjectile extends FollowingProjectile {
+public class AphoreaHealingToolItemProjectile extends FollowingProjectile {
     Color color = new Color(255, 255, 255);
     AphoreaHealingProjectileToolItem toolItem;
     InventoryItem item;
@@ -39,10 +38,10 @@ public class HealingToolItemProjectile extends FollowingProjectile {
         return AphoreaMagicHealing.canHealMob(this, mob) && this.getOwner() != null && this.getOwner() != mob;
     }
 
-    public HealingToolItemProjectile() {
+    public AphoreaHealingToolItemProjectile() {
     }
 
-    public HealingToolItemProjectile(Color color, int healing, AphoreaHealingProjectileToolItem toolItem, InventoryItem item, Level level, Mob owner, float x, float y, float targetX, float targetY, float speed, int distance, float turnSpeed) {
+    public AphoreaHealingToolItemProjectile(Color color, int healing, AphoreaHealingProjectileToolItem toolItem, InventoryItem item, Level level, Mob owner, float x, float y, float targetX, float targetY, float speed, int distance, float turnSpeed) {
         this.color = color;
         this.healing = healing;
         this.toolItem = toolItem;
@@ -166,6 +165,4 @@ public class HealingToolItemProjectile extends FollowingProjectile {
             return sc.playerMob;
         }));
     }
-
-
 }

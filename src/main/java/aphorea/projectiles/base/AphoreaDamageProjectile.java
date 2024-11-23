@@ -1,10 +1,6 @@
-package aphorea.projectiles;
+package aphorea.projectiles.base;
 
-import aphorea.other.itemtype.healing.AphoreaHealingProjectileToolItem;
-import aphorea.other.magichealing.AphoreaMagicHealing;
 import necesse.engine.gameLoop.tickManager.TickManager;
-import necesse.engine.network.server.ServerClient;
-import necesse.engine.util.GameUtils;
 import necesse.entity.mobs.GameDamage;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.PlayerMob;
@@ -15,26 +11,19 @@ import necesse.gfx.drawOptions.texture.TextureDrawOptions;
 import necesse.gfx.drawables.EntityDrawable;
 import necesse.gfx.drawables.LevelSortedDrawable;
 import necesse.gfx.drawables.OrderableDrawables;
-import necesse.inventory.InventoryItem;
 import necesse.level.maps.Level;
-import necesse.level.maps.LevelObjectHit;
 import necesse.level.maps.light.GameLight;
 
 import java.awt.*;
-import java.awt.geom.Line2D;
 import java.util.List;
-import java.util.*;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class DamageProjectile extends FollowingProjectile {
+public class AphoreaDamageProjectile extends FollowingProjectile {
     Color color = new Color(255, 255, 255);
 
-    public DamageProjectile() {
+    public AphoreaDamageProjectile() {
     }
 
-    public DamageProjectile(Color color, GameDamage damage, Level level, Mob owner, float x, float y, float targetX, float targetY, float speed, int distance, float turnSpeed) {
+    public AphoreaDamageProjectile(Color color, GameDamage damage, Level level, Mob owner, float x, float y, float targetX, float targetY, float speed, int distance, float turnSpeed) {
         this.color = color;
         this.setDamage(damage);
 
@@ -56,14 +45,12 @@ public class DamageProjectile extends FollowingProjectile {
         this.setWidth(0, 5);
     }
 
-
-
     @Override
     public void updateTarget() {
         super.updateTarget();
         if (traveledDistance > 20) {
             findTarget(
-                    mob -> true,
+                    mob -> mob.isHostile,
                     200, (float) this.distance / 2
             );
         }

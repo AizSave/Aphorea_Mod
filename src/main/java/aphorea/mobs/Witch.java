@@ -46,8 +46,13 @@ public class Witch extends FlyingHostileMob {
             ),
             RotationLootItem.globalLootRotation(
                     new LootItem("broom", (new GNDItemMap())),
+                    new LootItem("broom", (new GNDItemMap())),
+                    new LootItem("broom", (new GNDItemMap())),
                     new LootItem("witchmedallion", (new GNDItemMap())),
-                    new LootItem("witchhat", (new GNDItemMap()))
+                    new LootItem("witchmedallion", (new GNDItemMap())),
+                    new LootItem("witchhat", (new GNDItemMap())),
+                    new LootItem("witchhat", (new GNDItemMap())),
+                    new LootItem("magicalvial", (new GNDItemMap()))
             )
     );
 

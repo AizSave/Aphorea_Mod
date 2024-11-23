@@ -9,6 +9,7 @@ import necesse.entity.levelEvent.toolItemEvent.ToolItemEvent;
 import necesse.entity.mobs.GameDamage;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.PlayerMob;
+import necesse.entity.mobs.gameDamageType.DamageType;
 import necesse.entity.particle.Particle;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.item.toolItem.ToolItem;
@@ -27,6 +28,9 @@ public class AphoreaArea {
     public Color color;
     public int position;
     public Set<AphoreaAreaType> areaTypes = new HashSet<>();
+    public float modBorderParticles = 1;
+    public float modInnerParticles = 1;
+    public DamageType damageType = DamageTypeRegistry.NORMAL;
 
     public FloatUpgradeValue damage;
     public IntUpgradeValue healing;
@@ -58,6 +62,20 @@ public class AphoreaArea {
         return this;
     }
 
+    public AphoreaArea setModParticles(float modParticles) {
+        this.modBorderParticles = modParticles;
+        this.modInnerParticles = modParticles;
+
+        return this;
+    }
+
+    public AphoreaArea setModParticles(float modBorderParticles, float modInnerParticles) {
+        this.modBorderParticles = modBorderParticles;
+        this.modInnerParticles = modInnerParticles;
+
+        return this;
+    }
+
     public AphoreaArea setHealingArea(int healing) {
         return setHealingArea(new IntUpgradeValue(0, 0.2F).setBaseValue(healing));
     }
@@ -67,21 +85,21 @@ public class AphoreaArea {
     }
 
 
-    public void showAreaParticles(Mob mob, AphoreaAreaList areaList, Color forcedColor, float rangeModifier, float borderParticleModifier, float innerParticleModifier, int particleTime) {
+    public void showAreaParticles(Mob mob, float x, float y, AphoreaAreaList areaList, Color forcedColor, float rangeModifier, float borderParticleModifier, float innerParticleModifier, int particleTime) {
         int range = Math.round(this.range * rangeModifier);
         int antRange = Math.round(this.antRange * rangeModifier);
         if (color != null || forcedColor != null) {
             float initialParticleCount = (float) (360 * range) / 400;
             float initialAnteriorParticleCount = antRange == 0 ? 0 : (float) (360 * antRange) / 400;
 
-            int particles = Math.round(initialParticleCount * borderParticleModifier);
-            int innerParticles = Math.round((initialParticleCount - initialAnteriorParticleCount) * innerParticleModifier);
+            int particles = Math.round(initialParticleCount * borderParticleModifier * this.modBorderParticles);
+            int innerParticles = Math.round((initialParticleCount - initialAnteriorParticleCount) * innerParticleModifier * this.modInnerParticles);
 
             for (int i = 0; i < particles; i++) {
                 float angle = (float) i / particles * 360;
                 float dx = (float) Math.sin(Math.toRadians(angle)) * (float) range;
                 float dy = (float) Math.cos(Math.toRadians(angle)) * (float) range;
-                mob.getLevel().entityManager.addParticle(mob.x + dx, mob.y + dy, new ParticleTypeSwitcher(Particle.GType.CRITICAL, Particle.GType.IMPORTANT_COSMETIC, Particle.GType.COSMETIC).next()).movesFriction(GameRandom.globalRandom.getIntBetween(-5, 5), GameRandom.globalRandom.getIntBetween(-5, 5), GameRandom.globalRandom.getFloatBetween(0.05F, 0.1F)).color(forcedColor != null ? forcedColor : color).heightMoves(GameRandom.globalRandom.getFloatBetween(0F, 3F), GameRandom.globalRandom.getFloatBetween(5F, 10F)).lifeTime(particleTime);
+                mob.getLevel().entityManager.addParticle(x + dx, y + dy, new ParticleTypeSwitcher(Particle.GType.CRITICAL, Particle.GType.IMPORTANT_COSMETIC, Particle.GType.COSMETIC).next()).movesFriction(GameRandom.globalRandom.getIntBetween(-5, 5), GameRandom.globalRandom.getIntBetween(-5, 5), GameRandom.globalRandom.getFloatBetween(0.05F, 0.1F)).color(forcedColor != null ? forcedColor : color).heightMoves(GameRandom.globalRandom.getFloatBetween(0F, 3F), GameRandom.globalRandom.getFloatBetween(5F, 10F)).lifeTime(particleTime);
             }
 
             if (0.1F * range + antRange < range * 0.9F) {
@@ -90,14 +108,14 @@ public class AphoreaArea {
                     float d = GameRandom.globalRandom.getFloatBetween(0.1F * range + antRange, 0.9F * range);
                     float dx = (float) Math.sin(Math.toRadians(angle)) * d;
                     float dy = (float) Math.cos(Math.toRadians(angle)) * d;
-                    mob.getLevel().entityManager.addParticle(mob.x + dx, mob.y + dy, new ParticleTypeSwitcher(Particle.GType.CRITICAL, Particle.GType.IMPORTANT_COSMETIC, Particle.GType.COSMETIC).next()).movesFriction(GameRandom.globalRandom.getIntBetween(-5, 5), GameRandom.globalRandom.getIntBetween(-5, 5), GameRandom.globalRandom.getFloatBetween(0.05F, 0.1F)).color(forcedColor != null ? forcedColor : color).heightMoves(GameRandom.globalRandom.getFloatBetween(0F, 3F), GameRandom.globalRandom.getFloatBetween(5F, 10F)).lifeTime(particleTime);
+                    mob.getLevel().entityManager.addParticle(x + dx, y + dy, new ParticleTypeSwitcher(Particle.GType.CRITICAL, Particle.GType.IMPORTANT_COSMETIC, Particle.GType.COSMETIC).next()).movesFriction(GameRandom.globalRandom.getIntBetween(-5, 5), GameRandom.globalRandom.getIntBetween(-5, 5), GameRandom.globalRandom.getFloatBetween(0.05F, 0.1F)).color(forcedColor != null ? forcedColor : color).heightMoves(GameRandom.globalRandom.getFloatBetween(0F, 3F), GameRandom.globalRandom.getFloatBetween(5F, 10F)).lifeTime(particleTime);
                 }
             }
 
             if (position > 0) {
                 AphoreaArea antArea = areaList.areas[position - 1];
 
-                antArea.showAreaParticles(mob, areaList, antArea.color == null ? forcedColor : color, rangeModifier, borderParticleModifier, innerParticleModifier, particleTime);
+                antArea.showAreaParticles(mob, x, y, areaList, antArea.color == null ? forcedColor : color, rangeModifier, borderParticleModifier, innerParticleModifier, particleTime);
             }
 
         }
@@ -120,11 +138,20 @@ public class AphoreaArea {
     }
 
     public void execute(PlayerMob attacker, Mob target, float modRange) {
-        if (target.getDistance(attacker) <= (range * modRange) && target.getDistance(attacker) > (antRange * modRange)) {
-            if (this.areaTypes.contains(AphoreaAreaType.DAMAGE) && target.canBeTargeted(attacker, attacker.getNetworkClient())) {
-                target.isServerHit(new GameDamage(DamageTypeRegistry.NORMAL, this.getBaseDamage(), 100000, 0), target.x - attacker.x, target.y - attacker.y, 0, attacker);
+        execute(attacker, target, modRange, 0, 0, true);
+    }
+
+    public void execute(PlayerMob attacker, Mob target, float modRange, int x, int y, boolean centerIsAttacker) {
+        float distanceToTarget = target.getDistance(attacker);
+        boolean isCenterCondition = centerIsAttacker
+                ? ((attacker == target && position == 0) || (distanceToTarget <= (range * modRange) && distanceToTarget > (antRange * modRange)))
+                : (target.getDistance(x, y) <= (range * modRange) && target.getDistance(x, y) > (antRange * modRange));
+
+        if (isCenterCondition) {
+            if (this.areaTypes.contains(AphoreaAreaType.DAMAGE) && target != attacker && target.canBeTargeted(attacker, attacker.getNetworkClient())) {
+                target.isServerHit(new GameDamage(damageType, this.getBaseDamage(), 100000, 0), target.x - attacker.x, target.y - attacker.y, 0, attacker);
             }
-            if (this.areaTypes.contains(AphoreaAreaType.HEALING) && AphoreaMagicHealing.canHealMob(attacker, target)) {
+            if (this.areaTypes.contains(AphoreaAreaType.HEALING) && (target == attacker || AphoreaMagicHealing.canHealMob(attacker, target))) {
                 AphoreaMagicHealing.healMob(attacker, target, this.getHealing(null));
             }
         }
@@ -132,20 +159,28 @@ public class AphoreaArea {
     }
 
     public void execute(PlayerMob attacker, Mob target, float modRange, ToolItem toolItem, @Nullable AphoreaMagicHealingToolItem magicHealingToolItem, FloatUpgradeValue attackDamage, InventoryItem item, ToolItemEvent event) {
-        if (target.getDistance(attacker) <= (range * modRange) && target.getDistance(attacker) > (antRange * modRange)) {
-            if (this.areaTypes.contains(AphoreaAreaType.DAMAGE) && target.canBeTargeted(attacker, attacker.getNetworkClient())) {
+        execute(attacker, target, modRange, toolItem, magicHealingToolItem, attackDamage, item, event, 0, 0, true);
+    }
+
+    public void execute(PlayerMob attacker, Mob target, float modRange, ToolItem toolItem, @Nullable AphoreaMagicHealingToolItem magicHealingToolItem, FloatUpgradeValue attackDamage, InventoryItem item, ToolItemEvent event, int x, int y, boolean centerIsAttacker) {
+        float distanceToTarget = target.getDistance(attacker);
+        boolean isCenterCondition = centerIsAttacker
+                ? ((attacker == target && position == 0) || (distanceToTarget <= (range * modRange) && distanceToTarget > (antRange * modRange)))
+                : (target.getDistance(x, y) <= (range * modRange) && target.getDistance(x, y) > (antRange * modRange));
+
+        if (isCenterCondition) {
+            if (this.areaTypes.contains(AphoreaAreaType.DAMAGE) && target != attacker && target.canBeTargeted(attacker, attacker.getNetworkClient())) {
                 attackDamage.setBaseValue(this.getBaseDamage()).setUpgradedValue(1.0F, this.getTier1Damage());
                 toolItem.hitMob(attacker.attackingItem, event, attacker.getLevel(), target, attacker);
             }
-            if (this.areaTypes.contains(AphoreaAreaType.HEALING) && AphoreaMagicHealing.canHealMob(attacker, target)) {
+
+            if (this.areaTypes.contains(AphoreaAreaType.HEALING) && (target == attacker || AphoreaMagicHealing.canHealMob(attacker, target))) {
                 if (magicHealingToolItem == null) {
                     AphoreaMagicHealing.healMob(attacker, target, this.getHealing(item), toolItem, item);
                 } else {
                     magicHealingToolItem.healMob(attacker, target, this.getHealing(item), item);
                 }
             }
-
         }
-
     }
 }
