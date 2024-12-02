@@ -1,4 +1,4 @@
-# Aphorea_Mod v0.3.1
+# Aphorea_Mod
 Code for a Necesse mod: https://steamcommunity.com/sharedfiles/filedetails/?id=3268603061
 
 All code is created by Save, modifying and amplifying the original game files. Of course a large part of the code belongs to the original game
