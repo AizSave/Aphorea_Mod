@@ -1,0 +1,230 @@
+# Translation made by Chris (https://steamcommunity.com/id/ChrisGug/)
+
+[global]
+aphorea=§!Aphorea Mod
+
+[tile]
+geltile=Pavimento in Gel
+
+[object]
+witchstatue=Statua della Strega
+
+[buffmodifiers]
+magichealing=<mod>% guarigione magica
+magichealingflat=<mod> guarigione magica
+magichealingreceived=<mod>% guarigione magica ricevuta
+magichealingreceivedflat=<mod> guarigione magica ricevuta
+magichealinggrace=<mod>% grazia magica curativa
+arearange=<mod>% raggio d'azione
+
+[stats]
+banner_damage=Danno da Stendardo
+
+[enchantment]
+godly=Divino
+absent=Assente
+auxiliary=Ausiliario
+vain=Vano
+gentle=Gentile
+selfish=Egoista
+friendly=Amichevole
+graceful=Aggraziato
+wonderful=Meraviglioso
+ecologic=Ecologico
+exalted=Esaltato
+cursed=Maledetto
+booming=Rimbombante
+dimmed=Offuscato
+
+[itemcategory]
+healing=Curativo
+healingtools=Curativo
+
+[itemtype]
+battleaxe=Ascia da Battaglia
+saber=Sciabola
+sling=Fionda
+blowgun=Cerbottana
+healingtool=Attrezzo Curativo
+
+[item]
+gelball=Palla di Gel
+rockygel=Gel Roccioso
+gelballgroup=Palle di Gel Raggruppate
+gelsword=Spada di Gel
+unstablecore=Nucleo Instabile
+unstablegel=Gel Instabile
+unstablegelsword=Spada di Gel Instabile
+unstablegelgreatsword=Spadone di Gel Instabile
+unstablegelstaff=Staffa di Gel Instabile
+sling=Fionda
+firesling=Fionda Infuocata
+frozensling=Fionda Congelata
+blowgun=Cerbottana
+rockyperiapt=Amuleto Roccioso
+unstableperiapt=Amuleto Instabile
+bloodyperiapt=Amuleto Sanguinario
+demonicperiapt=Amuleto Demoniaco
+abysmalperiapt=Amuleto Abissale
+frozenperiapt=Amuleto Congelato
+necromancyperiapt=Amuleto della Necromanzia
+rockyboots=Stivali Rocciosi
+rockychestplate=Corazza Rocciosa
+rockyhelmet=Elmo Roccioso
+goldhat=Cappello d'Oro
+unstablegelbattleaxe=Ascia da Battaglia di Gel Instabile
+demonicbattleaxe=Ascia da Battaglia Demoniaca
+coppersaber=Sciabola di Rame
+ironsaber=Sciabola di Ferro
+goldsaber=Sciabola d'Oro
+unstablegelsaber=Sciabola di Gel Instabile
+demonicsaber=Sciabola Demoniaca
+basicbackpack=Zaino di Base
+sapphirebackpack=Zaino di Zaffiro
+amethystbackpack=Zaino d'Ametista
+rubybackpack=Zaino di Rubino
+emeraldbackpack=Zaino di Smeraldo
+diamondbackpack=Zaino di Diamante
+gelslimenullifier=Nullificatore di Slime di Gel
+broom=Scopa
+magicalbroom=Scopa Magica
+pinkwitchhat=Cappello da Strega Rosa
+magicalsuit=Abito Magico
+magicalboots=Stivali Magici
+stardust=Polvere di Stelle
+magicalvial=Fiala Magica
+healingstaff=Staffa Curatrice
+floralring=Anello Floreale
+gelring=Anello di Gel
+heartring=Anello del Cuore
+ringofhealth=Anello della Salute
+swampboots=Stivali Paludosi
+swampchestplate=Corazza Paludosa
+swampmask=Maschera Paludosa
+swamphood=Cappuccio Paludoso
+swampshield=Scudo Paludoso
+woodenrod=Asta di Legno
+woodenwand=Bacchetta di Legno
+witchmedallion=Medaglione della Strega
+lowdspotion=Pozione di Lowd
+adeptsbook=Libro dell'Adepto
+goldenwand=Bacchetta d'Oro
+unstablegelarrow=Freccia di Gel Instabile
+gelarrow=Freccia di Gel
+unstablegelgreatbow=Grande Arco di Gel Instabile
+gelgreatbow=Grande Arco di Gel
+voidhammer=Martello del Vuoto
+unstablegelveline=Gelveline Instabile
+cuberry=Cuberry
+volatilegelstaff=Staffa di Gel Volatile
+
+[itemtooltip]
+line=--------------------
+magichealingtip=Guarigione Magica: <health>
+rangetip=Raggio: <range>
+areatip=§aArea: <number>
+bannerdamagetip=Danno da Stendardo: <value>
+
+magichealinggrace=§aGrazia Magica Curativa:§0 Cura te stesso con una percentuale della guarigione magica destinata agli alleati
+
+saber=Carica rapida infligge danni x2 dopo 0.5 secondi, poi si scarica dopo altri 0.5 secondi
+saber2=Un attacco perfetto lancerà un taglio d'aria che infligge danni base. Uno buono ne lancerà anche uno debole
+saber3=Tieni premuto [input=mouse2] per caricare uno scatto e tagliare i nemici infliggendo danni base
+battleaxe=Richiede molto tempo di ricarica
+battleaxe2=Premi [input=mouse2] per attiva la Furia del Berserker. Non puoi subire danni o muoverti mentre attivi l'abilità
+sling=Lancia pietre con forza
+sling2=Probabilità del 100% di stordire un nemico per 0.5 secondi
+spinsecondaryattack=[input=mouse2] per rendere il prossimo attacco un attacco ad area
+areasecondaryattack=[input=mouse2] per eseguire un attacco ad area consumando <mana> Mana
+stikybuff1=Rende il nemico §9Appiccicoso§0 per 1 secondo
+stikybuff2=Rende il nemico §9Appiccicoso§0 per 2 secondi
+stikybuff3=Rende il nemico §9Appiccicoso§0 per 3 secondi
+gelball=Lancia una palla di gel
+unstablecore=§bRilascia un aura instabile...§0 Può essere utilizzato solo durante il giorno
+rockyperiapt=+5 Armatura, ma -5% Velocità di Movimento
+rockyperiapt2=Premi [input=trinketability] per ottenere 10 Armatura per 10 secondi\nNon puoi subire danni o muoverti mentre attivi l'abilità
+unstableperiapt=Evoca due §bPiccoli Slime di Gel Instabile§0 che ti proteggeranno. Questi slime §9infliggono 8 Danni d'Evocazione§0
+unstableperiapt2=Ti rende immune al debuff §9Appiccicoso§0
+bloodyperiapt=Premi [input=trinketability] per ottenere +50% Velocità, +30% Velocità d'Attacco e\ne le armi §6Dardo di Sangue§0 e §6Sangue Volante§0 ti cureranno del 5% del danno che infliggi con esse.\nNon puoi subire danni o muoverti mentre attivi l'abilità
+demonicperiapt=Premi [input=trinketability] per ottenere +50% Velocità, +30% Velocità d'Attacco e\ne le armi magiche ti cureranno del 5% del danno che infliggi con esse per 10 secondi.\nNon puoi subire danni o muoverti mentre attivi l'abilità
+abysmalperiapt=Le armi magiche ti cureranno del 5% del danno che infliggi con esse
+necromancyperiapt=Ogni volte che tu o una delle tue evocazioni uccidete un mob ostile, evochi uno §bScheletro Non Morto§0\n che §9infligge 20 Danni d'Evocazione§0 per§9 10 secondi§0 con un massimo di§9 3 alla volta§0
+frozenperiapt=Le armi da mischia e a distanza applicheranno l'effetto §6Congelare§0 per 3 secondi. Se il bersaglio è già congelato, aumenta il Danno base dell'attacco del §9+20%§0
+frozenperiapt2=Premi [input=trinketability] per ottenere +50% Velocità, +30% Velocità d'Attacco e\nfarlo funzionare con tutti i danni per 10 secondi.\nNon puoi subire danni o muoverti mentre attivi l'abilità
+frozenperiapt3=Ti rende immune ai debuff §9Congelare§0 e §9Lentezza da freddo§0
+goldhatsetbonus=+60% Velocità d'Attacco a Distanza mentre non ti muovi
+firesling=Brucia i nemici
+frozensling=Congela i nemici
+backpack=È un nuovo inventario che immagazzinerà tutti gli oggetti che raccogli
+backpack2=§6Non avere zaini con oggetti nell'inventario quando creerai uno zaino migliore
+backpackslots=Capacità di <slots> oggetti
+stored=Oggetti immagazzinati: <items>
+gelslimenullifier=Smetteranno di disturbarti con un semplice click!
+geltile=Pavimento appiccicoso che rallenta notevolmente tutto ciò che sta sopra
+pinkwitchsetbonus=Aumenta la Velocità d'Attacco Magico, Rigenerazione del Mana, e Armatura quanta meno vita hai, con un massimo di 50% / 6 Armatura
+floralring=Ricevi §7<healing>§0 Guarigione Magica ogni 3 secondi
+gelring=+30% guarigione magica ricevuta
+heartring=+20 vita massima
+magicalvial=Guarigione Magica di §7<healing>§0. Indica un essere umano ferito per curarlo, non indicare nessuno per curare te stesso. Tempo di recupero di 20-secondi
+swampshield=Protegge solo gli attacchi nella direzione in cui vengono ricevuti\nGuarisci magicamente di §7<healing>§0 del danno che previeni
+witchstatue=Posizionando questa statua sulla superifcie di una palude eliminerai la generazione delle Streghe Rosa in tutta l'isola
+deleteditem=Questo oggetto è stato rimosso, usalo per recuperare i materiali prima che venga rimosso definitivamente
+woodenrod=§9[Autoguarigione Magica]§0 di §7<healing>§0 ogni 10 attacchi
+witchmedallion=Infligge 15 Danni ad Area per ogni 20 §9[Guarigioni Magiche]§0 effettuate
+lowdspotion=NON BERLO
+projectilearea=Quando il proiettile finisce, infligge danni ad area
+voidhammer=Quando rimbalza o colpisce un nemico, bersaglia quello più vicino, colpendo fino a tre volte
+unstablegelstaff=Quando rimbalza sui muri, si moltiplica
+twoarrows=Spara due frecce contemporaneamente
+threearrows=Spara tre frecce contemporaneamente
+gelgreatbow=Trasforma le Frecce di Pietra in Frecce di Gel
+unstablegelgreatbow=Trasforma le Frecce di Pietra e le Frecce di Gel in Frecce di Gel Instabile
+strikebannereffect=+<effect>% rigenerazione vita (dentro e fuori dal combattimento)
+strikebannerability=Ogni <time> secondi: Esegue un attacco ad area
+
+[mobtooltip]
+usenet=Usa una Rete! [item=net]
+
+[mob]
+gelslime=Slime di Gel
+rockygelslime=Slime di Gel Roccioso
+unstablegelslime=Slime di Gel Instabile
+miniunstablegelslime=Mini Slime di Gel Instabile
+pinkwitch=Strega Rosa
+babyunstablegelslime=Piccolo Slime di Gel Instabile
+undeadskeleton=Scheletro Non Morto
+voidadept=Adepto del Vuoto
+volatilegelslime=Slime di Gel Volatile
+wildphosphorslime=Slime Fosforo Selvatico
+petphosphorslime=Slime Fosforo
+
+[buff]
+stunStordino
+stickyAppiccicoso
+berserkerrushFuria del Berserker
+berserkerrushcooldownFuria del Berserker in Ricarica
+swordchargeattackcooldown=Attacco Caricato con la Spada in Ricarica
+periaptcooldownAbilità dell'Amuleto in Ricarica
+periaptactiveAbilità dell'Amuleto Attiva
+saberdashcooldown=Ricarica dello Scatto
+lowdspoison=Veleno di Lowd
+
+[message]
+unstablegelslime_anger=§6Slime di Gel Instabile si sta arrabbiando... <anger>/10
+unstablegelslime_fullanger=§6Slime di Gel Instabile si è arrabbiato! <anger>/10
+unstablegelslime_night=§6Slime di Gel Instabile§0 è svanito al calare della notte!
+gelslimesnulled=Slime di Gel rimossi in questo mondo. Non appariranno più
+gelslimesunnulled=Slime di Gel riammessi in questo mondo. Ora riappariranno
+pinkwitchesnulled=Streghe Rosa rimosse in (<x>, <y>)
+pinkwitchesunnulled=Streghe Rosa riammesse in (<x>, <y>)
+needfreeslots=Hai bisogno di <slots> slot liberi nell'inventario per utilizzarlo
+healthalreadyfull=La salute è già piena
+cantuseatnight=Non può essere utilizzato di notte
+cantheal=Non può guarire
+pickupenabledinventoryfull=La raccolta non può essere disabilitata perché l'inventario è pieno
+itoldyou=Te l'avevo detto
+
+[journal]
+killgelslimesforest=[mob=gelslime] Uccidi 25 Slime di Gel nella foresta
+pickupfloralring=[item=floralring] Taglia molta erab nella foresta per ottenerel'Anello Floreale
+killunstablegelslime=[mob=unstablegelslime] Uccidi 1 Slime di Gel Instabile

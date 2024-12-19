@@ -1,0 +1,248 @@
+# Translation made by Save (https://steamcommunity.com/id/Aiz_Save/)
+
+[global]
+aphorea=§!Aphorea Mod
+
+[tile]
+geltile=Gel Floor
+
+[object]
+witchstatue=Witch Statue
+
+[buffmodifiers]
+magichealing=<mod>% magic healing
+magichealingflat=<mod> magic healing
+magichealingreceived=<mod>% magic healing received
+magichealingreceivedflat=<mod> magic healing received
+magichealinggrace=<mod>% magic healing grace
+arearange=<mod>% area range
+# NEW
+bannerdamage=<mod>% banner damage
+bannercritchance=<mod>% banner crit chance
+bannercritdamage=<mod>% banner crit damage
+bannereffect=<mod>% banner effect
+bannerabilityspeed=<mod>% banner ability speed
+
+[stats]
+banner_damage=Banner damage
+
+[enchantment]
+godly=Godly
+absent=Absent
+auxiliary=Auxiliary
+vain=Vain
+gentle=Gentle
+selfish=Selfish
+friendly=Friendly
+graceful=Graceful
+wonderful=Wonderful
+ecologic=Ecologic
+exalted=Exalted
+cursed=Cursed
+booming=Booming
+dimmed=Dimmed
+
+[itemcategory]
+healing=Healing
+healingtools=Healing
+
+[itemtype]
+battleaxe=Battleaxe
+saber=Saber
+sling=Sling
+blowgun=Blow Gun
+healingtool=Healing Tool
+
+[item]
+gelball=Gel Ball
+rockygel=Rocky Gel
+gelballgroup=Grouped Gel Balls
+gelsword=Gel Sword
+unstablecore=Unstable Core
+unstablegel=Unstable Gel
+unstablegelsword=Unstable Gel Sword
+unstablegelgreatsword=Unstable Gel Greatsword
+unstablegelstaff=Unstable Gel Staff
+sling=Sling
+firesling=Fire Sling
+frozensling=Frozen Sling
+blowgun=Blow Gun
+rockyperiapt=Rocky Periapt
+unstableperiapt=Unstable Periapt
+bloodyperiapt=Bloody Periapt
+demonicperiapt=Demonic Periapt
+abysmalperiapt=Abysmal Periapt
+frozenperiapt=Frozen Periapt
+necromancyperiapt=Necromancy Periapt
+rockyboots=Rocky Boots
+rockychestplate=Rocky Chestplate
+rockyhelmet=Rocky Helmet
+goldhat=Gold Hat
+unstablegelbattleaxe=Unstable Gel Battleaxe
+demonicbattleaxe=Demonic Battleaxe
+coppersaber=Copper Saber
+ironsaber=Iron Saber
+goldsaber=Gold Saber
+unstablegelsaber=Unstable Gel Saber
+demonicsaber=Demonic Saber
+basicbackpack=Basic Backpack
+sapphirebackpack=Sapphire Backpack
+amethystbackpack=Amethyst Backpack
+rubybackpack=Ruby Backpack
+emeraldbackpack=Emerald Backpack
+diamondbackpack=Diamond Backpack
+gelslimenullifier=Gel Slime Nullifier
+broom=Broom
+magicalbroom=Magical Broom
+pinkwitchhat=Pink Witch Hat
+magicalsuit=Magical Suit
+magicalboots=Magical Boots
+stardust=Stardust
+magicalvial=Magical Vial
+healingstaff=Healing Staff
+floralring=Floral Ring
+gelring=Gel Ring
+heartring=Heart Ring
+ringofhealth=Ring of Health
+swampboots=Swamp Boots
+swampchestplate=Swamp Chestplate
+swampmask=Swamp Mask
+swamphood=Swamp Hood
+swampshield=Swamp Shield
+woodenrod=Wooden Rod
+woodenwand=Wooden Wand
+witchmedallion=Witch Medallion
+lowdspotion=Lowd's Potion
+adeptsbook=Adept's Book
+goldenwand=Golden Wand
+unstablegelarrow=Unstable Gel Arrow
+gelarrow=Gel Arrow
+unstablegelgreatbow=Unstable Gel Greatbow
+gelgreatbow=Gel Greatbow
+voidhammer=Void Hammer
+unstablegelveline=Unstable Gelveline
+cuberry=Cuberry
+volatilegelstaff=Volatile Gel Staff
+# NEW
+blankbanner=Blank Banner
+bannerbearerfoci=Banner-bearer Foci
+
+[itemtooltip]
+line=--------------------
+magichealingtip=Magic healing: §7<health>
+rangetip=Range: §9<range>
+areatip=§aArea <number>
+bannerdamagetip=Banner damage: <value>
+# NEW
+areabuff=Apply <buff> to allys
+areadebuff=Apply <buff> to enemies
+areabuffdisplay=<buff> for <duration> seconds
+
+magichealinggrace=§aMagic Healing Grace:§0 Heals yourself with a % of the §9[Magic Healing]§0 intended for allies
+
+saber=Quick charge dealing x2 damage after 0.5 seconds, then discharges over another 0.5 seconds
+saber2=A perfect attack will launch an aircut that deals base damage. A good one will also launch a weak one
+saber3=Hold [input=mouse2] to charge up a dash to slice through enemies dealing base damage
+battleaxe=Requires a lot of charge time
+battleaxe2=Press [input=mouse2] to activate the Berserker Rush. You cannot take damage or move while activating the ability
+sling=Throws stones with force
+sling2=100% chance to stun the enemy for 0.5 seconds
+spinsecondaryattack=[input=mouse2] to make the next attack an area attack
+areasecondaryattack=[input=mouse2] to perform an area attack consuming <mana> Mana
+stikybuff1=Makes the enemy §9Sticky§0 for 1 second
+stikybuff2=Makes the enemy §9Sticky§0 for 2 seconds
+stikybuff3=Makes the enemy §9Sticky§0 for 3 seconds
+gelball=Throws a gel ball
+unstablecore=§bReleases an unstable aura...§0 Can only be used during the day
+rockyperiapt=+5 Armor, but -5% Movement Speed
+rockyperiapt2=Press [input=trinketability] to gain 10 Armor for 10 seconds\nYou cannot take damage or move while activating the ability
+unstableperiapt=Calls two §bBaby Unstable Gel Slimes§0 who will protect you. These slimes §9deal 8 Summoner Damage§0
+unstableperiapt2=Makes you immune to the §9Sticky§0 debuff
+bloodyperiapt=Press [input=trinketability] to gain +50% Speed, +30% Attack Speed, and\nthe weapons §6Blood Bolt§0 and §6Blood Volley§0 will heal you for 5% of the damage you deal with them.\nYou cannot take damage or move while activating the ability
+demonicperiapt=Press [input=trinketability] to gain +50% Speed, +30% Attack Speed, and\nmagic weapons will heal you for 5% of the damage you deal with them for 10 seconds.\nYou cannot take damage or move while activating the ability
+abysmalperiapt=Magic weapons will heal you for 5% of the damage you deal with them
+necromancyperiapt=Every time you or one of your summons kills a hostile mob you summon a §bUndead Skeleton§0\n that §9deals 20 Summoner Damage§0 for§9 10 seconds§0 with a maximum of§9 3 at a time§0
+frozenperiapt=Melee and Ranged weapons will §6Freeze§0 for 3 seconds. If the target is already frozen, increases the base Damage of the attack by §9+20%§0
+frozenperiapt2=Press [input=trinketability] to gain +50% Speed, +30% Attack Speed and\nmake this work with all damage for 10 seconds.\nYou cannot take damage or move while activating the ability
+frozenperiapt3=Makes you immune to the §9Freeze§0 and §9Frostslow§0 debuffs
+goldhatsetbonus=+60% Ranged Attack Speed while you are not moving
+firesling=Burns the enemies
+frozensling=Freezes the enemies
+backpack=It is a new inventory that stores all the items you collect
+backpack2=§6Do not have backpacks with items in the inventory when you are going to create a better backpack
+backpackslots=Capacity of <slots> items
+stored=Stored items: <items>
+gelslimenullifier=They will stop bothering you with a simple click!
+geltile=Sticky floor that greatly slows down everything on top
+pinkwitchsetbonus=Increases Magic Attack Speed, Mana Regeneration, and Armor as you have less life, with a maximum of 50% / 6 Armor
+floralring=Self §9[Magic Healing]§0 with §7<healing>§0 every 5 seconds
+gelring=+30% §9[Magic Healing]§0 received
+heartring=+20 max health
+magicalvial=§9[Magic Healing]§0 of §7<healing>§0. Point at an injured human to heal them, don't point at anyone to heal yourself. 20-second cooldown
+swampshield=Only protects attacks in the direction they are received\nSelf §9[Magic Healing]§0 with the §7<healing>§0 of the damage you prevent
+witchstatue=Placing this statue on the surface of a swamp will eliminate Pink Witch spawn throughout the island
+deleteditem=This item has been removed, use this item to recover the materials before it is permanently removed
+woodenrod=Self §9[Magic Healing]§0 with §7<healing>§0 every 10 attacks
+witchmedallion=Deals 15 Area Damage for every 20 §9[Magic Healing]§0 done
+lowdspotion=DO NOT DRINK THIS
+projectilearea=When the projectile ends, it deals area damage
+voidhammer=When it bounces or hits an enemy, it targets the nearest one, hitting up to 3 times
+unstablegelstaff=When it bounces off walls, it duplicates
+twoarrows=Shoots two arrows at once
+threearrows=Shoots three arrows at once
+gelgreatbow=Turns Stone Arrows into Gel Arrows
+unstablegelgreatbow=Turns Stone Arrows and Gel Arrows into Unstable Gel Arrows
+strikebannereffect=+<effect>% life regeneration (in and out of combat)
+strikebannerability=Every <time> seconds: Performs an area attack
+# NEW
+blankbannereffect=§7+<effect>%§0 life regeneration (out of combat)
+blankbannerability=§aEvery <time> seconds:§0 Performs an area healing
+bannerbearerfoci1=§7+40%§0 banner effect and §7+20%§0 banner ability speed
+bannerbearerfoci2=§6-20%§0 all non-banner damage and §6-1§0 max summons
+
+[mobtooltip]
+usenet=Use a Net! [item=net]
+
+[mob]
+gelslime=Gel Slime
+rockygelslime=Rocky Gel Slime
+unstablegelslime=Unstable Gel Slime
+miniunstablegelslime=Unstable Gel Slime Mini
+pinkwitch=Pink Witch
+babyunstablegelslime=Baby Unstable Gel Slime
+undeadskeleton=Undead Skeleton
+voidadept=Void Adept
+volatilegelslime=Volatile Gel Slime
+wildphosphorslime=Wild Phosphor Slime
+petphosphorslime=Phosphor Slime
+
+[buff]
+stunStunned
+stickySticky
+berserkerrushBerserker Rush
+berserkerrushcooldownBerserker Rush on Cooldown
+swordchargeattackcooldown=Sword Charge Attack on Cooldown
+periaptcooldownPeriapt Ability on Cooldown
+periaptactivePeriapt Ability Active
+saberdashcooldown=Dash Cooldown
+lowdspoison=Lowd's Poison
+
+[message]
+unstablegelslime_anger=§6Unstable Gel Slime is getting angry... <anger>/10
+unstablegelslime_fullanger=§6Unstable Gel Slime got angry! <anger>/10
+unstablegelslime_night=§6Unstable Gel Slime§0 vanished as night fell!
+gelslimesnulled=Gel Slimes nullified in this world. They will no longer appear
+gelslimesunnulled=Gel Slimes admitted in this world. They will now appear
+pinkwitchesnulled=Pink Witches nullified in (<x>, <y>)
+pinkwitchesunnulled=Pink Witches admitted in (<x>, <y>)
+needfreeslots=You need <slots> free slots in the inventory to use this
+cantuseatnight=Cannot be used at night
+healthalreadyfull=Health is already full
+cantheal=Can't heal
+pickupenabledinventoryfull=Pickup cannot be disabled because inventory is full
+itoldyou=I told you
+
+[journal]
+killgelslimesforest=[mob=gelslime] Kill 25 Gel Slimes in the forest
+pickupfloralring=[item=floralring] Cut a lot of grass in the forest to obtain the Floral Ring
+killunstablegelslime=[mob=unstablegelslime] Kill 1 Unstable Gel Slime

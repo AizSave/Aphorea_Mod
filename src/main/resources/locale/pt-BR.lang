@@ -1,0 +1,229 @@
+# Translation made by AI
+
+[global]
+aphorea=§!Aphorea Mod
+
+[tile]
+geltile=Solo de Gel
+
+[object]
+witchstatue=Estátua da Bruxa
+
+[buffmodifiers]
+magichealing=<mod>% cura mágica
+magichealingflat=<mod> cura mágica
+magichealingreceived=<mod>% cura mágica recebida
+magichealingreceivedflat=<mod> cura mágica recebida
+magichealinggrace=<mod>% graça de cura mágica
+arearange=<mod>% alcance da área
+
+[stats]
+banner_damage=Dano do estandarte
+
+[enchantment]
+godly=Divino
+absent=Ausente
+auxiliary=Auxiliar
+vain=Vaidoso
+gentle=Gentil
+selfish=Egoísta
+friendly=Amigável
+graceful=Gracioso
+wonderful=Maravilhoso
+ecologic=Ecológico
+exalted=Exaltado
+cursed=Amaldiçoado
+booming=Estrondoso
+dimmed=Esvaziado
+
+[itemcategory]
+healing=Cura
+healingtools=Cura
+
+[itemtype]
+battleaxe=Machado de Batalha
+saber=Sabre
+sling=Estilingue
+blowgun=Zarabatana
+healingtool=Ferramenta de Cura
+
+[item]
+gelball=Bola de Gel
+rockygel=Gel Rochoso
+gelballgroup=Grupo de Bolas de Gel
+gelsword=Espada de Gel
+unstablecore=Núcleo Instável
+unstablegel=Gel Instável
+unstablegelsword=Espada de Gel Instável
+unstablegelgreatsword=Espadona de Gel Instável
+unstablegelstaff=Cajado de Gel Instável
+sling=Estilingue
+firesling=Estilingue de Fogo
+frozensling=Estilingue Congelado
+blowgun=Zarabatana
+rockyperiapt=Talismã Rochoso
+unstableperiapt=Talismã Instável
+bloodyperiapt=Talismã Sangrento
+demonicperiapt=Talismã Demoníaco
+abysmalperiapt=Talismã Abissal
+frozenperiapt=Talismã Congelado
+necromancyperiapt=Talismã de Necromancia
+rockyboots=Botas Rochosas
+rockychestplate=Peitoral Rochoso
+rockyhelmet=Elmo Rochoso
+goldhat=Chapéu de Ouro
+unstablegelbattleaxe=Machado de Batalha de Gel Instável
+demonicbattleaxe=Machado de Batalha Demoníaco
+coppersaber=Sabre de Cobre
+ironsaber=Sabre de Ferro
+goldsaber=Sabre de Ouro
+unstablegelsaber=Sabre de Gel Instável
+demonicsaber=Sabre Demoníaco
+basicbackpack=Mochila Básica
+sapphirebackpack=Mochila de Safira
+amethystbackpack=Mochila de Ametista
+rubybackpack=Mochila de Rubi
+emeraldbackpack=Mochila de Esmeralda
+diamondbackpack=Mochila de Diamante
+gelslimenullifier=Anulador de Slimes de Gel
+broom=Vassoura
+magicalbroom=Vassoura Mágica
+pinkwitchhat=Chapéu de Bruxa Rosa
+magicalsuit=Traje Mágico
+magicalboots=Botas Mágicas
+stardust=Pó Estelar
+magicalvial=Frasco Mágico
+healingstaff=Cajado de Cura
+floralring=Anel Floral
+gelring=Anel de Gel
+heartring=Anel de Coração
+ringofhealth=Anel de Saúde
+swampboots=Botas de Pântano
+swampchestplate=Peitoral de Pântano
+swampmask=Máscara de Pântano
+swamphood=Capuz de Pântano
+swampshield=Escudo de Pântano
+woodenrod=Vara de Madeira
+woodenwand=Varinha de Madeira
+witchmedallion=Medalhão de Bruxa
+lowdspotion=Potion do Lowd
+adeptsbook=Livro do Adepto
+goldenwand=Varinha Dourada
+unstablegelarrow=Flecha de Gel Instável
+gelarrow=Flecha de Gel
+unstablegelgreatbow=Grande Arco de Gel Instável
+gelgreatbow=Grande Arco de Gel
+voidhammer=Martelo do Vazio
+unstablegelveline=Gelveline Instável
+cuberry=Cuberry
+volatilegelstaff=Bastão de Gel Volátil
+
+[itemtooltip]
+line=--------------------
+magichealingtip=Cura mágica: §7<health>
+rangetip=Alcance: §9<range>
+areatip=§aÁrea <number>
+bannerdamagetip=Dano do estandarte: <value>
+
+magichealinggrace=§aGraça de Cura Mágica:§0 Cura a si mesmo com uma % da §9[Cura Mágica]§0 destinada aos aliados
+
+saber=Carga rápida causando 2x dano após 0,5 segundos, depois descarrega por mais 0,5 segundos
+saber2=Um ataque perfeito lançará um corte aéreo que causa dano base. Um bom também lançará um fraco
+saber3=Mantenha [input=mouse2] para carregar um dash para cortar inimigos causando dano base
+battleaxe=Requer muito tempo de carga
+battleaxe2=Pressione [input=mouse2] para ativar o Ataque do Berserker. Não pode sofrer dano ou se mover enquanto ativa a habilidade
+sling=Atira pedras com força
+sling2=100% de chance de atordoar o inimigo por 0,5 segundos
+spinsecondaryattack=[input=mouse2] para tornar o próximo ataque um ataque de área
+areasecondaryattack=[input=mouse2] para realizar um ataque de área consumindo <mana> Mana
+stikybuff1=Torna o inimigo §9Pegajoso§0 por 1 segundo
+stikybuff2=Torna o inimigo §9Pegajoso§0 por 2 segundos
+stikybuff3=Torna o inimigo §9Pegajoso§0 por 3 segundos
+gelball=Joga uma bola de gel
+unstablecore=§bLibera uma aura instável...§0 Só pode ser usado durante o dia
+rockyperiapt=+5 Armadura, mas -5% Velocidade de Movimento
+rockyperiapt2=Pressione [input=trinketability] para ganhar 10 de Armadura por 10 segundos\nVocê não pode sofrer dano ou se mover enquanto ativa a habilidade
+unstableperiapt=Chama duas §bGel Slimes Bebês Instáveis§0 que irão protegê-lo. Estas slimes §9causam 8 de Dano de Invocador§0
+unstableperiapt2=Torna-se imune ao debuff §9Pegajoso§0
+bloodyperiapt=Pressione [input=trinketability] para ganhar +50% de Velocidade, +30% de Velocidade de Ataque, e\nas armas §6Disparo de Sangue§0 e §6Rajada de Sangue§0 irão curá-lo por 5% do dano que causar com elas.\nVocê não pode sofrer dano ou se mover enquanto ativa a habilidade
+demonicperiapt=Pressione [input=trinketability] para ganhar +50% de Velocidade, +30% de Velocidade de Ataque, e\nas armas mágicas irão curá-lo por 5% do dano que causar com elas por 10 segundos.\nVocê não pode sofrer dano ou se mover enquanto ativa a habilidade
+abysmalperiapt=Armas mágicas irão curá-lo por 5% do dano que causar com elas
+necromancyperiapt=Cada vez que você ou um dos seus invocados mata um mob hostil você invoca um §bEsqueleto Morto-Vivo§0\n que §9causa 20 de Dano de Invocador§0 por§9 10 segundos§0 com um máximo de§9 3 ao mesmo tempo§0
+frozenperiapt=Armas Corpo a Corpo e de Longo Alcance irão §6Congelar§0 por 3 segundos. Se o alvo já estiver congelado, aumenta o dano base do ataque em §9+20%§0
+frozenperiapt2=Pressione [input=trinketability] para ganhar +50% de Velocidade, +30% de Velocidade de Ataque e\nfazer com que isso funcione com todo o dano por 10 segundos.\nVocê não pode sofrer dano ou se mover enquanto ativa a habilidade
+frozenperiapt3=Torna-se imune aos debuffs §9Congelar§0 e §9Lentidão de Gelo§0
+goldhatsetbonus=+60% de Velocidade de Ataque a Longo Alcance enquanto você não estiver se movendo
+firesling=Queima os inimigos
+frozensling=Congela os inimigos
+backpack=É um novo inventário que armazena todos os itens que você coleta
+backpack2=§6Não tenha mochilas com itens no inventário quando for criar uma mochila melhor
+backpackslots=Capacidade de <slots> itens
+stored=Itens armazenados: <items>
+gelslimenullifier=Eles vão parar de incomodá-lo com um simples clique!
+geltile=Chão pegajoso que desacelera bastante tudo o que estiver em cima
+pinkwitchsetbonus=Aumenta a Velocidade de Ataque Mágico, Regeneração de Mana e Armadura conforme você tem menos vida, com um máximo de 50% / 6 Armor
+floralring=Auto §9[Cura Mágica]§0 com §7<healing>§0 a cada 5 segundos
+gelring=+30% §9[Cura Mágica]§0 recebida
+heartring=+20 de saúde máxima
+magicalvial=§9[Cura Mágica]§0 de §7<healing>§0. Aponte para um humano ferido para curá-lo, ou não aponte para ninguém para se curar. Tempo de recarga de 20 segundos
+swampshield=Protege apenas contra ataques na direção em que são recebidos\nAuto §9[Cura Mágica]§0 com o §7<healing>§0 do dano que você impede
+witchstatue=Colocar esta estátua na superfície de um pântano eliminará a aparição de Bruxas Rosa em toda a ilha
+deleteditem=Este item foi removido, use-o para recuperar os materiais antes de ser permanentemente eliminado
+woodenrod=Auto §9[Cura Mágica]§0 com §7<healing>§0 a cada 10 ataques
+witchmedallion=Causa 15 de Dano em área a cada 20 de §9[Cura Mágica]§0 realizada
+lowdspotion=NÃO BEBA ISSO
+projectilearea=Quando o projétil termina, causa dano em área
+voidhammer=Quando rebote ou acerta um inimigo, mira no mais próximo, acertando até 3 vezes
+unstablegelstaff=Quando rebote nas paredes, duplica
+twoarrows=Atira duas flechas de uma vez
+threearrows=Atira três flechas de uma vez
+gelgreatbow=Transforma Flechas de Pedra em Flechas de Gel
+unstablegelgreatbow=Transforma Flechas de Pedra e Flechas de Gel em Flechas de Gel Instável
+strikebannereffect=+<effect>% regeneração de vida (dentro e fora de combate)
+strikebannerability=A cada <time> segundos: Realiza um ataque em área
+
+[mobtooltip]
+usenet=Use uma Rede! [item=net]
+
+gelslime=Slime de Gel
+rockygelslime=Slime de Gel Rochoso
+unstablegelslime=Slime de Gel Instável
+miniunstablegelslime=Mini Slime de Gel Instável
+pinkwitch=Bruxa Rosa
+babyunstablegelslime=Bebê Slime de Gel Instável
+undeadskeleton=Esqueleto Morto-Vivo
+voidadept=Adepto do Vazio
+volatilegelslime=Slime de Gel Volátil
+wildphosphorslime=Slime de Fósforo Selvagem
+petphosphorslime=Slime de Fósforo
+
+[buff]
+stunAtordoado
+stickyPegajoso
+berserkerrushFúria do Berserker
+berserkerrushcooldownFúria do Berserker em Recarga
+swordchargeattackcooldown=Ataque de Espada Carregado em Recarga
+periaptcooldownHabilidade de Talismã em Recarga
+periaptactiveHabilidade de Talismã Ativa
+saberdashcooldown=Recarga de Dash
+lowdspoison=Veneno de Lowd
+
+[message]
+unstablegelslime_anger=§6Slime de Gel Instável está ficando bravo... <anger>/10
+unstablegelslime_fullanger=§6Slime de Gel Instável ficou bravo! <anger>/10
+unstablegelslime_night=§6Slime de Gel Instável§0 desapareceu ao cair da noite!
+gelslimesnulled=Slimes de Gel anulados neste mundo. Eles não aparecerão mais
+gelslimesunnulled=Slimes de Gel permitidos neste mundo. Eles agora aparecerão
+pinkwitchesnulled=Bruxas Rosa anuladas em (<x>, <y>)
+pinkwitchesunnulled=Bruxas Rosa permitidas em (<x>, <y>)
+needfreeslots=Você precisa de <slots> espaços livres no inventário para usar isto
+cantuseatnight=Não pode ser usado à noite
+healthalreadyfull=Saúde já está completa
+cantheal=Não é possível curar
+pickupenabledinventoryfull=A coleta automática não pode ser desativada porque o inventário está cheio
+itoldyou=Eu te disse
+
+[journal]
+killgelslimesforest=[mob=gelslime] Mate 25 Slimes de Gel na floresta
+pickupfloralring=[item=floralring] Corte muita grama na floresta para obter o Anel Floral
+killunstablegelslime=[mob=unstablegelslime] Mate 1 Slime de Gel Instável
